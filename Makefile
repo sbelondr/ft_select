@@ -10,9 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c \
-	  list_cmd.c \
-	  list_save.c
+SRC = main.c\
+			lst_select.c
 
 DIRSRC = srcs
 
@@ -26,7 +25,7 @@ EXEC = ft_select
 
 DEBUG = -g3
 
-FLAGS = -Wall -Werror -Wextra $(DEBUG)
+FLAGS = -Wall -Wextra $(DEBUG)
 
 MKDIR = mkdir -p
 
@@ -42,7 +41,7 @@ $(DIRECTORIES):
 	@$(MKDIR) $(DIRECTORIES)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@gcc $(FLAGS) $(DIROBJ)/*o -L./libft -lft -lncurses -o $(EXEC)
+	@gcc $(FLAGS) $(DIROBJ)/*o -L./libft/libs -lft -lncurses -o $(EXEC)
 	@echo "\033[36mft_select\033[0m gcc: \033[32mOk\033[0m"
 
 $(LINKLIB):

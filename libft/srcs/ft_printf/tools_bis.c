@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tools_bis.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:18:43 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:49:42 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:50:50 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char		ft_alpha(unsigned int nb)
 {

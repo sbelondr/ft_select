@@ -1,0 +1,310 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/a3c87ab5/
+$(DIRECTORIES)	/home/samuel/Documents/42/ft_select/Makefile	/^$(DIRECTORIES):$/;"	t
+$(DIROBJ)/%.o	/home/samuel/Documents/42/ft_select/Makefile	/^$(DIROBJ)\/%.o: $(DIRSRC)\/%.c$/;"	t
+$(LINKLIB)	/home/samuel/Documents/42/ft_select/Makefile	/^$(LINKLIB):$/;"	t
+$(NAME)	/home/samuel/Documents/42/ft_select/Makefile	/^$(NAME): $(LIBFT) $(OBJ)$/;"	t
+$(NAME)	/home/samuel/Documents/42/ft_select/libft/Makefile	/^$(NAME): $(OBJS_NAMES)$/;"	t
+%.o	/home/samuel/Documents/42/ft_select/libft/Makefile	/^%.o : %.c $(HEADERS)$/;"	t
+ADD_VAL	/home/samuel/Documents/42/ft_select/libft/Makefile	/^ADD_VAL = $(eval compteur=$(shell echo $$(($(compteur)+1))))$/;"	m
+ADD_VAL_DYSPLAY	/home/samuel/Documents/42/ft_select/libft/Makefile	/^ADD_VAL_DYSPLAY = $(eval display_mode=$(shell echo $$(($(display_mode)+1))))$/;"	m
+AR	/home/samuel/Documents/42/ft_select/libft/Makefile	/^AR = ar$/;"	m
+ARFLAGS	/home/samuel/Documents/42/ft_select/libft/Makefile	/^ARFLAGS = rc$/;"	m
+BLUE	/home/samuel/Documents/42/ft_select/libft/Makefile	/^BLUE = \\033[36m$/;"	m
+BUF_S	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^#define BUF_S	/;"	d
+BUF_SIZE	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^#define BUF_SIZE	/;"	d
+CC	/home/samuel/Documents/42/ft_select/libft/Makefile	/^CC = gcc$/;"	m
+CFLAGS	/home/samuel/Documents/42/ft_select/libft/Makefile	/^	CFLAGS = -Wall -Werror -Wextra$/;"	m
+CFLAGS	/home/samuel/Documents/42/ft_select/libft/Makefile	/^	CFLAGS = -Wall -Wextra -g3$/;"	m
+CLOSE	/home/samuel/Documents/42/ft_select/libft/Makefile	/^CLOSE = \\033[0m$/;"	m
+CL_BLUE	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^#define CL_BLUE /;"	d
+CL_GREEN	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^#define CL_GREEN /;"	d
+CL_RED	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^#define CL_RED /;"	d
+CL_RESET	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^#define CL_RESET /;"	d
+CPPFLAGS	/home/samuel/Documents/42/ft_select/libft/Makefile	/^CPPFLAGS = -I $(INCDIR)$/;"	m
+CREATE	/home/samuel/Documents/42/ft_select/libft/Makefile	/^CREATE = mkdir -p$/;"	m
+DEBUG	/home/samuel/Documents/42/ft_select/Makefile	/^DEBUG = -g3$/;"	m
+DEBUG	/home/samuel/Documents/42/ft_select/libft/Makefile	/^DEBUG = no$/;"	m
+DEL	/home/samuel/Documents/42/ft_select/libft/Makefile	/^DEL = \/bin\/rm -rf$/;"	m
+DIRECTORIES	/home/samuel/Documents/42/ft_select/Makefile	/^DIRECTORIES = $(DIROBJ)$/;"	m
+DIROBJ	/home/samuel/Documents/42/ft_select/Makefile	/^DIROBJ = objs$/;"	m
+DIRSRC	/home/samuel/Documents/42/ft_select/Makefile	/^DIRSRC = srcs$/;"	m
+EXEC	/home/samuel/Documents/42/ft_select/Makefile	/^EXEC = ft_select$/;"	m
+FLAGS	/home/samuel/Documents/42/ft_select/Makefile	/^FLAGS = -Wall -Wextra $(DEBUG)$/;"	m
+FT_PRINTF	/home/samuel/Documents/42/ft_select/libft/Makefile	/^FT_PRINTF = ft_printf.c	parser.c gest_flag.c arg_s.c arg_n.c arg_convert.c arg_float.c\\$/;"	m
+FT_PRINTF_H	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^#	define FT_PRINTF_H$/;"	d
+FT_SELECT_H	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^#	define FT_SELECT_H$/;"	d
+Fonctions	/home/samuel/Documents/42/ft_select/libft/README.md	/^## Fonctions$/;"	s
+GREEN	/home/samuel/Documents/42/ft_select/libft/Makefile	/^GREEN = \\033[32m$/;"	m
+HEADERS	/home/samuel/Documents/42/ft_select/libft/Makefile	/^HEADERS = $(addprefix $(INCDIR), $(HEADERS_NAMES))$/;"	m
+HEADERS_NAMES	/home/samuel/Documents/42/ft_select/libft/Makefile	/^	HEADERS_NAMES = libft.h ft_printf.h$/;"	m
+INCDIR	/home/samuel/Documents/42/ft_select/libft/Makefile	/^INCDIR = includes\/$/;"	m
+LDFLAGS	/home/samuel/Documents/42/ft_select/libft/Makefile	/^LDFLAGS = $/;"	m
+LIBDIR	/home/samuel/Documents/42/ft_select/libft/Makefile	/^LIBDIR = libs\/$/;"	m
+LIBFT	/home/samuel/Documents/42/ft_select/Makefile	/^LIBFT = libft$/;"	m
+LIBFT	/home/samuel/Documents/42/ft_select/libft/README.md	/^# LIBFT$/;"	c
+LIBFT_H	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^#	define LIBFT_H$/;"	d
+LINKLIB	/home/samuel/Documents/42/ft_select/Makefile	/^LINKLIB = linklib$/;"	m
+MKDIR	/home/samuel/Documents/42/ft_select/Makefile	/^MKDIR = mkdir -p$/;"	m
+Make	/home/samuel/Documents/42/ft_select/libft/README.md	/^## Make$/;"	s
+NAME	/home/samuel/Documents/42/ft_select/Makefile	/^NAME = ft_select$/;"	m
+NAME	/home/samuel/Documents/42/ft_select/libft/Makefile	/^NAME = $(LIBDIR)libft.a$/;"	m
+OBJ	/home/samuel/Documents/42/ft_select/Makefile	/^OBJ = $(SRC:%.c=$(DIROBJ)\/%.o)$/;"	m
+OBJ	/home/samuel/Documents/42/ft_select/libft/Makefile	/^OBJ = $(addprefix $(OBJDIR), $(OBJS_NAMES))$/;"	m
+OBJDIR	/home/samuel/Documents/42/ft_select/libft/Makefile	/^OBJDIR = objs\/$/;"	m
+OBJS_NAMES	/home/samuel/Documents/42/ft_select/libft/Makefile	/^OBJS_NAMES = $(SRCS_NAMES:.c=.o)$/;"	m
+Objectif	/home/samuel/Documents/42/ft_select/libft/README.md	/^### Objectif$/;"	S
+PHONY	/home/samuel/Documents/42/ft_select/libft/Makefile	/^PHONY = all clean fclean re norm help$/;"	m
+PRINT	/home/samuel/Documents/42/ft_select/libft/Makefile	/^PRINT = printf$/;"	m
+RED	/home/samuel/Documents/42/ft_select/libft/Makefile	/^RED = \\033[31m$/;"	m
+SHELL	/home/samuel/Documents/42/ft_select/libft/Makefile	/^SHELL = bash$/;"	m
+SORT	/home/samuel/Documents/42/ft_select/libft/Makefile	/^SORT = ranlib$/;"	m
+SRC	/home/samuel/Documents/42/ft_select/Makefile	/^SRC = main.c \\$/;"	m
+SRC	/home/samuel/Documents/42/ft_select/libft/Makefile	/^SRC = $(addprefix $(SRCDIR), $(SRCS_NAMES))$/;"	m
+SRCDIR	/home/samuel/Documents/42/ft_select/libft/Makefile	/^SRCDIR = srcs\/$/;"	m
+SRCS_NAMES	/home/samuel/Documents/42/ft_select/libft/Makefile	/^SRCS_NAMES = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcmp.c ft_strncmp.c\\$/;"	m
+Skills	/home/samuel/Documents/42/ft_select/libft/README.md	/^### Skills$/;"	S
+TOTAL	/home/samuel/Documents/42/ft_select/libft/Makefile	/^TOTAL = `find srcs -type f | cut -d '\/' -f 3 | wc -l | cut -d ' ' -f 6`$/;"	m
+VPATH	/home/samuel/Documents/42/ft_select/libft/Makefile	/^VPATH = .:\\$/;"	m
+add_apply	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/add_float.c	/^void	add_apply(int stock, char (*lst)[BUF_S], int i)$/;"	f	typeref:typename:void
+add_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/add_float.c	/^void	add_float(char (*lst)[BUF_S], char (*tab_b)[BUF_S])$/;"	f	typeref:typename:void
+add_length	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_n.c	/^int			add_length(t_printf **lst, int neg, int stock[3], int len_str)$/;"	f	typeref:typename:int
+add_mantissa	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/add_float.c	/^void	add_mantissa(char (*lst)[BUF_S], char tab_b[BUF_S])$/;"	f	typeref:typename:void
+affiche_hash	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_float.c	/^void	affiche_hash(t_printf **lst, int stock[3], int place)$/;"	f	typeref:typename:void
+affiche_option	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_float.c	/^void	affiche_option(t_printf *lst, int neg, int stock[3], int place)$/;"	f	typeref:typename:void
+all	/home/samuel/Documents/42/ft_select/Makefile	/^all: $(DIRECTORIES) $(LINKLIB) $(NAME)$/;"	t
+all	/home/samuel/Documents/42/ft_select/libft/Makefile	/^all: verif $(NAME)$/;"	t
+ap	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	va_list			ap;$/;"	m	struct:s_printf	typeref:typename:va_list
+apply_arg_c	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_s.c	/^void		apply_arg_c(char c, t_printf **lst)$/;"	f	typeref:typename:void
+apply_arg_convert	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_convert.c	/^void		apply_arg_convert(char *str, t_printf **lst)$/;"	f	typeref:typename:void
+apply_arg_n	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_n.c	/^void		apply_arg_n(char *str, t_printf **lst)$/;"	f	typeref:typename:void
+apply_arg_s	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_s.c	/^void		apply_arg_s(char *str, t_printf **lst)$/;"	f	typeref:typename:void
+apply_hash	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_convert.c	/^void		apply_hash(t_printf **lst)$/;"	f	typeref:typename:void
+apply_hash_p	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_convert.c	/^void		apply_hash_p(t_printf **lst)$/;"	f	typeref:typename:void
+apply_round_final	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float.c	/^void	apply_round_final(int stock, char **tmp, int i)$/;"	f	typeref:typename:void
+apply_round_i	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float.c	/^char	*apply_round_i(char dst[BUF_S], int *i, int precision)$/;"	f	typeref:typename:char *
+apply_round_ni	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float.c	/^char	*apply_round_ni(char dst[BUF_S])$/;"	f	typeref:typename:char *
+check_p	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float_bis.c	/^int		check_p(char dst[BUF_S], int precision, int i)$/;"	f	typeref:typename:int
+clean	/home/samuel/Documents/42/ft_select/Makefile	/^clean:$/;"	t
+clean	/home/samuel/Documents/42/ft_select/libft/Makefile	/^clean : verif$/;"	t
+cnt_words	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strsplit.c	/^static int	cnt_words(const char *s, char c)$/;"	f	typeref:typename:int	file:
+color	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	int				color;$/;"	m	struct:s_printf	typeref:typename:int
+compteur	/home/samuel/Documents/42/ft_select/libft/Makefile	/^compteur = 0$/;"	m
+content	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
+content_size	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^	size_t			content_size;$/;"	m	struct:s_list	typeref:typename:size_t
+conversion	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	char			conversion[3];$/;"	m	struct:s_printf	typeref:typename:char[3]
+convert_to	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_convert.c	/^void		convert_to(t_printf **lst, int base)$/;"	f	typeref:typename:void
+convert_type	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_convert.c	/^void		convert_type(t_printf **lst, char (*str)[BUF_S], int base)$/;"	f	typeref:typename:void
+create_list	/home/samuel/Documents/42/ft_select/srcs/main.c	/^t_sv_cmd	*create_list(char **av)$/;"	f	typeref:typename:t_sv_cmd *
+current	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	t_select	*current;$/;"	m	struct:s_save_select	typeref:typename:t_select *
+display_mode	/home/samuel/Documents/42/ft_select/libft/Makefile	/^display_mode = 0$/;"	m
+div_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/manage_float.c	/^void	div_float(char (*lst)[BUF_S], int d)$/;"	f	typeref:typename:void
+end	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	t_select	*end;$/;"	m	struct:s_save_select	typeref:typename:t_select *
+fclean	/home/samuel/Documents/42/ft_select/Makefile	/^fclean: clean$/;"	t
+fclean	/home/samuel/Documents/42/ft_select/libft/Makefile	/^fclean: verif clean$/;"	t
+fd	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	int				fd;$/;"	m	struct:s_printf	typeref:typename:int
+flag	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	char			flag;$/;"	m	struct:s_printf	typeref:typename:char
+format	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	char			*format;$/;"	m	struct:s_printf	typeref:typename:char *
+ft_add_zero	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/add_float.c	/^void	ft_add_zero(char (*lst)[BUF_S], int len)$/;"	f	typeref:typename:void
+ft_alpha	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_bis.c	/^char		ft_alpha(unsigned int nb)$/;"	f	typeref:typename:char
+ft_apply_arg_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_float.c	/^void	ft_apply_arg_float(char (*str)[BUF_S], t_printf **lst, int neg)$/;"	f	typeref:typename:void
+ft_apply_round	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float.c	/^char	*ft_apply_round(char (*dst)[BUF_S], int stock, int precision)$/;"	f	typeref:typename:char *
+ft_arg_array_s	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_s.c	/^void	ft_arg_array_s(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_c	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_s.c	/^void	ft_arg_c(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_d	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_n.c	/^void	ft_arg_d(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_float.c	/^void		ft_arg_float(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_o	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_convert.c	/^void		ft_arg_o(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_percent	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_s.c	/^void	ft_arg_percent(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_pointer	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_convert.c	/^void		ft_arg_pointer(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_s	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_s.c	/^void	ft_arg_s(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_u	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_n.c	/^void	ft_arg_u(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arg_x	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_convert.c	/^void		ft_arg_x(t_printf **lst)$/;"	f	typeref:typename:void
+ft_arraydel	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_arraydel.c	/^void		ft_arraydel(char ***line)$/;"	f	typeref:typename:void
+ft_arraydelline	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_arraydelline.c	/^void	ft_arraydelline(char ***src, int line)$/;"	f	typeref:typename:void
+ft_arraydisplay	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_arraydisplay.c	/^void	ft_arraydisplay(char **src)$/;"	f	typeref:typename:void
+ft_arraydup	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_arraydup.c	/^char	**ft_arraydup(char **line)$/;"	f	typeref:typename:char **
+ft_arrayjoin	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_arrayjoin.c	/^char	**ft_arrayjoin(char **src, char *str)$/;"	f	typeref:typename:char **
+ft_arraylen	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_arraylen.c	/^int		ft_arraylen(char **src)$/;"	f	typeref:typename:int
+ft_arraysub	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_arraysub.c	/^char	**ft_arraysub(char **src, int start, int len)$/;"	f	typeref:typename:char **
+ft_atoi	/home/samuel/Documents/42/ft_select/libft/srcs/num/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f	typeref:typename:int
+ft_binary_to_char	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/binary.c	/^char	ft_binary_to_char(t_u64 nb)$/;"	f	typeref:typename:char
+ft_blank_list	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/prepare.c	/^void	ft_blank_list(t_printf **lst)$/;"	f	typeref:typename:void
+ft_bzero	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void
+ft_chr_index	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_chr_index.c	/^int				ft_chr_index(char *s, char c)$/;"	f	typeref:typename:int
+ft_chrjoin_end	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_chrjoin_end.c	/^char			*ft_chrjoin_end(char *str, char c)$/;"	f	typeref:typename:char *
+ft_chrjoin_start	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_chrjoin_start.c	/^char	*ft_chrjoin_start(char c, char *str)$/;"	f	typeref:typename:char *
+ft_chrn_index	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_chrn_index.c	/^int			ft_chrn_index(char *s, char c, int i)$/;"	f	typeref:typename:int
+ft_cnt_chr	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_cnt_chr.c	/^int		ft_cnt_chr(char *str, char c)$/;"	f	typeref:typename:int
+ft_conversion	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_n.c	/^void	ft_conversion(char **str, t_printf **lst)$/;"	f	typeref:typename:void
+ft_conversion_u	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_n.c	/^void	ft_conversion_u(char **str, t_printf **lst)$/;"	f	typeref:typename:void
+ft_convert_base	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_convert_base.c	/^void		ft_convert_base(unsigned int nb, int base, char (*str)[BUF_S])$/;"	f	typeref:typename:void
+ft_convert_base_ll	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_convert_base.c	/^void		ft_convert_base_ll(unsigned long long nb, int base,$/;"	f	typeref:typename:void
+ft_convert_base_u64	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_float.c	/^void		ft_convert_base_u64(t_u64 nb, int base, char (*str)[BUF_S])$/;"	f	typeref:typename:void
+ft_convert_base_uc	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_convert_base.c	/^void		ft_convert_base_uc(unsigned char nb, int base, char (*str)[BUF_S])$/;"	f	typeref:typename:void
+ft_convert_base_us	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_convert_base.c	/^void		ft_convert_base_us(unsigned short nb, int base, char (*str)[BUF_S])$/;"	f	typeref:typename:void
+ft_cpy_str	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools.c	/^void	ft_cpy_str(char (*dst)[BUF_S], char str[BUF_S])$/;"	f	typeref:typename:void
+ft_del_lst	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_printf.c	/^void	ft_del_lst(t_printf **lst)$/;"	f	typeref:typename:void
+ft_deplace	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_deplace.c	/^void	ft_deplace(char (*tab)[BUF_S])$/;"	f	typeref:typename:void
+ft_display	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/display.c	/^void	ft_display(char dst[BUF_S], t_printf **lst)$/;"	f	typeref:typename:void
+ft_display_color	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/display.c	/^void	ft_display_color(char dst[BUF_S], t_printf **lst)$/;"	f	typeref:typename:void
+ft_dprintf	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_printf.c	/^int		ft_dprintf(int fd, const char *format, ...)$/;"	f	typeref:typename:int
+ft_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_float.c	/^void		ft_float(double nb, char (*str)[BUF_S], int *neg)$/;"	f	typeref:typename:void
+ft_float_to_bin	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/arg_float.c	/^void		ft_float_to_bin(char (*str)[BUF_S], int d, t_u64 mantissa)$/;"	f	typeref:typename:void
+ft_gest_flag	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/gest_flag.c	/^void			ft_gest_flag(t_printf **lst)$/;"	f	typeref:typename:void
+ft_gest_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/manage_float.c	/^void	ft_gest_float(char (*lst)[BUF_S], int d)$/;"	f	typeref:typename:void
+ft_inf_nan	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float.c	/^void	ft_inf_nan(char (*str)[BUF_S], t_printf **lst, int stock[3])$/;"	f	typeref:typename:void
+ft_isalnum	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f	typeref:typename:int
+ft_isalpha	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f	typeref:typename:int
+ft_isascii	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f	typeref:typename:int
+ft_isblank	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_isblank.c	/^int		ft_isblank(int c)$/;"	f	typeref:typename:int
+ft_isdigit	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f	typeref:typename:int
+ft_isprint	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f	typeref:typename:int
+ft_isspace	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_isspace.c	/^int		ft_isspace(int c)$/;"	f	typeref:typename:int
+ft_itoa	/home/samuel/Documents/42/ft_select/libft/srcs/num/ft_itoa.c	/^char		*ft_itoa(int n)$/;"	f	typeref:typename:char *
+ft_itoa_long	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_itoa_other.c	/^char		*ft_itoa_long(long long n)$/;"	f	typeref:typename:char *
+ft_itoa_s	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_itoa_other.c	/^char		*ft_itoa_s(short n)$/;"	f	typeref:typename:char *
+ft_itoa_sc	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_itoa_other_u_s.c	/^char		*ft_itoa_sc(signed char c)$/;"	f	typeref:typename:char *
+ft_itoa_ul	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_itoa_other_u_s.c	/^char		*ft_itoa_ul(unsigned long long n)$/;"	f	typeref:typename:char *
+ft_itoa_us	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_itoa_other_u_s.c	/^char		*ft_itoa_us(unsigned short n)$/;"	f	typeref:typename:char *
+ft_join	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools.c	/^void	ft_join(char (*dst)[BUF_S], char *str, int ordre)$/;"	f	typeref:typename:void
+ft_large	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools.c	/^void	ft_large(char (*buff)[BUF_S], int l, char c)$/;"	f	typeref:typename:void
+ft_large_min	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg.c	/^void	ft_large_min(char (*dst)[BUF_S], t_printf *lst, int stock[3])$/;"	f	typeref:typename:void
+ft_lastchr	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_lastchr.c	/^int		ft_lastchr(const char *s, int c)$/;"	f	typeref:typename:int
+ft_len_long	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_itoa_other.c	/^int			ft_len_long(long long n)$/;"	f	typeref:typename:int
+ft_len_unsigned	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_itoa_other.c	/^int			ft_len_unsigned(unsigned long long n)$/;"	f	typeref:typename:int
+ft_lstadd	/home/samuel/Documents/42/ft_select/libft/srcs/lst/ft_lstadd.c	/^void	ft_lstadd(t_list **alst, t_list *new)$/;"	f	typeref:typename:void
+ft_lstdel	/home/samuel/Documents/42/ft_select/libft/srcs/lst/ft_lstdel.c	/^void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))$/;"	f	typeref:typename:void
+ft_lstdelone	/home/samuel/Documents/42/ft_select/libft/srcs/lst/ft_lstdelone.c	/^void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))$/;"	f	typeref:typename:void
+ft_lstiter	/home/samuel/Documents/42/ft_select/libft/srcs/lst/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))$/;"	f	typeref:typename:void
+ft_lstmap	/home/samuel/Documents/42/ft_select/libft/srcs/lst/ft_lstmap.c	/^t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f	typeref:typename:t_list *
+ft_lstnew	/home/samuel/Documents/42/ft_select/libft/srcs/lst/ft_lstnew.c	/^t_list		*ft_lstnew(const void *content, size_t content_size)$/;"	f	typeref:typename:t_list *
+ft_manage	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/parser.c	/^void	ft_manage(t_printf **lst)$/;"	f	typeref:typename:void
+ft_memalloc	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f	typeref:typename:void *
+ft_memccpy	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_memccpy.c	/^void		*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f	typeref:typename:void *
+ft_memchr	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_memchr.c	/^void		*ft_memchr(const void *s, int c, size_t n)$/;"	f	typeref:typename:void *
+ft_memcmp	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f	typeref:typename:int
+ft_memcpy	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f	typeref:typename:void *
+ft_memdel	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_memdel.c	/^void	ft_memdel(void **ap)$/;"	f	typeref:typename:void
+ft_memmove	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f	typeref:typename:void *
+ft_memset	/home/samuel/Documents/42/ft_select/libft/srcs/mem/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f	typeref:typename:void *
+ft_new_line	/home/samuel/Documents/42/ft_select/libft/srcs/file/get_next_line.c	/^int		ft_new_line(char **s, char **line, int fd, int ret)$/;"	f	typeref:typename:int
+ft_numlen	/home/samuel/Documents/42/ft_select/libft/srcs/num/ft_numlen.c	/^int	ft_numlen(int n)$/;"	f	typeref:typename:int
+ft_pchar	/home/samuel/Documents/42/ft_select/srcs/main.c	/^int	ft_pchar(int c)$/;"	f	typeref:typename:int
+ft_pow_array_fix	/home/samuel/Documents/42/ft_select/libft/srcs/num/ft_pow_array_fix.c	/^void	ft_pow_array_fix(int i, char (*nb)[BUF_S])$/;"	f	typeref:typename:void
+ft_precision_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float_bis.c	/^char	*ft_precision_float(char (*dst)[BUF_S], t_printf **lst)$/;"	f	typeref:typename:char *
+ft_prepare	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/prepare.c	/^int		ft_prepare(const char *format, t_printf **lst)$/;"	f	typeref:typename:int
+ft_printf	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_printf.c	/^int		ft_printf(const char *format, ...)$/;"	f	typeref:typename:int
+ft_putchar	/home/samuel/Documents/42/ft_select/libft/srcs/put/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f	typeref:typename:void
+ft_putchar_fd	/home/samuel/Documents/42/ft_select/libft/srcs/put/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f	typeref:typename:void
+ft_putendl	/home/samuel/Documents/42/ft_select/libft/srcs/put/ft_putendl.c	/^void	ft_putendl(char const *s)$/;"	f	typeref:typename:void
+ft_putendl_fd	/home/samuel/Documents/42/ft_select/libft/srcs/put/ft_putendl_fd.c	/^void	ft_putendl_fd(char const *s, int fd)$/;"	f	typeref:typename:void
+ft_putnbr	/home/samuel/Documents/42/ft_select/libft/srcs/put/ft_putnbr.c	/^void		ft_putnbr(int n)$/;"	f	typeref:typename:void
+ft_putnbr_fd	/home/samuel/Documents/42/ft_select/libft/srcs/put/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
+ft_putstr	/home/samuel/Documents/42/ft_select/libft/srcs/put/ft_putstr.c	/^void	ft_putstr(char const *s)$/;"	f	typeref:typename:void
+ft_putstr_fd	/home/samuel/Documents/42/ft_select/libft/srcs/put/ft_putstr_fd.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f	typeref:typename:void
+ft_reset_value	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/prepare.c	/^void	ft_reset_value(t_printf **lst)$/;"	f	typeref:typename:void
+ft_reverse_tablo	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_reverse_tablo.c	/^void	ft_reverse_tablo(char (*tab)[BUF_S])$/;"	f	typeref:typename:void
+ft_round_precision	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float_bis.c	/^char	*ft_round_precision(char (*dst)[BUF_S], int precision)$/;"	f	typeref:typename:char *
+ft_see_binary	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/binary.c	/^void	ft_see_binary(int nb)$/;"	f	typeref:typename:void
+ft_see_binary_u64	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/binary.c	/^void	ft_see_binary_u64(t_u64 nb)$/;"	f	typeref:typename:void
+ft_split	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strsplit.c	/^static void	ft_split(const char *s, char c, char ***result)$/;"	f	typeref:typename:void	file:
+ft_sqrt	/home/samuel/Documents/42/ft_select/libft/srcs/num/ft_sqrt.c	/^int		ft_sqrt(int nb, int sq)$/;"	f	typeref:typename:int
+ft_startjoin	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/ft_convert_base.c	/^void		ft_startjoin(char (*str)[BUF_S], char c)$/;"	f	typeref:typename:void
+ft_startjoin_50	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_bis.c	/^void		ft_startjoin_50(char (*str)[50], char c)$/;"	f	typeref:typename:void
+ft_stock	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools.c	/^void	ft_stock(t_printf **lst, char dst[BUF_S], int (*stock)[3])$/;"	f	typeref:typename:void
+ft_strcat	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f	typeref:typename:char *
+ft_strchr	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f	typeref:typename:char *
+ft_strchr_exist	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strchr_exist.c	/^int				ft_strchr_exist(char *s, char c)$/;"	f	typeref:typename:int
+ft_strclr	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f	typeref:typename:void
+ft_strcmp	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strcmp.c	/^int		ft_strcmp(const char *s1, const char *s2)$/;"	f	typeref:typename:int
+ft_strcpy	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f	typeref:typename:char *
+ft_strdel	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strdel.c	/^void	ft_strdel(char **as)$/;"	f	typeref:typename:void
+ft_strdeldup	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strdeldup.c	/^void		ft_strdeldup(char **str, char *src)$/;"	f	typeref:typename:void
+ft_strdup	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f	typeref:typename:char *
+ft_strequ	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strequ.c	/^int		ft_strequ(char const *s1, char const *s2)$/;"	f	typeref:typename:int
+ft_striter	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_striter.c	/^void	ft_striter(char *s, void (*f)(char *))$/;"	f	typeref:typename:void
+ft_striteri	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_striteri.c	/^void		ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f	typeref:typename:void
+ft_strjoin	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strjoin.c	/^char		*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
+ft_strlcat	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strlcat.c	/^size_t		ft_strlcat(char *dst, const char *src, size_t size)$/;"	f	typeref:typename:size_t
+ft_strlen	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strlen.c	/^size_t		ft_strlen(const char *s)$/;"	f	typeref:typename:size_t
+ft_strmap	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strmap.c	/^char	*ft_strmap(char const *s, char (*f)(char))$/;"	f	typeref:typename:char *
+ft_strmapi	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f	typeref:typename:char *
+ft_strncat	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strncat.c	/^char	*ft_strncat(char *s1, const char *s2, size_t n)$/;"	f	typeref:typename:char *
+ft_strncmp	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strncmp.c	/^int					ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f	typeref:typename:int
+ft_strncpy	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strncpy.c	/^char		*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f	typeref:typename:char *
+ft_strnequ	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strnequ.c	/^int		ft_strnequ(char const *s1, char const *s2, size_t n)$/;"	f	typeref:typename:int
+ft_strnew	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strnew.c	/^char	*ft_strnew(size_t size)$/;"	f	typeref:typename:char *
+ft_strnstr	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f	typeref:typename:char *
+ft_strrchr	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f	typeref:typename:char *
+ft_strsplit	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strsplit.c	/^char		**ft_strsplit(char const *s, char c)$/;"	f	typeref:typename:char **
+ft_strstr	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strstr.c	/^char	*ft_strstr(const char *haystack, const char *needle)$/;"	f	typeref:typename:char *
+ft_strsub	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strsub.c	/^char	*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
+ft_strsub_tab_fix	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strsub_tab_fix.c	/^void	ft_strsub_tab_fix(char (*tab)[BUF_S], char src[BUF_S], int start,$/;"	f	typeref:typename:void
+ft_strtrim	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strtrim.c	/^char		*ft_strtrim(char const *s)$/;"	f	typeref:typename:char *
+ft_tolower	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f	typeref:typename:int
+ft_toupper	/home/samuel/Documents/42/ft_select/libft/srcs/char/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f	typeref:typename:int
+ft_tty_raw	/home/samuel/Documents/42/ft_select/srcs/main.c	/^int		ft_tty_raw(struct termios base_term, int fd_in)$/;"	f	typeref:typename:int
+ft_white_space	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strtrim.c	/^static int	ft_white_space(char c)$/;"	f	typeref:typename:int	file:
+get_end_line	/home/samuel/Documents/42/ft_select/libft/srcs/file/get_end_line.c	/^int		get_end_line(char *file)$/;"	f	typeref:typename:int
+get_next_line	/home/samuel/Documents/42/ft_select/libft/srcs/file/get_next_line.c	/^int		get_next_line(const int fd, char **line)$/;"	f	typeref:typename:int
+head	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	t_select	*head;$/;"	m	struct:s_save_select	typeref:typename:t_select *
+help	/home/samuel/Documents/42/ft_select/libft/Makefile	/^help:$/;"	t
+index	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	int				index;$/;"	m	struct:s_printf	typeref:typename:int
+init_array	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/gest_flag.c	/^static void		(**init_array(void))(t_printf**)$/;"	f	typeref:typename:void (**)(t_printf **)	file:
+insert_format	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/prepare.c	/^char	*insert_format(const char *e)$/;"	f	typeref:typename:char *
+is_select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	int		is_select;$/;"	m	struct:s_select	typeref:typename:int
+is_split	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strsplit.c	/^static int	is_split(char c, char spl)$/;"	f	typeref:typename:int	file:
+large_min	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	size_t			large_min;$/;"	m	struct:s_printf	typeref:typename:size_t
+large_min_convert	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_convert.c	/^void		large_min_convert(t_printf **lst, int len_str, int stock[3])$/;"	f	typeref:typename:void
+large_min_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_float.c	/^void	large_min_float(t_printf **lst, int len_str, int stock[3])$/;"	f	typeref:typename:void
+large_min_n	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_n.c	/^void		large_min_n(t_printf **lst, int len_str, int stock[3])$/;"	f	typeref:typename:void
+large_min_s	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_s.c	/^void		large_min_s(t_printf **lst, int len_str)$/;"	f	typeref:typename:void
+len	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	int				len;$/;"	m	struct:s_printf	typeref:typename:int
+len_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float_bis.c	/^int		len_float(t_printf **lst, int stock[3], int neg)$/;"	f	typeref:typename:int
+main	/home/samuel/Documents/42/ft_select/srcs/main.c	/^int		main(int ac, char **av)$/;"	f	typeref:typename:int
+manage_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/manage_float.c	/^void	manage_float(char (*lst)[BUF_S])$/;"	f	typeref:typename:void
+manage_mantissa	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/manage_float.c	/^void	manage_mantissa(char (*lst)[BUF_S])$/;"	f	typeref:typename:void
+mult_mantissa	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/multiplication_float.c	/^void	mult_mantissa(char (*lst)[BUF_S], int d)$/;"	f	typeref:typename:void
+name	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	char	*name;$/;"	m	struct:s_select	typeref:typename:char *
+next	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	struct s_select	*next;$/;"	m	struct:s_select	typeref:struct:s_select *
+next	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
+norm	/home/samuel/Documents/42/ft_select/libft/Makefile	/^norm:$/;"	t
+options	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	char			options[50];$/;"	m	struct:s_printf	typeref:typename:char[50]
+options	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/parser.c	/^void	options(t_printf **lst)$/;"	f	typeref:typename:void
+options_n	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_n.c	/^void		options_n(t_printf **lst, int stock[3], int neg, int rd)$/;"	f	typeref:typename:void
+other_options	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/parser.c	/^void	other_options(t_printf **lst)$/;"	f	typeref:typename:void
+pos	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	t_pos	pos;$/;"	m	struct:s_select	typeref:typename:t_pos
+precision	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	int				precision;$/;"	m	struct:s_printf	typeref:typename:int
+precision_n	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_n.c	/^char		*precision_n(char *str, t_printf **lst, int neg)$/;"	f	typeref:typename:char *
+precision_s	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_s.c	/^char		*precision_s(char *str, t_printf **lst)$/;"	f	typeref:typename:char *
+prev	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	struct s_select	*prev;$/;"	m	struct:s_select	typeref:struct:s_select *
+re	/home/samuel/Documents/42/ft_select/Makefile	/^re: fclean all$/;"	t
+re	/home/samuel/Documents/42/ft_select/libft/Makefile	/^re: fclean all$/;"	t
+recup_char	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/parser.c	/^char	recup_char(t_printf **lst, int n)$/;"	f	typeref:typename:char
+result_null	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_bis.c	/^void		result_null(t_printf **lst, char (*str)[BUF_S])$/;"	f	typeref:typename:void
+s_list	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^typedef struct		s_list$/;"	s
+s_pos	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^typedef struct	s_pos$/;"	s
+s_printf	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^typedef struct		s_printf$/;"	s
+s_save_select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^typedef struct	s_save_select$/;"	s
+s_select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^typedef struct	s_select$/;"	s
+search_conversion	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/parser.c	/^void	search_conversion(t_printf **lst)$/;"	f	typeref:typename:void
+t_list	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_pos	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^}				t_pos;$/;"	t	typeref:struct:s_pos
+t_printf	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^}					t_printf;$/;"	t	typeref:struct:s_printf
+t_save_select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^}								t_save_select;$/;"	t	typeref:struct:s_save_select
+t_select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^}								t_select;$/;"	t	typeref:struct:s_select
+t_u64	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^typedef uint64_t	t_u64;$/;"	t	typeref:typename:uint64_t
+tablo_calc	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/multiplication_float.c	/^void	tablo_calc(char (*lst)[BUF_S], int base)$/;"	f	typeref:typename:void
+test	/home/samuel/Documents/42/ft_select/srcs/main.c	/^char	*test(char **list_arg)$/;"	f	typeref:typename:char *
+tty_reset	/home/samuel/Documents/42/ft_select/srcs/main.c	/^int		tty_reset(struct termios base_term, int fd_in)$/;"	f	typeref:typename:int
+value	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	double			value;$/;"	m	struct:s_printf	typeref:typename:double
+verif	/home/samuel/Documents/42/ft_select/libft/Makefile	/^verif:$/;"	t
+verif_float_zero	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_float.c	/^int		verif_float_zero(t_printf *lst)$/;"	f	typeref:typename:int
+x	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	int	x;$/;"	m	struct:s_pos	typeref:typename:int
+y	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	int	y;$/;"	m	struct:s_pos	typeref:typename:int

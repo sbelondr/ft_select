@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/05/01 16:32:53 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020-04-23 23:51:37 by sbelondr         ###   ########.fr       */ 
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,41 +128,25 @@ char	*test(char **list_arg)
 	return (final);	
 }
 
-t_sv_cmd	*create_list(char **av)
-{
-	int			i;
-	t_sv_cmd	*sv;
-	t_cmd		*cmd;
-
-	i = -1;
-	sv = init_sv_cmd();
-	while (av[++i])
-	{
-		cmd = init_cmd();
-		cmd->name = ft_strdup(av[i]);
-		cmd->size = ft_strlen(cmd->name);
-		insert_sv_cmd(&sv, cmd);
-		free_list_cmd(&cmd);
-	}
-	first_sv_cmd(sv);
-	return (sv);
-}
-
 int		main(int ac, char **av)
 {
+	t_save_select	*sv;
+
 	char					*final;
 	static	int				fd_in;
 	static	struct termios	base_term;
 
-	
-	t_sv_cmd	*sv = create_list(av + 1);
+	if (ac < 2)
+		return (-1);
+	sv = create_lst_select(av + 1);
+	sv->current = sv->head;
 	while (sv->current)
 	{
 		ft_printf("%s\n", sv->current->name);
-		next_sv_cmd(sv);
+		sv->current = sv->current->next;
 	}
-	return (0);
-
+	ft_printf("====================\n\n");
+	
 
 	fd_in = STDIN_FILENO;
 	if (tcgetattr(fd_in, &base_term) < 0)
@@ -172,11 +156,9 @@ int		main(int ac, char **av)
 		ft_dprintf(2, "Error: raw doesn't work!\n");
 		return (-1);
 	}
-	if (ac > 1)
-	{
 //		t_sv_cmd	*sv = create_list(av + 1);
 		final = test(av + 1);
-	}
+		ft_putstr(final);
 	if (tty_reset(base_term, fd_in) == -1)
 	{
 		ft_dprintf(2, "Error: reset raw doesn't work!\n");

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   apply_arg_float.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 18:11:05 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:43:36 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:46:50 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void	large_min_float(t_printf **lst, int len_str, int stock[3])
 {

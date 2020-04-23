@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:42:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/02 10:12:51 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/08/21 10:55:17 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #define BUF_SIZE	30
 
 #include "ft_printf.h"
-#include "ft_ls.h"
 
 typedef struct		s_list
 {

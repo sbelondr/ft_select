@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:30:54 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:47:46 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:48:21 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void		ft_startjoin(char (*str)[BUF_S], char c)
 {
 	int		len;
 
 	len = ft_strlen(*str);
-	if (len == BUF_SIZE)
+	if (len == BUF_S)
 		return ;
 	while (--len >= 0)
 		(*str)[len + 1] = (*str)[len];
@@ -29,7 +29,7 @@ void		ft_convert_base(unsigned int nb, int base, char (*str)[BUF_S])
 	unsigned int	result;
 	char			c;
 
-	ft_bzero(&(*str), BUF_SIZE);
+	ft_bzero(&(*str), BUF_S);
 	while (nb != 0)
 	{
 		result = nb % base;
@@ -47,7 +47,7 @@ void		ft_convert_base_uc(unsigned char nb, int base, char (*str)[BUF_S])
 	unsigned char	result;
 	char			c;
 
-	ft_bzero(&(*str), BUF_SIZE);
+	ft_bzero(&(*str), BUF_S);
 	while (nb != 0)
 	{
 		result = nb % base;
@@ -65,7 +65,7 @@ void		ft_convert_base_us(unsigned short nb, int base, char (*str)[BUF_S])
 	unsigned short	result;
 	char			c;
 
-	ft_bzero(&(*str), BUF_SIZE);
+	ft_bzero(&(*str), BUF_S);
 	while (nb != 0)
 	{
 		result = nb % base;
@@ -84,7 +84,7 @@ void		ft_convert_base_ll(unsigned long long nb, int base,
 	unsigned long long	result;
 	char				c;
 
-	ft_bzero(&(*str), BUF_SIZE);
+	ft_bzero(&(*str), BUF_S);
 	while (nb != 0)
 	{
 		result = nb % base;

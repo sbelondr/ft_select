@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tools_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 12:59:28 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:49:55 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:50:59 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_inf_nan(char (*str)[BUF_S], t_printf **lst, int stock[3])
 {
@@ -90,7 +90,7 @@ char	*ft_apply_round(char (*dst)[BUF_S], int stock, int precision)
 		if (!(tmp = apply_round_ni(*dst)))
 			return (NULL);
 	}
-	i = (i == -1) ? ft_strlen(*dst) - 1 : i - 1;
+	i = (i == -1) ? (int)ft_strlen(*dst) - 1 : i - 1;
 	stock = (stock > 4) ? 1 : 0;
 	apply_round_final(stock, &tmp, i);
 	return (tmp);

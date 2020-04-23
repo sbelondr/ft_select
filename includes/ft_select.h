@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/05/01 16:22:58 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020-04-23 23:42:33 by sbelondr         ###   ########.fr       */ 
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,38 +25,26 @@ typedef struct	s_pos
 	int	y;
 }				t_pos;
 
-typedef struct	s_cmd
+typedef struct	s_select
 {
-	char			*name;
-	int				is_select;
-	int				size;
-	t_pos			*pos;
-	struct s_cmd	*next;
-}				t_cmd;
+	char	*name;
+	int		is_select;
+	t_pos	pos;
+	struct s_select	*next;
+	struct s_select	*prev;
+}								t_select;
 
-typedef struct s_sv_cmd
+typedef struct	s_save_select
 {
-	t_cmd	*head;
-	t_cmd	*current;
-	t_cmd	*last;
-}				t_sv_cmd;
+	t_select	*head;
+	t_select	*current;
+	t_select	*end;
+	size_t		max_size;
+	size_t		size_lst;
+}								t_save_select;
 
-/*
-** list_cmd.c
-*/
 
-t_cmd			*init_cmd(void);
-void			free_list_cmd(t_cmd **cmd);
-
-/*
-** list_save.c
-*/
-
-t_sv_cmd		*init_sv_cmd(void);
-void			insert_sv_cmd(t_sv_cmd **sv, t_cmd *cmd);
-void			next_sv_cmd(t_sv_cmd *sv);
-void			first_sv_cmd(t_sv_cmd *sv);
-size_t			size_sv_cmd(t_sv_cmd *sv);
-
+t_save_select	*create_lst_select(char **src);
+void				del_select(t_save_select *s);
 
 #	endif

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   apply_arg_n.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:02:59 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:43:47 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:47:00 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void		options_n(t_printf **lst, int stock[3], int neg, int rd)
 {

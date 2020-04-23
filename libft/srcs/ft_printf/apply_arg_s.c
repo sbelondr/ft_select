@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   apply_arg_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 14:52:26 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:43:57 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:47:11 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char		*precision_s(char *str, t_printf **lst)
 {

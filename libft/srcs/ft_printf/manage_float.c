@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   gg.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 21:24:41 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:48:28 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 11:03:09 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 /*
 ** https://ryanstutorials.net/binary-tutorial/binary-floating-point.php
 */
 
-void	div_float(char (*tab)[BUF_S], int d)
+void	div_float(char (*lst)[BUF_S], int d)
 {
 	int		j;
 	int		stock[2];
 	char	result[BUF_S];
 
-	if ((*tab)[0] == '0')
+	if ((*lst)[0] == '0')
 		return ;
 	d += 1;
-	ft_bzero(&(*tab), BUF_S);
+	ft_bzero(&(*lst), BUF_S);
 	ft_pow_array_fix(d, &result);
 	while (--d > 0)
 	{
@@ -38,10 +38,10 @@ void	div_float(char (*tab)[BUF_S], int d)
 			stock[1] = stock[0] % 10;
 		}
 	}
-	ft_cpy_str(&(*tab), result);
+	ft_cpy_str(&(*lst), result);
 }
 
-void	manage_mantissa(char (*tab)[BUF_S])
+void	manage_mantissa(char (*lst)[BUF_S])
 {
 	char	result[BUF_S];
 	char	tmp[BUF_S];
@@ -49,21 +49,21 @@ void	manage_mantissa(char (*tab)[BUF_S])
 	int		j;
 
 	i = -1;
-	j = ft_strlen(*tab) - 1;
+	j = ft_strlen(*lst) - 1;
 	ft_bzero(&result, BUF_S);
 	result[0] = '0';
-	while ((*tab)[++i])
+	while ((*lst)[++i])
 	{
 		ft_bzero(&tmp, BUF_S);
-		tmp[0] = (*tab)[i];
+		tmp[0] = (*lst)[i];
 		mult_mantissa(&tmp, --j);
 		add_mantissa(&result, tmp);
 	}
-	ft_bzero(&(*tab), BUF_S);
-	ft_cpy_str(&(*tab), result);
+	ft_bzero(&(*lst), BUF_S);
+	ft_cpy_str(&(*lst), result);
 }
 
-void	manage_float(char (*tab)[BUF_S])
+void	manage_float(char (*lst)[BUF_S])
 {
 	char	result[BUF_S];
 	char	tmp[BUF_S];
@@ -72,32 +72,32 @@ void	manage_float(char (*tab)[BUF_S])
 	i = -1;
 	ft_bzero(&result, BUF_S);
 	result[0] = '0';
-	while ((*tab)[++i])
+	while ((*lst)[++i])
 	{
 		ft_bzero(&tmp, BUF_S);
-		tmp[0] = (*tab)[i];
+		tmp[0] = (*lst)[i];
 		div_float(&tmp, i);
 		add_float(&result, &tmp);
 	}
-	ft_bzero(&(*tab), BUF_S);
-	ft_cpy_str(&(*tab), result);
+	ft_bzero(&(*lst), BUF_S);
+	ft_cpy_str(&(*lst), result);
 }
 
-void	ft_gest_float(char (*tab)[BUF_S], int d)
+void	ft_gest_float(char (*lst)[BUF_S], int d)
 {
 	char	mantissa[BUF_S];
 	char	float_c[BUF_S];
 
 	d += 1;
-	ft_reverse_tablo(&(*tab));
-	ft_strsub_tab_fix(&mantissa, (*tab), 0, d);
+	ft_reverse_tablo(&(*lst));
+	ft_strsub_tab_fix(&mantissa, (*lst), 0, d);
 	if ((int)ft_strlen(mantissa) < d)
 		ft_add_zero(&mantissa, d - ft_strlen(mantissa));
-	ft_strsub_tab_fix(&float_c, (*tab), d, ft_strlen((*tab)));
+	ft_strsub_tab_fix(&float_c, (*lst), d, ft_strlen((*lst)));
 	manage_mantissa(&mantissa);
 	manage_float(&float_c);
-	ft_bzero(&(*tab), BUF_S);
-	ft_join(&(*tab), mantissa, 0);
-	ft_join(&(*tab), ".\0", 0);
-	ft_join(&(*tab), float_c, 0);
+	ft_bzero(&(*lst), BUF_S);
+	ft_join(&(*lst), mantissa, 0);
+	ft_join(&(*lst), ".\0", 0);
+	ft_join(&(*lst), float_c, 0);
 }

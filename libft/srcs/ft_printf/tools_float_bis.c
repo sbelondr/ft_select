@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tools_float_bis.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:33:50 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:50:05 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:51:10 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_precision_float(char (*dst)[BUF_S], t_printf **lst)
 {

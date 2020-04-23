@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   apply_arg_convert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 11:37:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/30 15:43:25 by sbelondr         ###   ########.fr       */
+/*   Updated: 2019/04/08 10:46:41 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void		large_min_convert(t_printf **lst, int len_str, int stock[3])
 {
