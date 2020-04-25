@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020-04-25 00:12:50 by sbelondr         ###   ########.fr       */ 
+/*   Updated: 2020-04-25 11:55:11 by sbelondr         ###   ########.fr       */ 
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,9 @@ int	ft_pchar(int c)
 void	fill_screen(t_save_select *sv, t_term_parameter *term)
 {
 	size_t	current_column;
-//	int			line;
 	size_t	sz_name;
 
-//	line = tgetnum("li");
 	current_column = 0;
-//	ft_dprintf(5, "%d - %d\n", term->column, term->column_max);
 	while (sv->current)
 	{
 		current_column += term->column;
@@ -126,7 +123,7 @@ void	move_column(char **keys, int *i, int *j, size_t size_column)
 			(*j) = 0;
 			return ;
 		}
-		(*j) = column - size_column;// - (column % size_column);
+		(*j) = column - size_column;
 	}
 	tputs(tgoto(keys[0], *j, *i), 1, ft_pchar);
 }
@@ -160,6 +157,9 @@ void	move_head_lst(t_term_parameter *term, int nb)
 	int	i;
 
 	i = -1;
+	if (nb > 0)
+		nb /= term->column;
+	term->select->current = term->select->head;
 	while (++i < nb)
 	{
 		if (term->select->current->next)
@@ -169,29 +169,74 @@ void	move_head_lst(t_term_parameter *term, int nb)
 	}
 }
 
+void	move_end_lst(t_term_parameter *term, int nb)
+{
+	int	i;
+
+	i = -1;
+	term->select->current = term->select->end;
+	while (++i < nb)
+	{
+		if (term->select->current->prev)
+			term->select->current = term->select->current->prev;
+		else
+			break ;
+	}
+}
+
 void	move_line(char **keys, int *i, int *j, t_term_parameter *term, int top)
 {
 	int	place;
+	int	value_column;
 
+	value_column = (*j) > 0 ? *j / (int)term->column : 0;
 	place = (term->nb_column * term->line_max) - term->select->size_lst;
 	if (*i < 0)
 	{
 		*i = term->line_max - 1;
-		if (((int)term->column_max / *j) >= ((int)term->nb_column - place))
-			*i -= 1;
+			if (value_column >= ((int)term->nb_column - place))
+			{
+				++value_column;
+				*i -= 1;
+				int nb_test = ((int)term->nb_column - place) + ((int)term->nb_column - value_column);
+				move_end_lst(term, nb_test);
+			}
+			else
+			{
+				int	calc = (int)term->nb_column - (((int)term->nb_column - place) + value_column);
+				move_end_lst(term, calc);
+			}
 	}
 	else if (*i >= (int)term->line_max)
 	{
-//		move_head_lst(term, *j);
+		move_head_lst(term, *j);
 		*i = 0;
 	}
 	else if (*i == ((int)term->line_max - 1))
 	{
-		if (((int)term->column_max / *j) >= ((int)term->nb_column - place))
-			*i = 0;
+		if (*j > 0)
+		{
+			if ((*j / (int)term->column) >= ((int)term->nb_column - place))
+			{
+				*i = 0;
+				move_head_lst(term, *j);
+			}
+			else
+				move_lst(term, top);
+		}
+		else
+		{
+			if (0 >= ((int)term->nb_column - place))
+			{
+				*i = 0;
+				move_head_lst(term, *j);
+			}
+			else
+				move_lst(term, top);
+		}
 	}
-//	else
-//		move_lst(term, top);
+	else
+		move_lst(term, top);
 	tputs(tgoto(keys[0], *j, *i), 1, ft_pchar);
 }
 
@@ -243,7 +288,6 @@ char	*test(t_save_select *sv, t_term_parameter *term)
 			break ;
 		else if (buf[0] == 32 && buf[1] == 0)
 		{
-//			ft_putstr("am here\n");
 			tputs(tgoto(tgetstr("so", NULL), j, i), 1, ft_pchar);
 			tputs(tgoto(tgetstr("sa", NULL), j, i), 1, ft_pchar);
 			tputs(sv->current->name, 1, ft_pchar);
