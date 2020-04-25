@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020-04-25 11:55:11 by sbelondr         ###   ########.fr       */ 
+/*   Updated: 2020/04/25 18:37:56 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,17 @@ int		ft_tty_raw(struct termios base_term, int fd_in)
 {
 	struct termios	term_raw;
 
-
 	term_raw = base_term;
-//	term_raw.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP
-//			| INLCR | IGNCR | IXON);
-//	term_raw.c_oflag &= ~OPOST;
-//	term_raw.c_lflag &= ~(ECHO | ICANON | IEXTEN);
-//	term_raw.c_cflag &= ~(CSIZE | PARENB);
-//	term_raw.c_cflag |= CS8;
-//	term_raw.c_cc[VMIN] = 1;
-//	term_raw.c_cc[VTIME] = 0;
+	//	term_raw.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP
+	//			| INLCR | IGNCR | IXON);
+	//	term_raw.c_oflag &= ~OPOST;
+	//	term_raw.c_lflag &= ~(ECHO | ICANON | IEXTEN);
+	//	term_raw.c_cflag &= ~(CSIZE | PARENB);
+	//	term_raw.c_cflag |= CS8;
+	//	term_raw.c_cc[VMIN] = 1;
+	//	term_raw.c_cc[VTIME] = 0;
 
-
-	   term_raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
+	term_raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
 	//term_raw.c_oflag &= ~(OPOST);
 	term_raw.c_cflag &= ~(CS8);
 	term_raw.c_lflag &= ~(ECHO | ICANON | IEXTEN);// | ISIG);
@@ -194,18 +192,18 @@ void	move_line(char **keys, int *i, int *j, t_term_parameter *term, int top)
 	if (*i < 0)
 	{
 		*i = term->line_max - 1;
-			if (value_column >= ((int)term->nb_column - place))
-			{
-				++value_column;
-				*i -= 1;
-				int nb_test = ((int)term->nb_column - place) + ((int)term->nb_column - value_column);
-				move_end_lst(term, nb_test);
-			}
-			else
-			{
-				int	calc = (int)term->nb_column - (((int)term->nb_column - place) + value_column);
-				move_end_lst(term, calc);
-			}
+		if (value_column >= ((int)term->nb_column - place))
+		{
+			++value_column;
+			*i -= 1;
+			int nb_test = ((int)term->nb_column - place) + ((int)term->nb_column - value_column);
+			move_end_lst(term, nb_test);
+		}
+		else
+		{
+			int	calc = (int)term->nb_column - (((int)term->nb_column - place) + value_column);
+			move_end_lst(term, calc);
+		}
 	}
 	else if (*i >= (int)term->line_max)
 	{
@@ -267,6 +265,20 @@ void	del_column(char **keys, int i, int j, t_term_parameter *term)
 		tputs(tgoto(keys[6], j, i), 1, ft_pchar);
 }
 
+void	display_name(t_save_select *sv, int i, int j, int current)
+{
+	if (sv->current->is_select)
+		tputs(tgoto(tgetstr("mr", NULL), j, i), 0, ft_pchar);
+	if (current)
+		tputs(tgoto(tgetstr("us", NULL), j, i), 0, ft_pchar);
+	tputs(sv->current->name, 1, ft_pchar);
+	if (current)
+		tputs(tgoto(tgetstr("ue", NULL), j, i), 1, ft_pchar);
+	if (sv->current->is_select)
+		tputs(tgoto(tgetstr("me", NULL), j, i), 1, ft_pchar);
+	tputs(tgoto(tgetstr("cm", NULL), j, i), 1, ft_pchar);
+}
+
 char	*test(t_save_select *sv, t_term_parameter *term)
 {
 	int		i;
@@ -281,6 +293,7 @@ char	*test(t_save_select *sv, t_term_parameter *term)
 	i = 0;
 	j = 0;
 	tputs(tgoto(keys[0], 0, i), 1, ft_pchar);
+	display_name(sv, i, j, 1);
 	ft_bzero(buf, 3);
 	while (read(0, buf, 3))
 	{
@@ -288,10 +301,8 @@ char	*test(t_save_select *sv, t_term_parameter *term)
 			break ;
 		else if (buf[0] == 32 && buf[1] == 0)
 		{
-			tputs(tgoto(tgetstr("so", NULL), j, i), 1, ft_pchar);
-			tputs(tgoto(tgetstr("sa", NULL), j, i), 1, ft_pchar);
-			tputs(sv->current->name, 1, ft_pchar);
-			tputs(tgoto(tgetstr("se", NULL), j, i), 1, ft_pchar);
+			sv->current->is_select = sv->current->is_select ? 0 : 1;
+			display_name(sv, i, j, 1);
 		}
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 51)
 		{
@@ -299,30 +310,38 @@ char	*test(t_save_select *sv, t_term_parameter *term)
 		}
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 65)
 		{
+			display_name(sv, i, j, 0);
 			i -= 1;
 			move_line(keys, &i, &j, term, 0);
+			display_name(sv, i, j, 1);
 		}
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 66)
 		{
+			display_name(sv, i, j, 0);
 			i += 1;
 			move_line(keys, &i, &j, term, 1);
+			display_name(sv, i, j, 1);
 		}
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 67)
 		{
 			if (term->select->current->next)
 			{
+				display_name(sv, i, j, 0);
 				term->select->current = term->select->current->next;
 				j += term->column;
 				move_column(keys, &i, &j, term->column);
+				display_name(sv, i, j, 1);
 			}
 		}
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 68)
 		{
 			if (term->select->current->prev)
 			{
+				display_name(sv, i, j, 0);
 				term->select->current = term->select->current->prev;
 				j -= term->column;
 				move_column(keys, &i, &j, term->column);
+				display_name(sv, i, j, 1);
 			}
 		}
 		ft_bzero(buf, 3);
@@ -334,7 +353,7 @@ char	*test(t_save_select *sv, t_term_parameter *term)
 int							init_termcap(t_term_parameter *term)
 {
 	char							*env;
-	
+
 	if (tcgetattr(term->fd_in, &(term->base_term)) < 0)
 		return (0);
 	if (ft_tty_raw(term->base_term, term->fd_in) == -1)
@@ -374,11 +393,13 @@ t_term_parameter	*init_term(t_save_select *s)
 	term->line_max = size_lst / term->nb_column;
 	if ((size_lst % term->nb_column) > 0)
 		term->line_max += 1;
+	tputs(tgoto(tgetstr("vi", NULL), 0, 0), 1, ft_pchar);
 	return (term);
 }
 
 int	reset_term(t_term_parameter *term)
 {
+	tputs(tgoto(tgetstr("ve", NULL), 0, 0), 1, ft_pchar);
 	if (tty_reset(term->base_term, term->fd_in) == -1)
 	{
 		ft_dprintf(2, "Error: reset raw doesn't work!\n");

@@ -288,6 +288,7 @@ manage_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/manage_flo
 manage_mantissa	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/manage_float.c	/^void	manage_mantissa(char (*lst)[BUF_S])$/;"	f	typeref:typename:void
 max_size	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	size_t		max_size;$/;"	m	struct:s_save_select	typeref:typename:size_t
 move_column	/home/samuel/Documents/42/ft_select/srcs/main.c	/^void	move_column(char **keys, int *i, int *j, size_t size_column)$/;"	f	typeref:typename:void
+move_end_lst	/home/samuel/Documents/42/ft_select/srcs/main.c	/^void	move_end_lst(t_term_parameter *term, int nb)$/;"	f	typeref:typename:void
 move_head_lst	/home/samuel/Documents/42/ft_select/srcs/main.c	/^void	move_head_lst(t_term_parameter *term, int nb)$/;"	f	typeref:typename:void
 move_line	/home/samuel/Documents/42/ft_select/srcs/main.c	/^void	move_line(char **keys, int *i, int *j, t_term_parameter *term, int top)$/;"	f	typeref:typename:void
 move_lst	/home/samuel/Documents/42/ft_select/srcs/main.c	/^void	move_lst(t_term_parameter *term, int top)$/;"	f	typeref:typename:void
