@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+tmp/
+
+ft_select
+
 # Object files
 *.o
 *.ko
