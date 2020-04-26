@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 14:39:34 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/26 15:12:20 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,17 +104,54 @@ char	*test(t_save_select *sv, t_term_parameter *term)
 				display_name(sv, i, j, 1);
 			}
 		}
+		else if (buf[0] == 13 && buf[1] == 0 && buf[2] == 0)
+			break ;
+//			dprintf(5, "%d, %d, %d\n", buf[0], buf[1], buf[2]);
 		ft_bzero(buf, 3);
 	}
+	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	final = NULL;
 	return (final);	
+}
+
+void	return_value(t_term_parameter *term)
+{
+	char			*tmp;
+	char			*src;
+	t_select	*s;
+	int				first;
+
+	first = 1;
+	src = ft_strdup("");
+	tmp = NULL;
+	s = term->select->head;
+	while (s)
+	{
+		if (s->is_select)
+		{
+			if (first)
+				first = 0;
+			else
+			{
+				tmp = ft_strjoin(src, " ");
+				ft_strdel(&src);
+				src = tmp;
+			}
+			tmp = ft_strjoin(src, s->name);
+			ft_strdel(&src);
+			src = tmp;
+		}
+//		ft_strdel(&src);
+		s = s->next;
+	}
+	ft_putstr_fd(src, STDOUT_FILENO);
 }
 
 int		main(int ac, char **av)
 {
 	t_term_parameter	*term;
 	t_save_select			*sv;
-	char							*final;
+//	char							*final;
 
 	if (ac < 2)
 		return (-1);
@@ -127,8 +164,9 @@ int		main(int ac, char **av)
 		reset_term(term);
 		return (-1);
 	}
-	final = test(sv, term);
-	ft_putstr(final);
+	test(sv, term);
+	return_value(term);
+//	ft_putstr(final);
 	reset_term(term);
 	return (0);
 }
