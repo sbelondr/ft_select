@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 10:40:48 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/26 14:35:51 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ int	ft_pchar(int c)
 {
 	write(1, &c, 1);
 	return (c);
+}
+
+int		verif_place(t_term_parameter *term)
+{
+	size_t	size_max;
+
+	size_max = term->nb_column * term->line;
+	return (size_max >= term->select->size_lst);
 }
 
 void	display_name(t_save_select *sv, int i, int j, int current)
@@ -77,21 +85,33 @@ void	fill_screen(t_save_select *sv, t_term_parameter *term)
 	sv->current = sv->head;
 }
 
-void	del_column(char **keys, int i, int j, t_term_parameter *term)
+void	del_column(char **keys, int *i, int *j, t_term_parameter *term)
 {
-	int	index;
+	int				next_exist;
+	int				index;
 	t_select	*current;
 
 	index = -1;
 	while (++index < (int)term->column)
-		tputs(tgoto(keys[6], j, i), 1, ft_pchar);
-	del_select(term->select);
+		tputs(tgoto(keys[6], *j, *i), 1, ft_pchar);
+	next_exist = del_select(term->select);
 	current = term->select->current;
 	calc_term(term);
 	term->select->current = term->select->head;
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	fill_screen(term->select, term);
 	term->select->current = current;
-	tputs(tgoto(keys[0], j, i), 1, ft_pchar);
-	display_name(term->select, i, j, 1);
+	if (!next_exist)
+	{
+		next_exist = *j - (int)term->column;
+		if (next_exist < 0)
+		{
+			next_exist = (term->nb_column * term->column) - term->column;
+			if (*i > 0)
+				*i -= 1;
+		}
+		*j = next_exist;
+	}
+	tputs(tgoto(keys[0], *j, *i), 1, ft_pchar);
+	display_name(term->select, *i, *j, 1);
 }

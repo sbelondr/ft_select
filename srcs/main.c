@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 09:42:45 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/26 14:39:34 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*test(t_save_select *sv, t_term_parameter *term)
 		}
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 51)
 		{
-			del_column(keys, i, j, term);
+			del_column(keys, &i, &j, term);
 		}
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 65)
 		{
@@ -121,6 +121,12 @@ int		main(int ac, char **av)
 	sv = create_lst_select(av + 1);
 	sv->current = sv->head;
 	term = init_term(sv);
+	if (!verif_place(term))
+	{
+		ft_putstr_fd("Too many parameters compared to the size of the screen\n", STDERR_FILENO);
+		reset_term(term);
+		return (-1);
+	}
 	final = test(sv, term);
 	ft_putstr(final);
 	reset_term(term);
