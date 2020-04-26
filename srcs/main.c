@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 15:12:20 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/26 19:18:53 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ char	**init_keys_select(void)
 	return (keys);
 }
 
-char	*test(t_save_select *sv, t_term_parameter *term)
+int		test(t_save_select *sv, t_term_parameter *term)
 {
 	int		i;
 	int		j;
 	char	**keys;
-	char	*final;
 	char	buf[3];
 
 	keys = init_keys_select();
@@ -106,12 +105,11 @@ char	*test(t_save_select *sv, t_term_parameter *term)
 		}
 		else if (buf[0] == 13 && buf[1] == 0 && buf[2] == 0)
 			break ;
-//			dprintf(5, "%d, %d, %d\n", buf[0], buf[1], buf[2]);
 		ft_bzero(buf, 3);
 	}
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
-	final = NULL;
-	return (final);	
+	free(keys);
+	return (buf[0] == 13 && buf[1] == 0 && buf[2] == 0);
 }
 
 void	return_value(t_term_parameter *term)
@@ -145,6 +143,7 @@ void	return_value(t_term_parameter *term)
 		s = s->next;
 	}
 	ft_putstr_fd(src, STDOUT_FILENO);
+	ft_strdel(&src);
 }
 
 int		main(int ac, char **av)
@@ -164,9 +163,9 @@ int		main(int ac, char **av)
 		reset_term(term);
 		return (-1);
 	}
-	test(sv, term);
-	return_value(term);
-//	ft_putstr(final);
+	if (test(sv, term))
+		return_value(term);
 	reset_term(term);
+	free_term(&term);
 	return (0);
 }

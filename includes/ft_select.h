@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 14:36:16 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/26 19:04:51 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,11 @@ void							move_end_lst(t_term_parameter *term, int nb);
 */
 void							move_column(char **keys, int *i, int *j, size_t size_column);
 void							move_line(char **keys, int *i, int *j, t_term_parameter *term, int top);
+
+/*
+** free.c
+*/
+void							free_term(t_term_parameter **term);
+void							free_select(t_select **s);
 
 #	endif

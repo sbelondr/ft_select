@@ -6,11 +6,12 @@
 #    By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2019/05/01 16:24:32 by sbelondr         ###   ########.fr        #
+#    Updated: 2020/04/26 18:30:28 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = display.c\
+			free.c\
 			lst_select.c\
 			main.c\
 			move_lst.c\

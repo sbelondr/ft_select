@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 12:17:26 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 12:11:24 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/26 19:03:21 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,20 @@ t_save_select	*create_lst_select(char **src)
 
 	i = -1;
 	c = NULL;
-	sv = NULL;
+	sv = init_save_select(0);
 	while (src[++i])
 	{
 		if (!c)
+		{
 			c = init_select(src[i]);
+			sv->head = c;
+		}
 		else
 		{
 			c->next = init_select(src[i]);
 			c->next->prev = c;
 			c = c->next;
 		}
-		if (!sv)
-			sv = init_save_select(c);
 		sv->current = c;
 		sv->size_lst += 1;
 		len = ft_strlen(c->name);
