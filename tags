@@ -122,6 +122,8 @@ fd_in	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	int							fd_i
 fill_screen	/home/samuel/Documents/42/ft_select/srcs/display.c	/^void	fill_screen(t_save_select *sv, t_term_parameter *term)$/;"	f	typeref:typename:void
 flag	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	char			flag;$/;"	m	struct:s_printf	typeref:typename:char
 format	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	char			*format;$/;"	m	struct:s_printf	typeref:typename:char *
+free_select	/home/samuel/Documents/42/ft_select/srcs/free.c	/^void	free_select(t_select **s)$/;"	f	typeref:typename:void
+free_term	/home/samuel/Documents/42/ft_select/srcs/free.c	/^void	free_term(t_term_parameter **term)$/;"	f	typeref:typename:void
 ft_add_zero	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/add_float.c	/^void	ft_add_zero(char (*lst)[BUF_S], int len)$/;"	f	typeref:typename:void
 ft_alpha	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_bis.c	/^char		ft_alpha(unsigned int nb)$/;"	f	typeref:typename:char
 ft_apply_arg_float	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/apply_arg_float.c	/^void	ft_apply_arg_float(char (*str)[BUF_S], t_printf **lst, int neg)$/;"	f	typeref:typename:void
@@ -333,7 +335,7 @@ t_select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^}									t_
 t_term_parameter	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^}									t_term_parameter;$/;"	t	typeref:struct:s_term_parameter
 t_u64	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^typedef uint64_t	t_u64;$/;"	t	typeref:typename:uint64_t
 tablo_calc	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/multiplication_float.c	/^void	tablo_calc(char (*lst)[BUF_S], int base)$/;"	f	typeref:typename:void
-test	/home/samuel/Documents/42/ft_select/srcs/main.c	/^char	*test(t_save_select *sv, t_term_parameter *term)$/;"	f	typeref:typename:char *
+test	/home/samuel/Documents/42/ft_select/srcs/main.c	/^int		test(t_save_select *sv, t_term_parameter *term)$/;"	f	typeref:typename:int
 tty_reset	/home/samuel/Documents/42/ft_select/srcs/tty.c	/^int		tty_reset(struct termios base_term, int fd_in)$/;"	f	typeref:typename:int
 value	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	double			value;$/;"	m	struct:s_printf	typeref:typename:double
 verif	/home/samuel/Documents/42/ft_select/libft/Makefile	/^verif:$/;"	t

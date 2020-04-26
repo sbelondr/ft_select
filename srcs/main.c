@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 19:18:53 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/26 21:15:11 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,6 @@ void	return_value(t_term_parameter *term)
 			ft_strdel(&src);
 			src = tmp;
 		}
-//		ft_strdel(&src);
 		s = s->next;
 	}
 	ft_putstr_fd(src, STDOUT_FILENO);
