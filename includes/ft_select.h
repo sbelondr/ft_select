@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2020-04-24 23:21:27 by sbelondr         ###   ########.fr       */ 
+/*   Updated: 2020/04/26 08:57:59 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,46 @@ typedef struct	s_term_parameter
 	int							fd_in;
 }								t_term_parameter;
 
-t_save_select	*create_lst_select(char **src);
+/*
+** lst_select.c
+*/
+t_save_select		*create_lst_select(char **src);
 void				del_select(t_save_select *s);
+
+/*
+** term.c
+*/
+void		calc_term(t_term_parameter *term);
+t_term_parameter	*init_term(t_save_select *s);
+int	reset_term(t_term_parameter *term);
+
+/*
+** tty.c
+*/
+int		ft_tty_raw(struct termios base_term, int fd_in);
+int		tty_reset(struct termios base_term, int fd_in);
+
+/*
+** display.c
+*/
+int					ft_pchar(int c);
+void				fill_screen(t_save_select *sv, t_term_parameter *term);
+void				display_name(t_save_select *sv, int i, int j, int current);
+void				del_column(char **keys, int i, int j, t_term_parameter *term);
+
+/*
+** move_lst.c
+*/
+void	move_lst(t_term_parameter *term, int top);
+void	move_head_lst(t_term_parameter *term, int nb);
+void	move_end_lst(t_term_parameter *term, int nb);
+
+/*
+** move_termcat.c
+*/
+void	move_column(char **keys, int *i, int *j, size_t size_column);
+void	move_line(char **keys, int *i, int *j, t_term_parameter *term, int top);
+
+
 
 #	endif

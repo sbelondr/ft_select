@@ -10,8 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c\
-			lst_select.c
+SRC = display.c\
+			lst_select.c\
+			main.c\
+			move_lst.c\
+			move_termcat.c\
+			term.c\
+			tty.c
+
 
 DIRSRC = srcs
 
