@@ -2,6 +2,7 @@
 *.d
 
 tmp/
+tags
 
 ft_select
 
