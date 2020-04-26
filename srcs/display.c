@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 09:51:06 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/26 10:40:48 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,26 @@ void	display_name(t_save_select *sv, int i, int j, int current)
 	tputs(tgoto(tgetstr("cm", NULL), j, i), 1, ft_pchar);
 }
 
+void	display_name_no_coor(t_save_select *sv, int current)
+{
+	if (sv->current->is_select)
+		tputs(tgetstr("mr", NULL), 0, ft_pchar);
+	if (current)
+		tputs(tgetstr("us", NULL), 0, ft_pchar);
+	tputs(sv->current->name, 1, ft_pchar);
+	if (current)
+		tputs(tgetstr("ue", NULL), 1, ft_pchar);
+	if (sv->current->is_select)
+		tputs(tgetstr("me", NULL), 1, ft_pchar);
+//	tputs(tgetstr("cm", NULL), 1, ft_pchar);
+}
+
 void	fill_screen(t_save_select *sv, t_term_parameter *term)
 {
+	int			i;
 	size_t	current_column;
 	size_t	sz_name;
+	char	blank[term->column];
 
 	current_column = 0;
 	while (sv->current)
@@ -47,47 +63,19 @@ void	fill_screen(t_save_select *sv, t_term_parameter *term)
 			tputs("\n", 1, ft_pchar);
 		}
 		sz_name = ft_strlen(sv->current->name);
-		tputs(tgetstr("us", NULL), 0, ft_pchar);
-		tputs(sv->current->name, 1, ft_pchar);
-		tputs(tgetstr("ue", NULL), 0, ft_pchar);
+		display_name_no_coor(sv, 0);
+	ft_bzero(blank, term->column);
+	i = 0;
 		while (term->column > sz_name)
 		{
-			tputs(" ", 1, ft_pchar);
+			blank[i++] = ' ';
 			++sz_name;
 		}
+			tputs(blank, 1, ft_pchar);
 		sv->current = sv->current->next;
 	}
 	sv->current = sv->head;
 }
-
-/*
-void	fill_screen(t_save_select *sv, t_term_parameter *term)
-{
-	int			i;
-	int			j;
-	size_t	current_column;
-
-	i = 0;
-	j = 0;
-	current_column = 0;
-//	tputs(tgoto(keys[0], j, i), 1, ft_pchar);
-	while (sv->current)
-	{
-		current_column += term->column;
-		if (current_column > term->column_max)
-		{
-			j = 0;
-			++i;
-			current_column = term->column;
-		}
-		dprintf(5, "%s - %d - %d\n", sv->current->name, i, j);
-		display_name(sv, i, j, 0);
-		j += term->column;
-		sv->current = sv->current->next;
-	}
-	sv->current = sv->head;
-}
-*/
 
 void	del_column(char **keys, int i, int j, t_term_parameter *term)
 {
