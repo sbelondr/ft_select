@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 21:15:11 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/27 13:23:28 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**init_keys_select(void)
 	return (keys);
 }
 
-int		test(t_save_select *sv, t_term_parameter *term)
+int		ft_select(t_save_select *sv, t_term_parameter *term)
 {
 	int		i;
 	int		j;
@@ -145,6 +145,15 @@ void	return_value(t_term_parameter *term)
 	ft_strdel(&src);
 }
 
+t_term_parameter	**get_term_parameter(t_term_parameter **term)
+{
+	static t_term_parameter	**t;
+
+	if ((!t) && term)
+		t = term;
+	return (t);
+}
+
 int		main(int ac, char **av)
 {
 	t_term_parameter	*term;
@@ -156,13 +165,15 @@ int		main(int ac, char **av)
 	sv = create_lst_select(av + 1);
 	sv->current = sv->head;
 	term = init_term(sv);
+	get_term_parameter(&term);
 	if (!verif_place(term))
 	{
 		ft_putstr_fd("Too many parameters compared to the size of the screen\n", STDERR_FILENO);
 		reset_term(term);
 		return (-1);
 	}
-	if (test(sv, term))
+	signals_select();
+	if (ft_select(sv, term))
 		return_value(term);
 	reset_term(term);
 	free_term(&term);

@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 19:04:51 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/27 13:24:19 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ typedef struct		s_term_parameter
 	int							fd_in;
 }									t_term_parameter;
 
+t_term_parameter	**get_term_parameter(t_term_parameter **term);
+int						   ft_select(t_save_select *sv, t_term_parameter *term);
+
 /*
 ** lst_select.c
 */
@@ -83,6 +86,7 @@ void							fill_screen(t_save_select *sv, t_term_parameter *term);
 void							display_name(t_save_select *sv, int i, int j, int current);
 void							del_column(char **keys, int *i, int *j, t_term_parameter *term);
 int								verif_place(t_term_parameter *term);
+void							redisplay(t_term_parameter *term);
 
 /*
 ** move_lst.c
@@ -102,5 +106,11 @@ void							move_line(char **keys, int *i, int *j, t_term_parameter *term, int to
 */
 void							free_term(t_term_parameter **term);
 void							free_select(t_select **s);
+
+/*
+** signals.c
+*/
+
+void							signals_select(void);
 
 #	endif

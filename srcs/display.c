@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 15:10:25 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/27 09:00:42 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,14 @@ void	fill_screen(t_save_select *sv, t_term_parameter *term)
 	sv->current = sv->head;
 }
 
+void	redisplay(t_term_parameter *term)
+{
+	calc_term(term);
+	term->select->current = term->select->head;
+	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
+	fill_screen(term->select, term);
+}
+
 void	del_column(char **keys, int *i, int *j, t_term_parameter *term)
 {
 	int				next_exist;
@@ -96,10 +104,7 @@ void	del_column(char **keys, int *i, int *j, t_term_parameter *term)
 		tputs(tgoto(keys[6], *j, *i), 1, ft_pchar);
 	next_exist = del_select(term->select);
 	current = term->select->current;
-	calc_term(term);
-	term->select->current = term->select->head;
-	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
-	fill_screen(term->select, term);
+	redisplay(term);
 	term->select->current = current;
 	if (!next_exist)
 	{

@@ -6,7 +6,7 @@
 #    By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2020/04/26 18:30:28 by sbelondr         ###   ########.fr        #
+#    Updated: 2020/04/27 13:21:56 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC = display.c\
 			main.c\
 			move_lst.c\
 			move_termcat.c\
+			signals.c\
 			term.c\
 			tty.c
 

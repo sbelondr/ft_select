@@ -95,6 +95,7 @@ calc_term	/home/samuel/Documents/42/ft_select/srcs/term.c	/^void		calc_term(t_te
 check_p	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float_bis.c	/^int		check_p(char dst[BUF_S], int precision, int i)$/;"	f	typeref:typename:int
 clean	/home/samuel/Documents/42/ft_select/Makefile	/^clean:$/;"	t
 clean	/home/samuel/Documents/42/ft_select/libft/Makefile	/^clean : verif$/;"	t
+clean_screen	/home/samuel/Documents/42/ft_select/srcs/signals.c	/^void		clean_screen(void)$/;"	f	typeref:typename:void
 cnt_words	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strsplit.c	/^static int	cnt_words(const char *s, char c)$/;"	f	typeref:typename:int	file:
 color	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	int				color;$/;"	m	struct:s_printf	typeref:typename:int
 column	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	size_t					column;$/;"	m	struct:s_term_parameter	typeref:typename:size_t
@@ -226,6 +227,7 @@ ft_reverse_tablo	/home/samuel/Documents/42/ft_select/libft/srcs/array/ft_reverse
 ft_round_precision	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_float_bis.c	/^char	*ft_round_precision(char (*dst)[BUF_S], int precision)$/;"	f	typeref:typename:char *
 ft_see_binary	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/binary.c	/^void	ft_see_binary(int nb)$/;"	f	typeref:typename:void
 ft_see_binary_u64	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/binary.c	/^void	ft_see_binary_u64(t_u64 nb)$/;"	f	typeref:typename:void
+ft_select	/home/samuel/Documents/42/ft_select/srcs/main.c	/^int		ft_select(t_save_select *sv, t_term_parameter *term)$/;"	f	typeref:typename:int
 ft_size_lst_select	/home/samuel/Documents/42/ft_select/srcs/term.c	/^size_t	ft_size_lst_select(t_save_select *sv)$/;"	f	typeref:typename:size_t
 ft_split	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strsplit.c	/^static void	ft_split(const char *s, char c, char ***result)$/;"	f	typeref:typename:void	file:
 ft_sqrt	/home/samuel/Documents/42/ft_select/libft/srcs/num/ft_sqrt.c	/^int		ft_sqrt(int nb, int sq)$/;"	f	typeref:typename:int
@@ -267,6 +269,7 @@ ft_tty_raw	/home/samuel/Documents/42/ft_select/srcs/tty.c	/^int		ft_tty_raw(stru
 ft_white_space	/home/samuel/Documents/42/ft_select/libft/srcs/str/ft_strtrim.c	/^static int	ft_white_space(char c)$/;"	f	typeref:typename:int	file:
 get_end_line	/home/samuel/Documents/42/ft_select/libft/srcs/file/get_end_line.c	/^int		get_end_line(char *file)$/;"	f	typeref:typename:int
 get_next_line	/home/samuel/Documents/42/ft_select/libft/srcs/file/get_next_line.c	/^int		get_next_line(const int fd, char **line)$/;"	f	typeref:typename:int
+get_term_parameter	/home/samuel/Documents/42/ft_select/srcs/main.c	/^t_term_parameter	**get_term_parameter(t_term_parameter **term)$/;"	f	typeref:typename:t_term_parameter **
 head	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	t_select	*head;$/;"	m	struct:s_save_select	typeref:typename:t_select *
 help	/home/samuel/Documents/42/ft_select/libft/Makefile	/^help:$/;"	t
 index	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	int				index;$/;"	m	struct:s_printf	typeref:typename:int
@@ -315,6 +318,7 @@ prev	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	struct s_select
 re	/home/samuel/Documents/42/ft_select/Makefile	/^re: fclean all$/;"	t
 re	/home/samuel/Documents/42/ft_select/libft/Makefile	/^re: fclean all$/;"	t
 recup_char	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/parser.c	/^char	recup_char(t_printf **lst, int n)$/;"	f	typeref:typename:char
+redisplay	/home/samuel/Documents/42/ft_select/srcs/display.c	/^void	redisplay(t_term_parameter *term)$/;"	f	typeref:typename:void
 reset_term	/home/samuel/Documents/42/ft_select/srcs/term.c	/^int	reset_term(t_term_parameter *term)$/;"	f	typeref:typename:int
 result_null	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/tools_bis.c	/^void		result_null(t_printf **lst, char (*str)[BUF_S])$/;"	f	typeref:typename:void
 return_value	/home/samuel/Documents/42/ft_select/srcs/main.c	/^void	return_value(t_term_parameter *term)$/;"	f	typeref:typename:void
@@ -326,6 +330,8 @@ s_select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^typedef stru
 s_term_parameter	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^typedef struct		s_term_parameter$/;"	s
 search_conversion	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/parser.c	/^void	search_conversion(t_printf **lst)$/;"	f	typeref:typename:void
 select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	t_save_select		*select;$/;"	m	struct:s_term_parameter	typeref:typename:t_save_select *
+sig_action	/home/samuel/Documents/42/ft_select/srcs/signals.c	/^void	sig_action(int sig)$/;"	f	typeref:typename:void
+signals_select	/home/samuel/Documents/42/ft_select/srcs/signals.c	/^void	signals_select(void)$/;"	f	typeref:typename:void
 size_lst	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^	size_t		size_lst;$/;"	m	struct:s_save_select	typeref:typename:size_t
 t_list	/home/samuel/Documents/42/ft_select/libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_pos	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^}									t_pos;$/;"	t	typeref:struct:s_pos
@@ -335,7 +341,6 @@ t_select	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^}									t_
 t_term_parameter	/home/samuel/Documents/42/ft_select/includes/ft_select.h	/^}									t_term_parameter;$/;"	t	typeref:struct:s_term_parameter
 t_u64	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^typedef uint64_t	t_u64;$/;"	t	typeref:typename:uint64_t
 tablo_calc	/home/samuel/Documents/42/ft_select/libft/srcs/ft_printf/multiplication_float.c	/^void	tablo_calc(char (*lst)[BUF_S], int base)$/;"	f	typeref:typename:void
-test	/home/samuel/Documents/42/ft_select/srcs/main.c	/^int		test(t_save_select *sv, t_term_parameter *term)$/;"	f	typeref:typename:int
 tty_reset	/home/samuel/Documents/42/ft_select/srcs/tty.c	/^int		tty_reset(struct termios base_term, int fd_in)$/;"	f	typeref:typename:int
 value	/home/samuel/Documents/42/ft_select/libft/includes/ft_printf.h	/^	double			value;$/;"	m	struct:s_printf	typeref:typename:double
 verif	/home/samuel/Documents/42/ft_select/libft/Makefile	/^verif:$/;"	t
