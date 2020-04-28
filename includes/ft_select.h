@@ -18,6 +18,8 @@
 #include <unistd.h>
 #include <curses.h>
 #include <term.h>
+#include <sys/ioctl.h>
+#include <signal.h>
 
 typedef struct		s_pos
 {
@@ -54,10 +56,12 @@ typedef struct		s_term_parameter
 	t_save_select		*select;
 	struct termios	base_term;
 	int							fd_in;
+	t_pos						coor;
+	struct winsize	sz;
 }									t_term_parameter;
 
 t_term_parameter	**get_term_parameter(t_term_parameter **term);
-int						   ft_select(t_save_select *sv, t_term_parameter *term);
+int						   	ft_select(t_term_parameter *term);
 
 /*
 ** lst_select.c
@@ -82,7 +86,7 @@ int								tty_reset(struct termios base_term, int fd_in);
 ** display.c
 */
 int								ft_pchar(int c);
-void							fill_screen(t_save_select *sv, t_term_parameter *term);
+void							fill_screen(t_term_parameter *term);
 void							display_name(t_save_select *sv, int i, int j, int current);
 void							del_column(char **keys, int *i, int *j, t_term_parameter *term);
 int								verif_place(t_term_parameter *term);
@@ -98,7 +102,7 @@ void							move_end_lst(t_term_parameter *term, int nb);
 /*
 ** move_termcat.c
 */
-void							move_column(char **keys, int *i, int *j, size_t size_column);
+void							move_column(t_term_parameter *ter, char **keys, int *i, int *j, size_t size_column);
 void							move_line(char **keys, int *i, int *j, t_term_parameter *term, int top);
 
 /*

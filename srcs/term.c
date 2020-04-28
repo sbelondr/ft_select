@@ -51,14 +51,17 @@ void		calc_term(t_term_parameter *term)
 {
 	int								column;
 	size_t						size_lst;
+	struct winsize		sz;
 
+	ioctl(0, TIOCGWINSZ, &sz);
+	term->sz = sz;
 	size_lst = ft_size_lst_select(term->select);
 	term->column = term->select->max_size + 2;
 	term->column_max_last_line = 0;
-	column = tgetnum("co");
+	column = sz.ws_col;
 	column = column - (column % term->column);
 	term->column_max = column;
-	term->line = tgetnum("li");
+	term->line = sz.ws_row;
 	term->nb_column = term->column_max / term->column;
 	term->line_max = size_lst / term->nb_column;
 	if ((size_lst % term->nb_column) > 0)
@@ -72,9 +75,13 @@ t_term_parameter	*init_term(t_save_select *s)
 	if (!(term = (t_term_parameter*)malloc(sizeof(t_term_parameter) * 1)))
 		return (NULL);
 	term->select = s;
+	term->coor.y = 0;
+	term->coor.x = 0;
 	term->fd_in = STDIN_FILENO;
 	if (!init_termcap(term))
 		return (NULL);
+	// ioctl(0, TIOCGWINSZ, &(term->sz));
+	// term->sz = sz;
 	calc_term(term);
 	tputs(tgoto(tgetstr("vi", NULL), 0, 0), 1, ft_pchar);
 	return (term);

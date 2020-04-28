@@ -15,36 +15,36 @@
 #include <stdlib.h>
 #include <sys/ioctl.h>
 
-void	sig_action(int sig);
+void sig_action(int sig);
 
-void		clean_screen(void)
+void clean_screen(void)
 {
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 }
 
-void		act_sig_stop(t_term_parameter **term)
+void act_sig_stop(t_term_parameter **term)
 {
-		int	def[2];
+	int def[2];
 
-		def[0] = (*term)->base_term.c_cc[VSUSP];
-		def[1] = 0;
-		reset_term(*term);
-		(*term)->base_term.c_lflag |= (ICANON | ECHO);
-		signal(SIGTSTP, SIG_DFL);
-		ioctl(0, TIOCSTI, def);
+	def[0] = (*term)->base_term.c_cc[VSUSP];
+	def[1] = 0;
+	reset_term(*term);
+	(*term)->base_term.c_lflag |= (ICANON | ECHO);
+	signal(SIGTSTP, SIG_DFL);
+	ioctl(0, TIOCSTI, def);
 }
 
-void	act_sig_cont(t_term_parameter **term)
+void act_sig_cont(t_term_parameter **term)
 {
-		(*term)->base_term.c_lflag &= ~(ICANON | ECHO);
-		(*term)->base_term.c_cc[VMIN] = 1;
-		(*term)->base_term.c_cc[VTIME] = 0;
-		tcsetattr(0, 0, &((*term)->base_term));
-		signal(SIGTSTP, sig_action);
-		tputs(tgetstr("vi", NULL), 1, ft_pchar);
-		redisplay(*term);
-		ft_select((*term)->select, *term);
-		exit(0);
+	(*term)->base_term.c_lflag &= ~(ICANON | ECHO);
+	(*term)->base_term.c_cc[VMIN] = 1;
+	(*term)->base_term.c_cc[VTIME] = 0;
+	tcsetattr(0, 0, &((*term)->base_term));
+	signal(SIGTSTP, sig_action);
+	tputs(tgetstr("vi", NULL), 1, ft_pchar);
+	calc_term(*term);
+	ft_select(*term);
+	exit(0);
 }
 
 /*
@@ -53,18 +53,31 @@ void	act_sig_cont(t_term_parameter **term)
 ** SIGCONT --> continue process if stopped > tty and re display all parameters
 ** other --> clear malloc, reset tty  and exit > use a sig for exit argument ?
 */
-void	sig_action(int sig)
+void sig_action(int sig)
 {
-	t_term_parameter	**term;
+	t_term_parameter **term;
 
 	term = get_term_parameter(NULL);
 	clean_screen();
 	if (sig == SIGWINCH)
 	{
+		dprintf(5, "am here\n");
+		calc_term(*term);
 		if (!verif_place(*term))
-			ft_putstr_fd("Too many parameters compared to the size of the screen\n", STDERR_FILENO);
+		{
+			clean_screen();
+			ft_putstr_fd("Too many parameters compared to the size of the screen\n", STDOUT_FILENO);
+		}
 		else
-			redisplay(*term);
+		{
+			(*term)->coor.x = 0;
+			(*term)->coor.y = 0;
+			(*term)->select->current = (*term)->select->head;
+			tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+			fill_screen(*term);
+			tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+			display_name((*term)->select, 0, 0, 1);
+		}
 	}
 	else if (sig == SIGTSTP || sig == SIGSTOP)
 		act_sig_stop(term);
@@ -82,9 +95,9 @@ void	sig_action(int sig)
 /*
 ** manage all signals (1 to 31)
 */
-void	signals_select(void)
+void signals_select(void)
 {
-	int	sig;
+	int sig;
 
 	sig = 0;
 	while (++sig < 32)

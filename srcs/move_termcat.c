@@ -12,11 +12,11 @@
 
 #include "../includes/ft_select.h"
 
-void	move_column(char **keys, int *i, int *j, size_t size_column)
+void	move_column(t_term_parameter *term, char **keys, int *i, int *j, size_t size_column)
 {
 	int			column;
 
-	column = tgetnum("co");
+	column = term->sz.ws_col;// tgetnum("co");
 	column = column - (column % size_column);
 	if (*j >= column)
 	{

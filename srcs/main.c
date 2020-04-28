@@ -18,12 +18,11 @@
  ** termios.truc |= (); -> active flag
  ** termios.truc &= ~(); -> desactive flag
  */
-
-char	**init_keys_select(void)
+char **init_keys_select(void)
 {
-	char	**keys;
+	char **keys;
 
-	if (!(keys = (char**)malloc(sizeof(char*) * 9)))
+	if (!(keys = (char **)malloc(sizeof(char *) * 9)))
 		return (NULL);
 	keys[0] = tgetstr("cm", NULL);
 	keys[1] = tgetstr("cl", NULL);
@@ -37,17 +36,14 @@ char	**init_keys_select(void)
 	return (keys);
 }
 
-void	return_value(t_term_parameter *term)
+char *get_final_value(t_select *s)
 {
-	char			*tmp;
-	char			*src;
-	t_select	*s;
-	int				first;
+	char *tmp;
+	char *src;
+	int first;
 
 	first = 1;
 	src = ft_strdup("");
-	tmp = NULL;
-	s = term->select->head;
 	while (s)
 	{
 		if (s->is_select)
@@ -66,100 +62,124 @@ void	return_value(t_term_parameter *term)
 		}
 		s = s->next;
 	}
+	return (src);
+}
+
+void return_value(t_term_parameter *term)
+{
+	t_select *s;
+	char *src;
+
+	s = term->select->head;
+	src = get_final_value(s);
 	ft_putstr_fd(src, STDOUT_FILENO);
 	ft_strdel(&src);
 }
 
-int		ft_select(t_save_select *sv, t_term_parameter *term)
+void act_top(t_term_parameter *term, char **keys)
 {
-	int		i;
-	int		j;
-	char	**keys;
-	char	buf[3];
+	display_name(term->select, term->coor.y, term->coor.x, 0);
+	term->coor.y += 1;
+	move_line(keys, &(term->coor.y), &(term->coor.x), term, 1);
+	display_name(term->select, term->coor.y, term->coor.x, 1);
+}
 
-	keys = init_keys_select();
-	tputs(keys[1], 1, ft_pchar);
-	sv->current = sv->head;
-	term->select->current = sv->head;
-	fill_screen(sv, term);
-	i = 0;
-	j = 0;
-	tputs(tgoto(keys[0], j, i), 1, ft_pchar);
-	display_name(sv, i, j, 1);
-	ft_bzero(buf, 3);
-	while (read(0, buf, 3))
+void act_bottom(t_term_parameter *term, char **keys)
+{
+	display_name(term->select, term->coor.y, term->coor.x, 0);
+	term->coor.y -= 1;
+	move_line(keys, &(term->coor.y), &(term->coor.x), term, 0);
+	display_name(term->select, term->coor.y, term->coor.x, 1);
+}
+
+void act_left(t_term_parameter *term, char **keys)
+{
+	if (term->select->current->next)
 	{
-		if ((buf[0] == 27 || buf[0] == 10 || buf[0] == 13) && buf[1] == 0)
-			break ;
-		else if (buf[0] == 32 && buf[1] == 0)
-		{
-			sv->current->is_select = sv->current->is_select ? 0 : 1;
-			display_name(sv, i, j, 1);
-		}
-		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 51)
-		{
-			del_column(keys, &i, &j, term);
-		}
-		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 65)
-		{
-			display_name(sv, i, j, 0);
-			i -= 1;
-			move_line(keys, &i, &j, term, 0);
-			display_name(sv, i, j, 1);
-		}
-		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 66)
-		{
-			display_name(sv, i, j, 0);
-			i += 1;
-			move_line(keys, &i, &j, term, 1);
-			display_name(sv, i, j, 1);
-		}
-		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 67)
-		{
-			if (term->select->current->next)
-			{
-				display_name(sv, i, j, 0);
-				term->select->current = term->select->current->next;
-				j += term->column;
-				move_column(keys, &i, &j, term->column);
-				display_name(sv, i, j, 1);
-			}
-		}
-		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 68)
-		{
-			if (term->select->current->prev)
-			{
-				display_name(sv, i, j, 0);
-				term->select->current = term->select->current->prev;
-				j -= term->column;
-				move_column(keys, &i, &j, term->column);
-				display_name(sv, i, j, 1);
-			}
-		}
-		ft_bzero(buf, 3);
+		display_name(term->select, term->coor.y, term->coor.x, 0);
+		term->select->current = term->select->current->next;
+		term->coor.x += term->column;
+		move_column(term, keys, &(term->coor.y), &(term->coor.x), term->column);
+		display_name(term->select, term->coor.y, term->coor.x, 1);
 	}
+}
+
+void act_right(t_term_parameter *term, char **keys)
+{
+	if (term->select->current->prev)
+	{
+		display_name(term->select, term->coor.y, term->coor.x, 0);
+		term->select->current = term->select->current->prev;
+		term->coor.x -= term->column;
+		move_column(term, keys, &(term->coor.y), &(term->coor.x), term->column);
+		display_name(term->select, term->coor.y, term->coor.x, 1);
+	}
+}
+
+void act_space(t_term_parameter *term, t_pos coor, char **keys)
+{
+	term->select->current->is_select =
+			term->select->current->is_select ? 0 : 1;
+	display_name(term->select, coor.y, coor.x, 1);
+	act_left(term, keys);
+}
+
+void act_end(char **keys, char buf[3], t_term_parameter *term)
+{
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	free(keys);
 	if ((buf[0] == 13 || buf[0] == 10) && buf[1] == 0 && buf[2] == 0)
 		return_value(term);
 	reset_term(term);
 	free_term(&term);
+}
+
+int ft_select(t_term_parameter *term)
+{
+	char **keys;
+	char buf[3];
+
+	keys = init_keys_select();
+	term->select->current = term->select->head;
+	fill_screen(term);
+	tputs(tgoto(keys[0], term->coor.x, term->coor.y), 1, ft_pchar);
+	display_name(term->select, term->coor.y, term->coor.x, 1);
+	ft_bzero(buf, 3);
+	while (read(0, buf, 3))
+	{
+		if ((buf[0] == 27 || buf[0] == 10 || buf[0] == 13) && buf[1] == 0)
+			break;
+		else if (buf[0] == 32 && buf[1] == 0)
+			act_space(term, term->coor, keys);
+		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 51)
+			del_column(keys, &(term->coor.y), &(term->coor.x), term);
+		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 65)
+			act_bottom(term, keys);
+		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 66)
+			act_top(term, keys);
+		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 67)
+			act_left(term, keys);
+		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 68)
+			act_right(term, keys);
+		ft_bzero(buf, 3);
+	}
+	act_end(keys, buf, term);
 	return (0);
 }
 
-t_term_parameter	**get_term_parameter(t_term_parameter **term)
+t_term_parameter **get_term_parameter(t_term_parameter **term)
 {
-	static t_term_parameter	**t;
+	static t_term_parameter **t;
 
 	if ((!t) && term)
 		t = term;
 	return (t);
 }
 
-int		main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_term_parameter	*term;
-	t_save_select			*sv;
+	t_term_parameter *term;
+	t_save_select *sv;
 
 	if (ac < 2)
 		return (-1);
@@ -174,6 +194,6 @@ int		main(int ac, char **av)
 		return (-1);
 	}
 	signals_select();
-	ft_select(sv, term);
+	ft_select(term);
 	return (0);
 }
