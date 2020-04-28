@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/27 13:33:58 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/28 09:23:34 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,36 @@
 #include <stdlib.h>
 #include <sys/ioctl.h>
 
+void	sig_action(int sig);
+
 void		clean_screen(void)
 {
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
+}
+
+void		act_sig_stop(t_term_parameter **term)
+{
+		int	def[2];
+
+		def[0] = (*term)->base_term.c_cc[VSUSP];
+		def[1] = 0;
+		reset_term(*term);
+		(*term)->base_term.c_lflag |= (ICANON | ECHO);
+		signal(SIGTSTP, SIG_DFL);
+		ioctl(0, TIOCSTI, def);
+}
+
+void	act_sig_cont(t_term_parameter **term)
+{
+		(*term)->base_term.c_lflag &= ~(ICANON | ECHO);
+		(*term)->base_term.c_cc[VMIN] = 1;
+		(*term)->base_term.c_cc[VTIME] = 0;
+		tcsetattr(0, 0, &((*term)->base_term));
+		signal(SIGTSTP, sig_action);
+		tputs(tgetstr("vi", NULL), 1, ft_pchar);
+		redisplay(*term);
+		ft_select((*term)->select, *term);
+		exit(0);
 }
 
 /*
@@ -40,21 +67,9 @@ void	sig_action(int sig)
 			redisplay(*term);
 	}
 	else if (sig == SIGTSTP || sig == SIGSTOP)
-	{
-		int	test[2];
-
-		test[0] = (*term)->base_term.c_cc[VSUSP];
-		test[1] = 0;
-		reset_term(*term);
-		ioctl(0, TIOCSTI, test);
-//	exit
-	}
+		act_sig_stop(term);
 	else if (sig == SIGCONT)
-	{
-		// re init term
-		redisplay(*term);
-		ft_select((*term)->select, *term);
-	}
+		act_sig_cont(term);
 	else
 	{
 		reset_term(*term);

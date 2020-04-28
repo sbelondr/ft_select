@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/27 13:23:28 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/28 09:19:06 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,39 @@ char	**init_keys_select(void)
 	return (keys);
 }
 
+void	return_value(t_term_parameter *term)
+{
+	char			*tmp;
+	char			*src;
+	t_select	*s;
+	int				first;
+
+	first = 1;
+	src = ft_strdup("");
+	tmp = NULL;
+	s = term->select->head;
+	while (s)
+	{
+		if (s->is_select)
+		{
+			if (first)
+				first = 0;
+			else
+			{
+				tmp = ft_strjoin(src, " ");
+				ft_strdel(&src);
+				src = tmp;
+			}
+			tmp = ft_strjoin(src, s->name);
+			ft_strdel(&src);
+			src = tmp;
+		}
+		s = s->next;
+	}
+	ft_putstr_fd(src, STDOUT_FILENO);
+	ft_strdel(&src);
+}
+
 int		ft_select(t_save_select *sv, t_term_parameter *term)
 {
 	int		i;
@@ -56,7 +89,7 @@ int		ft_select(t_save_select *sv, t_term_parameter *term)
 	ft_bzero(buf, 3);
 	while (read(0, buf, 3))
 	{
-		if ((buf[0] == 27 || buf[0] == 10) && buf[1] == 0)
+		if ((buf[0] == 27 || buf[0] == 10 || buf[0] == 13) && buf[1] == 0)
 			break ;
 		else if (buf[0] == 32 && buf[1] == 0)
 		{
@@ -103,46 +136,15 @@ int		ft_select(t_save_select *sv, t_term_parameter *term)
 				display_name(sv, i, j, 1);
 			}
 		}
-		else if (buf[0] == 13 && buf[1] == 0 && buf[2] == 0)
-			break ;
 		ft_bzero(buf, 3);
 	}
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	free(keys);
-	return (buf[0] == 13 && buf[1] == 0 && buf[2] == 0);
-}
-
-void	return_value(t_term_parameter *term)
-{
-	char			*tmp;
-	char			*src;
-	t_select	*s;
-	int				first;
-
-	first = 1;
-	src = ft_strdup("");
-	tmp = NULL;
-	s = term->select->head;
-	while (s)
-	{
-		if (s->is_select)
-		{
-			if (first)
-				first = 0;
-			else
-			{
-				tmp = ft_strjoin(src, " ");
-				ft_strdel(&src);
-				src = tmp;
-			}
-			tmp = ft_strjoin(src, s->name);
-			ft_strdel(&src);
-			src = tmp;
-		}
-		s = s->next;
-	}
-	ft_putstr_fd(src, STDOUT_FILENO);
-	ft_strdel(&src);
+	if ((buf[0] == 13 || buf[0] == 10) && buf[1] == 0 && buf[2] == 0)
+		return_value(term);
+	reset_term(term);
+	free_term(&term);
+	return (0);
 }
 
 t_term_parameter	**get_term_parameter(t_term_parameter **term)
@@ -158,7 +160,6 @@ int		main(int ac, char **av)
 {
 	t_term_parameter	*term;
 	t_save_select			*sv;
-//	char							*final;
 
 	if (ac < 2)
 		return (-1);
@@ -173,9 +174,6 @@ int		main(int ac, char **av)
 		return (-1);
 	}
 	signals_select();
-	if (ft_select(sv, term))
-		return_value(term);
-	reset_term(term);
-	free_term(&term);
+	ft_select(sv, term);
 	return (0);
 }
