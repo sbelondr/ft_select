@@ -12,7 +12,7 @@
 
 #include "../includes/ft_select.h"
 
-t_select	*init_select(char *str)
+t_select		*init_select(char *str)
 {
 	t_select	*ptr;
 
@@ -66,12 +66,22 @@ int				del_select(t_save_select *s)
 	return (next ? 1 : 0);
 }
 
+void			aply_select_save(t_save_select *sv, t_select *c)
+{
+	size_t			len;
+
+	sv->current = c;
+	sv->size_lst += 1;
+	len = ft_strlen(c->name);
+	if (sv->max_size < len)
+		sv->max_size = len;
+}
+
 t_save_select	*create_lst_select(char **src)
 {
-	t_select			*c;
+	t_select		*c;
 	t_save_select	*sv;
-	int						i;
-	size_t				len;
+	int				i;
 
 	i = -1;
 	c = NULL;
@@ -89,11 +99,7 @@ t_save_select	*create_lst_select(char **src)
 			c->next->prev = c;
 			c = c->next;
 		}
-		sv->current = c;
-		sv->size_lst += 1;
-		len = ft_strlen(c->name);
-		if (sv->max_size < len)
-			sv->max_size = len;
+		aply_select_save(sv, c);
 	}
 	sv->end = c;
 	return (sv);

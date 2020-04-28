@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 08:57:20 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/28 14:36:04 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
-int							init_termcap(t_term_parameter *term)
+int					init_termcap(t_term_parameter *term)
 {
 	char							*env;
 
@@ -24,7 +24,7 @@ int							init_termcap(t_term_parameter *term)
 		return (0);
 	}
 	env = getenv("TERM");
-	if ((!env) || tgetent(0, env) == -1)
+	if ((!env) || ft_strequ(env, "") || tgetent(0, env) == -1)
 	{
 		ft_dprintf(2, "Error: tgetent doesn't work!\n");
 		return (0);
@@ -32,7 +32,7 @@ int							init_termcap(t_term_parameter *term)
 	return (1);
 }
 
-size_t	ft_size_lst_select(t_save_select *sv)
+size_t				ft_size_lst_select(t_save_select *sv)
 {
 	t_select	*s;
 	size_t		sz;
@@ -47,11 +47,11 @@ size_t	ft_size_lst_select(t_save_select *sv)
 	return (sz);
 }
 
-void		calc_term(t_term_parameter *term)
+void				calc_term(t_term_parameter *term)
 {
-	int								column;
-	size_t						size_lst;
-	struct winsize		sz;
+	int				column;
+	size_t			size_lst;
+	struct winsize	sz;
 
 	ioctl(0, TIOCGWINSZ, &sz);
 	term->sz = sz;
@@ -79,15 +79,18 @@ t_term_parameter	*init_term(t_save_select *s)
 	term->coor.x = 0;
 	term->fd_in = STDIN_FILENO;
 	if (!init_termcap(term))
+	{
+		reset_term(term);
+		free(term);
+		term = NULL;
 		return (NULL);
-	// ioctl(0, TIOCGWINSZ, &(term->sz));
-	// term->sz = sz;
+	}
 	calc_term(term);
 	tputs(tgoto(tgetstr("vi", NULL), 0, 0), 1, ft_pchar);
 	return (term);
 }
 
-int	reset_term(t_term_parameter *term)
+int					reset_term(t_term_parameter *term)
 {
 	tputs(tgoto(tgetstr("ve", NULL), 0, 0), 1, ft_pchar);
 	if (tty_reset(term->base_term, term->fd_in) == -1)

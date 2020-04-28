@@ -12,83 +12,93 @@
 
 #include "../includes/ft_select.h"
 
-void	move_column(t_term_parameter *term, char **keys, int *i, int *j, size_t size_column)
+void	move_column(t_term_parameter *term, char **keys)
 {
 	int			column;
 
-	column = term->sz.ws_col;// tgetnum("co");
-	column = column - (column % size_column);
-	if (*j >= column)
+	column = term->sz.ws_col;
+	column = column - (column % term->column);
+	if (term->coor.x >= column)
 	{
-		++(*i);
-		(*j) = 0;
+		++(term->coor.y);
+		term->coor.x = 0;
 	}
-	else if (*j < 0)
+	else if (term->coor.x < 0)
 	{
-		if (*i > 0)
-			--(*i);
+		if (term->coor.y > 0)
+			--(term->coor.y);
 		else
 		{
-			(*j) = 0;
+			(term->coor.x) = 0;
 			return ;
 		}
-		(*j) = column - size_column;
+		term->coor.x = column - term->column;
 	}
-	tputs(tgoto(keys[0], *j, *i), 1, ft_pchar);
+	tputs(tgoto(keys[0], term->coor.x, term->coor.y), 1, ft_pchar);
 }
 
-void	move_line(char **keys, int *i, int *j, t_term_parameter *term, int top)
+void	move_line_up(t_term_parameter *term, int place)
 {
-	int	place;
 	int	value_column;
+	int	calc;
 
-	value_column = (*j) > 0 ? *j / (int)term->column : 0;
-	place = (term->nb_column * term->line_max) - term->select->size_lst;
-	if (*i < 0)
+	value_column = (term->coor.x) > 0 ? term->coor.x / (int)term->column : 0;
+	term->coor.y = term->line_max - 1;
+	++value_column;
+	if (value_column > ((int)term->nb_column - place))
 	{
-		*i = term->line_max - 1;
-			++value_column;
-		if (value_column > ((int)term->nb_column - place))
-		{
-			*i -= 1;
-			int nb_test = ((int)term->nb_column - place) + ((int)term->nb_column - value_column);
-			move_end_lst(term, nb_test);
-		}
-		else
-		{
-			int	calc = ((int)term->nb_column - place) - value_column;
-			move_end_lst(term, calc);
-		}
-	}
-	else if (*i >= (int)term->line_max)
-	{
-		move_head_lst(term, *j);
-		*i = 0;
-	}
-	else if (*i == ((int)term->line_max - 1))
-	{
-		if (*j > 0)
-		{
-			if ((*j / (int)term->column) >= ((int)term->nb_column - place))
-			{
-				*i = 0;
-				move_head_lst(term, *j);
-			}
-			else
-				move_lst(term, top);
-		}
-		else
-		{
-			if (0 >= ((int)term->nb_column - place))
-			{
-				*i = 0;
-				move_head_lst(term, *j);
-			}
-			else
-				move_lst(term, top);
-		}
+		term->coor.y -= 1;
+		calc = ((int)term->nb_column - place)
+			+ ((int)term->nb_column - value_column);
+		move_end_lst(term, calc);
 	}
 	else
+	{
+		calc = ((int)term->nb_column - place) - value_column;
+		move_end_lst(term, calc);
+	}
+}
+
+void	verif_move_line_down(t_term_parameter *term, int place, int top)
+{
+	if (term->coor.x > 0)
+	{
+		if ((term->coor.x / (int)term->column)
+			>= ((int)term->nb_column - place))
+		{
+			term->coor.y = 0;
+			move_head_lst(term, term->coor.x);
+		}
+		else
+			move_lst(term, top);
+	}
+	else
+	{
+		if (0 >= ((int)term->nb_column - place))
+		{
+			term->coor.y = 0;
+			move_head_lst(term, term->coor.x);
+		}
+		else
+			move_lst(term, top);
+	}
+}
+
+void	move_line(char **keys, t_term_parameter *term, int top)
+{
+	int	place;
+
+	place = (term->nb_column * term->line_max) - term->select->size_lst;
+	if (term->coor.y < 0)
+		move_line_up(term, place);
+	else if (term->coor.y >= (int)term->line_max)
+	{
+		move_head_lst(term, term->coor.x);
+		term->coor.y = 0;
+	}
+	else if (term->coor.y == ((int)term->line_max - 1))
+		verif_move_line_down(term, place, top);
+	else
 		move_lst(term, top);
-	tputs(tgoto(keys[0], *j, *i), 1, ft_pchar);
+	tputs(tgoto(keys[0], term->coor.x, term->coor.y), 1, ft_pchar);
 }

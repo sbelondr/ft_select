@@ -6,19 +6,22 @@
 #    By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2020/04/27 13:21:56 by sbelondr         ###   ########.fr        #
+#    Updated: 2020/04/28 14:31:27 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = display.c\
-			free.c\
-			lst_select.c\
-			main.c\
-			move_lst.c\
-			move_termcat.c\
-			signals.c\
-			term.c\
-			tty.c
+SRC = actions.c\
+		actions_move.c\
+		display.c\
+		free.c\
+		lst_select.c\
+		main.c\
+		move_lst.c\
+		move_termcat.c\
+		signals.c\
+		term.c\
+		tools.c\
+		tty.c
 
 
 DIRSRC = srcs
@@ -33,7 +36,7 @@ EXEC = ft_select
 
 DEBUG = -g3
 
-FLAGS = -Wall -Wextra $(DEBUG)
+FLAGS = -Wall -Werror -Wextra
 
 MKDIR = mkdir -p
 
@@ -43,6 +46,13 @@ LINKLIB = linklib
 
 DIRECTORIES = $(DIROBJ)
 
+# Color
+
+RED = \033[31m
+GREEN = \033[32m
+BLUE = \033[36m
+CLOSE = \033[0m
+
 all: $(DIRECTORIES) $(LINKLIB) $(NAME)
 
 $(DIRECTORIES):
@@ -50,14 +60,16 @@ $(DIRECTORIES):
 
 $(NAME): $(LIBFT) $(OBJ)
 	@gcc $(FLAGS) $(DIROBJ)/*o -L./libft/libs -lft -lncurses -o $(EXEC)
-	@echo "\033[36mft_select\033[0m gcc: \033[32mOk\033[0m"
+	@echo "ft_select: Ok"
+	#@echo "$(BLUE)ft_select$(CLOSE): $(GREEN)Ok$(CLOSE)"
 
 $(LINKLIB):
 	@make -C $(LIBFT)
 
 $(DIROBJ)/%.o: $(DIRSRC)/%.c
 	@gcc -o $@ $(FLAGS) -c $<
-	@echo "\033[36mft_select\033[0m $*: \033[32mOk\033[0m"
+#	@echo "$(BLUE)$*$(CLOSE): $(GREEN)Ok$(CLOSE)\n"
+#	@echo "\033[36mft_select\033[0m $*: \033[32mOk\033[0m"
 
 clean:
 	@make -C $(LIBFT) clean

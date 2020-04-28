@@ -12,21 +12,7 @@
 
 #include "../includes/ft_select.h"
 
-int ft_pchar(int c)
-{
-	write(2, &c, 1);
-	return (c);
-}
-
-int verif_place(t_term_parameter *term)
-{
-	size_t size_max;
-
-	size_max = term->nb_column * term->line;
-	return (size_max >= term->select->size_lst);
-}
-
-void display_name(t_save_select *sv, int i, int j, int current)
+void	display_name(t_save_select *sv, int i, int j, int current)
 {
 	if (sv->current->is_select)
 		tputs(tgoto(tgetstr("mr", NULL), j, i), 0, ft_pchar);
@@ -40,7 +26,7 @@ void display_name(t_save_select *sv, int i, int j, int current)
 	tputs(tgoto(tgetstr("cm", NULL), j, i), 1, ft_pchar);
 }
 
-void display_name_no_coor(t_save_select *sv, int current)
+void	display_name_no_coor(t_save_select *sv, int current)
 {
 	if (sv->current->is_select)
 		tputs(tgetstr("mr", NULL), 0, ft_pchar);
@@ -51,15 +37,14 @@ void display_name_no_coor(t_save_select *sv, int current)
 		tputs(tgetstr("ue", NULL), 1, ft_pchar);
 	if (sv->current->is_select)
 		tputs(tgetstr("me", NULL), 1, ft_pchar);
-	//	tputs(tgetstr("cm", NULL), 1, ft_pchar);
 }
 
-void fill_screen(t_term_parameter *term)
+void	fill_screen(t_term_parameter *term)
 {
-	int i;
-	size_t current_column;
-	size_t sz_name;
-	char blank[term->column];
+	int		i;
+	size_t	current_column;
+	size_t	sz_name;
+	char	blank[term->column];
 
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	current_column = 0;
@@ -75,49 +60,46 @@ void fill_screen(t_term_parameter *term)
 		display_name_no_coor(term->select, 0);
 		ft_bzero(blank, term->column);
 		i = 0;
-		while (term->column > sz_name)
-		{
+		while (term->column > sz_name++)
 			blank[i++] = ' ';
-			++sz_name;
-		}
 		tputs(blank, 1, ft_pchar);
 		term->select->current = term->select->current->next;
 	}
 	term->select->current = term->select->head;
 }
 
-void redisplay(t_term_parameter *term)
+void	act_after_del(t_term_parameter *term, t_select *current,
+	int next_exist, char **keys)
 {
-	calc_term(term);
-	term->select->current = term->select->head;
-	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
-	fill_screen(term);
-}
-
-void del_column(char **keys, int *i, int *j, t_term_parameter *term)
-{
-	int next_exist;
-	int index;
-	t_select *current;
-
-	index = -1;
-	while (++index < (int)term->column)
-		tputs(tgoto(keys[6], *j, *i), 1, ft_pchar);
-	next_exist = del_select(term->select);
-	current = term->select->current;
 	redisplay(term);
 	term->select->current = current;
-	if (!next_exist)
+	if ((!next_exist))
 	{
-		next_exist = *j - (int)term->column;
+		next_exist = term->coor.x - (int)term->column;
 		if (next_exist < 0)
 		{
 			next_exist = (term->nb_column * term->column) - term->column;
-			if (*i > 0)
-				*i -= 1;
+			if (term->coor.y > 0)
+				term->coor.y -= 1;
 		}
-		*j = next_exist;
+		term->coor.x = next_exist;
 	}
-	tputs(tgoto(keys[0], *j, *i), 1, ft_pchar);
-	display_name(term->select, *i, *j, 1);
+	tputs(tgoto(keys[0], term->coor.x, term->coor.y), 1, ft_pchar);
+	display_name(term->select, term->coor.x, term->coor.y, 1);
+}
+
+int		del_column(t_term_parameter *term, char **keys)
+{
+	int			next_exist;
+	int			index;
+	t_select	*current;
+
+	index = -1;
+	while (++index < (int)term->column)
+		tputs(tgoto(keys[6], term->coor.x, term->coor.y), 1, ft_pchar);
+	next_exist = del_select(term->select);
+	current = term->select->current;
+	if (current)
+		act_after_del(term, current, next_exist, keys);
+	return (current ? 1 : 0);
 }

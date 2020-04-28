@@ -6,25 +6,15 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/28 09:23:34 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/28 14:46:38 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
-#include <signal.h>
-#include <stdlib.h>
-#include <sys/ioctl.h>
 
-void sig_action(int sig);
-
-void clean_screen(void)
+void	act_sig_stop(t_term_parameter **term)
 {
-	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
-}
-
-void act_sig_stop(t_term_parameter **term)
-{
-	int def[2];
+	int	def[2];
 
 	def[0] = (*term)->base_term.c_cc[VSUSP];
 	def[1] = 0;
@@ -34,7 +24,29 @@ void act_sig_stop(t_term_parameter **term)
 	ioctl(0, TIOCSTI, def);
 }
 
-void act_sig_cont(t_term_parameter **term)
+void	select_resize(t_term_parameter **term)
+{
+	calc_term(*term);
+	if (!verif_place(*term))
+	{
+		tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
+		tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+		ft_putstr_fd("Too small\n",
+			STDOUT_FILENO);
+	}
+	else
+	{
+		(*term)->coor.x = 0;
+		(*term)->coor.y = 0;
+		(*term)->select->current = (*term)->select->head;
+		tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+		fill_screen(*term);
+		tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+		display_name((*term)->select, 0, 0, 1);
+	}
+}
+
+void	act_sig_cont(t_term_parameter **term)
 {
 	(*term)->base_term.c_lflag &= ~(ICANON | ECHO);
 	(*term)->base_term.c_cc[VMIN] = 1;
@@ -42,9 +54,7 @@ void act_sig_cont(t_term_parameter **term)
 	tcsetattr(0, 0, &((*term)->base_term));
 	signal(SIGTSTP, sig_action);
 	tputs(tgetstr("vi", NULL), 1, ft_pchar);
-	calc_term(*term);
-	ft_select(*term);
-	exit(0);
+	select_resize(term);
 }
 
 /*
@@ -53,32 +63,15 @@ void act_sig_cont(t_term_parameter **term)
 ** SIGCONT --> continue process if stopped > tty and re display all parameters
 ** other --> clear malloc, reset tty  and exit > use a sig for exit argument ?
 */
-void sig_action(int sig)
+
+void	sig_action(int sig)
 {
-	t_term_parameter **term;
+	t_term_parameter	**term;
 
 	term = get_term_parameter(NULL);
-	clean_screen();
+	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	if (sig == SIGWINCH)
-	{
-		dprintf(5, "am here\n");
-		calc_term(*term);
-		if (!verif_place(*term))
-		{
-			clean_screen();
-			ft_putstr_fd("Too many parameters compared to the size of the screen\n", STDOUT_FILENO);
-		}
-		else
-		{
-			(*term)->coor.x = 0;
-			(*term)->coor.y = 0;
-			(*term)->select->current = (*term)->select->head;
-			tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
-			fill_screen(*term);
-			tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
-			display_name((*term)->select, 0, 0, 1);
-		}
-	}
+		select_resize(term);
 	else if (sig == SIGTSTP || sig == SIGSTOP)
 		act_sig_stop(term);
 	else if (sig == SIGCONT)
@@ -95,9 +88,10 @@ void sig_action(int sig)
 /*
 ** manage all signals (1 to 31)
 */
-void signals_select(void)
+
+void	signals_select(void)
 {
-	int sig;
+	int	sig;
 
 	sig = 0;
 	while (++sig < 32)
