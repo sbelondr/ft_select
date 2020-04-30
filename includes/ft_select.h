@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/30 12:25:19 by samuel           ###   ########.fr       */
+/*   Updated: 2020/04/30 12:32:40 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 #include "../libft/includes/libft.h"
 #include <termios.h>
 #include <unistd.h>
-// #include <curses.h>
 #include <term.h>
 #include <sys/ioctl.h>
 #include <signal.h>
-
 #include <termcap.h>
 #include <termios.h>
 

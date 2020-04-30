@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+         #
+#    By: samuel <samuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/21 14:49:02 by sbelondr          #+#    #+#              #
-#    Updated: 2019/11/08 23:18:42 by sbelondr         ###   ########.fr        #
+#    Updated: 2020/04/30 12:36:30 by samuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRCS_NAMES = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcmp.c ft_str
 	ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_isblank.c ft_memset.c\
 	ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_memalloc.c\
 	ft_memdel.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
+	ft_division.c ft_modulo.c\
 	ft_lstmap.c $(FT_PRINTF)
 
 OBJS_NAMES = $(SRCS_NAMES:.c=.o)

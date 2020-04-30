@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/30 12:25:54 by samuel           ###   ########.fr       */
+/*   Updated: 2020/04/30 12:34:50 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,10 @@ size_t				ft_size_lst_select(t_save_select *sv)
 	return (sz);
 }
 
-int					ft_division(int a, int b)
-{
-	if (a == 0 || b == 0)
-		return (0);
-	return (a / b);
-}
-
-int					ft_modulo(int a, int b)
-{
-	if (a == 0 || b == 0)
-		return (0);
-	return (a % b);
-}
-
 void				calc_term(t_term_parameter *term)
 {
-	int		column;
-	size_t	size_lst;
+	int				column;
+	size_t			size_lst;
 	struct winsize	sz;
 
 	ioctl(0, TIOCGWINSZ, &sz);

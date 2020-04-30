@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:42:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/08/21 10:55:17 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/30 12:35:45 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void				ft_strsub_tab_fix(char (*tab)[BUF_S], char src[BUF_S],
 		int start, int len);
 int					ft_cnt_chr(char *str, char c);
 void				ft_strdeldup(char **str, char *src);
+int					ft_division(int a, int b);
+int					ft_modulo(int a, int b);
 
 void				ft_arraydel(char ***line);
 char				**ft_arraydup(char **line);
