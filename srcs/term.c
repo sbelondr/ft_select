@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   term.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/28 14:36:04 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/04/30 12:25:54 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int					init_termcap(t_term_parameter *term)
 {
-	char							*env;
+	char	*env;
 
 	if (tcgetattr(term->fd_in, &(term->base_term)) < 0)
 		return (0);
@@ -47,10 +47,24 @@ size_t				ft_size_lst_select(t_save_select *sv)
 	return (sz);
 }
 
+int					ft_division(int a, int b)
+{
+	if (a == 0 || b == 0)
+		return (0);
+	return (a / b);
+}
+
+int					ft_modulo(int a, int b)
+{
+	if (a == 0 || b == 0)
+		return (0);
+	return (a % b);
+}
+
 void				calc_term(t_term_parameter *term)
 {
-	int				column;
-	size_t			size_lst;
+	int		column;
+	size_t	size_lst;
 	struct winsize	sz;
 
 	ioctl(0, TIOCGWINSZ, &sz);
@@ -59,12 +73,12 @@ void				calc_term(t_term_parameter *term)
 	term->column = term->select->max_size + 2;
 	term->column_max_last_line = 0;
 	column = sz.ws_col;
-	column = column - (column % term->column);
+	column = column - (ft_division(column, term->column));
 	term->column_max = column;
 	term->line = sz.ws_row;
-	term->nb_column = term->column_max / term->column;
-	term->line_max = size_lst / term->nb_column;
-	if ((size_lst % term->nb_column) > 0)
+	term->nb_column = ft_division(term->column_max, term->column);
+	term->line_max = ft_division(size_lst, term->nb_column);
+	if (ft_modulo(size_lst, term->nb_column) > 0)
 		term->line_max += 1;
 }
 
