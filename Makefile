@@ -6,7 +6,7 @@
 #    By: samuel <samuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2020/04/30 12:17:40 by samuel           ###   ########.fr        #
+#    Updated: 2020/04/30 12:29:51 by samuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ CURSE = -lncurses
 
 TERMCAP = -ltermcap
 
-FLAGS = -Wall -Werror -Wextra $(LTERMCAP)
+FLAGS = -Wall -Werror -Wextra
 
 MKDIR = mkdir -p
 
@@ -63,7 +63,7 @@ $(DIRECTORIES):
 	@$(MKDIR) $(DIRECTORIES)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@gcc $(FLAGS) $(DIROBJ)/*o -L./libft/libs -lft -o $(EXEC)
+	@gcc $(FLAGS) $(DIROBJ)/*o -L./libft/libs -lft $(CURSE) -o $(EXEC)
 	@echo "ft_select: Ok"
 	#@echo "$(BLUE)ft_select$(CLOSE): $(GREEN)Ok$(CLOSE)"
 
