@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:30 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 18:05:01 by samuel           ###   ########.fr       */
+/*   Updated: 2020/05/03 19:26:42 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,8 @@
 
 void	move_column(t_term_parameter *term, char **keys)
 {
-	// int			column;
-
-	// column = term->sz.ws_col;
-	// column = column - (column % term->column);
-	// dprintf(5, "%s: %d >= %d\n", term->select->current->name, term->coor.x, column);
 	if (term->coor.x >= (int)term->column_max)
 	{
-		// dprintf(5, "is here\n");
 		++(term->coor.y);
 		term->coor.x = 0;
 	}
@@ -46,7 +40,8 @@ void	move_line_up(t_term_parameter *term, int place)
 	int	value_column;
 	int	calc;
 
-	value_column = (term->coor.x) > 0 ? ft_division(term->coor.x, (int)term->column) : 0;
+	value_column = (term->coor.x) > 0 ?
+		ft_division(term->coor.x, (int)term->column) : 0;
 	term->coor.y = term->line_max - 1;
 	++value_column;
 	if (value_column > ((int)term->nb_column - place))

@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 18:01:53 by samuel           ###   ########.fr       */
+/*   Updated: 2020/05/03 19:25:47 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	fill_screen(t_term_parameter *term)
 	while (term->select->current)
 	{
 		current_column += term->column;
-		// dprintf(5, "fill_screen: %zu > %d\n", current_column, column);
 		if (current_column > term->column_max)
 		{
 			current_column = term->column;

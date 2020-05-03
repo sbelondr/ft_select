@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 18:04:17 by samuel           ###   ########.fr       */
+/*   Updated: 2020/05/03 19:27:32 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,18 @@ size_t				ft_size_lst_select(t_save_select *sv)
 
 void				calc_term(t_term_parameter *term)
 {
-	// int				column;
 	size_t			size_lst;
 	struct winsize	sz;
+	int				column;
 
 	ioctl(0, TIOCGWINSZ, &sz);
-	
 	term->sz = sz;
 	size_lst = ft_size_lst_select(term->select);
 	term->column = term->select->max_size + 2;
 	term->column_max_last_line = 0;
-	
-	// column = sz.ws_col;
-	// column = column - (ft_division(column, term->column));
-	
-	int			column2;
-
-	column2 = sz.ws_col;
-	column2 = column2 - (ft_modulo(column2, term->column));
-	
-	term->column_max = column2;
+	column = sz.ws_col;
+	column = column - (ft_modulo(column, term->column));
+	term->column_max = column;
 	term->line = sz.ws_row;
 	term->nb_column = ft_division(term->column_max, term->column);
 	term->line_max = ft_division(size_lst, term->nb_column);
