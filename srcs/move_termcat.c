@@ -3,23 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   move_termcat.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:30 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 08:39:36 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/05/03 18:05:01 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
+#include <stdio.h>
+
 void	move_column(t_term_parameter *term, char **keys)
 {
-	int			column;
+	// int			column;
 
-	column = term->sz.ws_col;
-	column = column - (column % term->column);
-	if (term->coor.x >= column)
+	// column = term->sz.ws_col;
+	// column = column - (column % term->column);
+	// dprintf(5, "%s: %d >= %d\n", term->select->current->name, term->coor.x, column);
+	if (term->coor.x >= (int)term->column_max)
 	{
+		// dprintf(5, "is here\n");
 		++(term->coor.y);
 		term->coor.x = 0;
 	}
@@ -32,7 +36,7 @@ void	move_column(t_term_parameter *term, char **keys)
 			(term->coor.x) = 0;
 			return ;
 		}
-		term->coor.x = column - term->column;
+		term->coor.x = term->column_max - term->column;
 	}
 	tputs(tgoto(keys[0], term->coor.x, term->coor.y), 1, ft_pchar);
 }
@@ -42,7 +46,7 @@ void	move_line_up(t_term_parameter *term, int place)
 	int	value_column;
 	int	calc;
 
-	value_column = (term->coor.x) > 0 ? term->coor.x / (int)term->column : 0;
+	value_column = (term->coor.x) > 0 ? ft_division(term->coor.x, (int)term->column) : 0;
 	term->coor.y = term->line_max - 1;
 	++value_column;
 	if (value_column > ((int)term->nb_column - place))
@@ -63,7 +67,7 @@ void	verif_move_line_down(t_term_parameter *term, int place, int top)
 {
 	if (term->coor.x > 0)
 	{
-		if ((term->coor.x / (int)term->column)
+		if ((ft_division(term->coor.x, (int)term->column))
 			>= ((int)term->nb_column - place))
 		{
 			term->coor.y = 0;
