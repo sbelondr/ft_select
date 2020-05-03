@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:40:57 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/26 08:41:12 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/05/03 13:46:47 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int		tty_reset(struct termios base_term, int fd_in)
 {
 	if (tcsetattr(fd_in, TCSAFLUSH, &base_term) < 0)
 		return (-1);
+	base_term.c_lflag |= (ICANON | ECHO);
 	return (0);
 }
