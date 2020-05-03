@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 19:25:47 by samuel           ###   ########.fr       */
+/*   Updated: 2020/05/03 21:50:46 by samuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	fill_screen(t_term_parameter *term)
 	term->select->current = term->select->head;
 }
 
+
 void	act_after_del(t_term_parameter *term, t_select *current,
 	int next_exist, char **keys)
 {
@@ -88,6 +89,7 @@ void	act_after_del(t_term_parameter *term, t_select *current,
 	}
 	tputs(tgoto(keys[0], term->coor.x, term->coor.y), 1, ft_pchar);
 	display_name(term->select, term->coor.x, term->coor.y, 1);
+	tputs(tgoto(keys[0], term->coor.x, term->coor.y), 1, ft_pchar);
 }
 
 int		del_column(t_term_parameter *term, char **keys)
