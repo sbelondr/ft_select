@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 19:30:58 by samuel           ###   ########.fr       */
+/*   Updated: 2020/06/08 16:48:39 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void				launch_select(t_term_parameter *term, char **keys)
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 66)
 			act_top(term, keys);
 		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 67)
-			act_left(term, keys);
-		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 68)
 			act_right(term, keys);
+		else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 68)
+			act_left(term, keys);
 		ft_bzero(buf, 3);
 	}
 	act_end(keys, buf, term);

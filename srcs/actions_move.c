@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/28 14:15:40 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 14:31:35 by samuel           ###   ########.fr       */
+/*   Updated: 2020/06/08 16:47:46 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void				act_bottom(t_term_parameter *term, char **keys)
 	display_name(term->select, term->coor.y, term->coor.x, 1);
 }
 
-void				act_left(t_term_parameter *term, char **keys)
+void				act_right(t_term_parameter *term, char **keys)
 {
 	if (term->select->current->next)
 	{
@@ -40,7 +40,7 @@ void				act_left(t_term_parameter *term, char **keys)
 	}
 }
 
-void				act_right(t_term_parameter *term, char **keys)
+void				act_left(t_term_parameter *term, char **keys)
 {
 	if (term->select->current->prev)
 	{

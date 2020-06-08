@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_select.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/30 12:32:40 by samuel           ###   ########.fr       */
+/*   Updated: 2020/06/08 16:48:16 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void				act_end(char **keys, char buf[3],
 
 void				act_top(t_term_parameter *term, char **keys);
 void				act_bottom(t_term_parameter *term, char **keys);
-void				act_left(t_term_parameter *term, char **keys);
 void				act_right(t_term_parameter *term, char **keys);
+void				act_left(t_term_parameter *term, char **keys);
 
 #	endif

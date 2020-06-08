@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/28 14:15:30 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 19:34:57 by samuel           ###   ########.fr       */
+/*   Updated: 2020/06/08 16:48:00 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void				act_space(t_term_parameter *term, t_pos coor, char **keys)
 	term->select->current->is_select =
 			term->select->current->is_select ? 0 : 1;
 	display_name(term->select, coor.y, coor.x, 1);
-	act_left(term, keys);
+	act_right(term, keys);
 }
 
 void				act_end(char **keys, char buf[3], t_term_parameter *term)
