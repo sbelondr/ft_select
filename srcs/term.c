@@ -6,11 +6,15 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 19:27:32 by samuel           ###   ########.fr       */
+/*   Updated: 2021/01/05 14:11:34 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
+
+/*
+** init termcap
+*/
 
 int					init_termcap(t_term_parameter *term)
 {
@@ -47,6 +51,10 @@ size_t				ft_size_lst_select(t_save_select *sv)
 	return (sz);
 }
 
+/*
+** calc column and line size
+*/
+
 void				calc_term(t_term_parameter *term)
 {
 	size_t			size_lst;
@@ -68,6 +76,10 @@ void				calc_term(t_term_parameter *term)
 		term->line_max += 1;
 }
 
+/*
+** init structure
+*/
+
 t_term_parameter	*init_term(t_save_select *s)
 {
 	t_term_parameter	*term;
@@ -80,7 +92,7 @@ t_term_parameter	*init_term(t_save_select *s)
 	term->fd_in = STDIN_FILENO;
 	if (!init_termcap(term))
 	{
-		reset_term(term);
+		reset_term(&term);
 		free(term);
 		term = NULL;
 		return (NULL);
@@ -90,13 +102,19 @@ t_term_parameter	*init_term(t_save_select *s)
 	return (term);
 }
 
-int					reset_term(t_term_parameter *term)
+/*
+** restore default terminal parameter and free term
+*/
+
+int					reset_term(t_term_parameter **term)
 {
 	tputs(tgoto(tgetstr("ve", NULL), 0, 0), 1, ft_pchar);
-	if (tty_reset(term->base_term, term->fd_in) == -1)
+	if (tty_reset((*term)->base_term, (*term)->fd_in) == -1)
 	{
+		free_term(term);
 		ft_dprintf(2, "Error: reset raw doesn't work!\n");
 		return (-1);
 	}
+	free_term(term);
 	return (0);
 }

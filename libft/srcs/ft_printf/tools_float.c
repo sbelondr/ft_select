@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 12:59:28 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 10:50:59 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 01:03:38 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ char	*apply_round_i(char dst[BUF_S], int *i, int precision)
 
 	j = 0;
 	cnt = -1;
-	if (!(tmp = (char*)malloc(sizeof(char) * *i + precision + 1)))
+	tmp = (char*)malloc(sizeof(char) * *i + precision + 1);
+	if (!tmp)
 		return (NULL);
 	while (++cnt < *i)
 		tmp[cnt] = dst[cnt];
@@ -51,7 +52,8 @@ char	*apply_round_ni(char dst[BUF_S])
 	char	*tmp;
 	int		cnt;
 
-	if (!(tmp = (char*)malloc(sizeof(char) * ft_strlen(dst) + 1)))
+	tmp = (char*)malloc(sizeof(char) * ft_strlen(dst) + 1);
+	if (!tmp)
 		return (NULL);
 	cnt = -1;
 	while (dst[++cnt])
@@ -82,16 +84,22 @@ char	*ft_apply_round(char (*dst)[BUF_S], int stock, int precision)
 	i = ft_chr_index((*dst), '.');
 	if (i != -1)
 	{
-		if (!(tmp = apply_round_i(*dst, &i, precision)))
+		tmp = apply_round_i(*dst, &i, precision);
+		if (!tmp)
 			return (NULL);
 	}
 	else
 	{
-		if (!(tmp = apply_round_ni(*dst)))
+		tmp = apply_round_ni(*dst);
+		if (!tmp)
 			return (NULL);
 	}
-	i = (i == -1) ? (int)ft_strlen(*dst) - 1 : i - 1;
-	stock = (stock > 4) ? 1 : 0;
+	if (i == -1)
+		i = (int)ft_strlen(*dst) - 1;
+	else
+		i = i - 1;
+	if (stock > 4)
+		stock = 1;
 	apply_round_final(stock, &tmp, i);
 	return (tmp);
 }

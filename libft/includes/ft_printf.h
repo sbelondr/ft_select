@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:42:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/03/07 10:49:46 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 22:55:15 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef FT_PRINTF_H
-#	define FT_PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include "libft.h"
-#include <stdarg.h>
-#include <stdlib.h>
-#include <strings.h>
-#include <stdint.h>
+# include "libft.h"
+# include <stdarg.h>
+# include <stdlib.h>
+# include <strings.h>
+# include <stdint.h>
 
-#define CL_RED "\033[0;31m"
-#define CL_GREEN "\033[0;32m"
-#define CL_BLUE "\033[0;34m"
-#define CL_RESET "\033[0m"
+# define CL_RED "\033[0;31m"
+# define CL_GREEN "\033[0;32m"
+# define CL_BLUE "\033[0;34m"
+# define CL_RESET "\033[0m"
 
-typedef struct		s_printf
+typedef struct s_printf
 {
 	va_list			ap;
 	char			*format;
@@ -38,6 +38,8 @@ typedef struct		s_printf
 	int				index;
 	int				fd;
 	int				color;
+	char			data[1024];
+	size_t			len_data;
 }					t_printf;
 
 typedef uint64_t	t_u64;
@@ -109,22 +111,22 @@ void				ft_arg_float(t_printf **lst);
 ** apply_arg.c
 */
 
-void				ft_large_min(char (*dst)[BUF_S], t_printf *lst,
+void				ft_large_min(char (*dst)[BUF_S], t_printf *lst, \
 		int stock[3]);
 
 /*
 ** apply_arg_float.c
 */
 
-void				ft_apply_arg_float(char (*str)[BUF_S], t_printf **lst,
+void				ft_apply_arg_float(char (*str)[BUF_S], t_printf **lst, \
 		int neg);
 
 /*
 ** display.c
 */
 
-void				ft_display(char dst[BUF_S], t_printf **lst);
-void				ft_display_color(char dst[BUF_S], t_printf **lst);
+//void				ft_display(char dst[BUF_S], t_printf **lst);
+//void				ft_display_color(char dst[BUF_S], t_printf **lst);
 
 /*
 ** tools.c
@@ -163,13 +165,13 @@ char				*ft_itoa_us(unsigned short n);
 ** ft_convert_base.c
 */
 
-void				ft_convert_base(unsigned int nb, int base,
+void				ft_convert_base(unsigned int nb, int base, \
 		char (*str)[BUF_S]);
-void				ft_convert_base_uc(unsigned char nb, int base,
+void				ft_convert_base_uc(unsigned char nb, int base, \
 		char (*str)[BUF_S]);
-void				ft_convert_base_us(unsigned short nb, int base,
+void				ft_convert_base_us(unsigned short nb, int base, \
 		char (*str)[BUF_S]);
-void				ft_convert_base_ll(unsigned long long nb, int base,
+void				ft_convert_base_ll(unsigned long long nb, int base, \
 		char (*str)[BUF_S]);
 void				ft_startjoin(char (*str)[BUF_S], char c);
 
@@ -185,12 +187,12 @@ void				result_null(t_printf **lst, char (*str)[BUF_S]);
 ** tools_float.c
 */
 
-void				ft_inf_nan(char (*str)[BUF_S], t_printf **lst,
+void				ft_inf_nan(char (*str)[BUF_S], t_printf **lst, \
 		int stock[3]);
 char				*apply_round_i(char dst[BUF_S], int *i, int precision);
 char				*apply_round_ni(char dst[BUF_S]);
 void				apply_round_final(int stock, char **tmp, int i);
-char				*ft_apply_round(char (*dst)[BUF_S], int stock,
+char				*ft_apply_round(char (*dst)[BUF_S], int stock, \
 		int precision);
 
 /*
@@ -235,5 +237,10 @@ void				options_n(t_printf **lst, int stock[3], int neg, int rd);
 
 void				apply_arg_convert(char *str, t_printf **lst);
 void				apply_hash_p(t_printf **lst);
+
+/*
+** manage_display.c
+*/
+void				ft_manage_display(t_printf **lst, char *str);
 
 #	endif

@@ -6,13 +6,13 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 23:16:32 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/02/05 21:23:37 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:44:17 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_chrjoin_end(char *str, char c)
+char	*ft_chrjoin_end(char *str, char c)
 {
 	char	*dst;
 	int		len;

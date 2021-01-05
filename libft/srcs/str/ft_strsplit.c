@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 10:58:33 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/03/20 10:07:19 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 00:02:03 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ static int	is_split(char c, char spl)
 {
 	if (!spl)
 		return (ft_isspace(c));
-	else
-		return ((c == spl) ? 1 : 0);
+	if (c == spl)
+		return (1);
+	return (0);
 }
 
 static int	cnt_words(const char *s, char c)
@@ -35,7 +36,8 @@ static int	cnt_words(const char *s, char c)
 		nb_char = 0;
 		while (s[cnt + nb_char] && is_split(s[cnt + nb_char], c) == 0)
 			nb_char++;
-		nb_words += (nb_char > 0) ? 1 : 0;
+		if (nb_char > 0)
+			nb_words += 1;
 		cnt += nb_char;
 		while (s[cnt] && is_split(s[cnt], c))
 			cnt++;
@@ -58,7 +60,8 @@ static void	ft_split(const char *s, char c, char ***result)
 		nb_char = 0;
 		while (s[i + nb_char] && is_split(s[i + nb_char], c) == 0)
 			nb_char++;
-		(nb_char > 0) ? (*result)[++nb_words] = ft_strsub(s, i, nb_char) : 0;
+		if (nb_char > 0)
+			(*result)[++nb_words] = ft_strsub(s, i, nb_char);
 		i += nb_char;
 		while (s[i] && is_split(s[i], c))
 			i++;
@@ -66,7 +69,7 @@ static void	ft_split(const char *s, char c, char ***result)
 	(*result)[++nb_words] = 0;
 }
 
-char		**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**result;
 	int		words;
@@ -78,7 +81,8 @@ char		**ft_strsplit(char const *s, char c)
 	words = cnt_words(s, c);
 	if (words == 0)
 		return (NULL);
-	if (!(result = (char**)malloc(sizeof(char*) * (words + 1))))
+	result = (char**)malloc(sizeof(char*) * (words + 1));
+	if (!result)
 		return (NULL);
 	ft_split(s, c, &result);
 	return (result);

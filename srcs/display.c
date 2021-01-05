@@ -6,13 +6,21 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/06/08 16:51:00 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/28 11:26:16 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
 #include <stdio.h>
+
+/*
+** mr -> highlight
+** me -> End all mode like so, us, mb, md, and mr
+** us -> start underline
+** ue -> stop underline
+** cm -> cursor move column left to right
+*/
 
 void	display_name(t_save_select *sv, int i, int j, int current)
 {

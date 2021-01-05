@@ -6,12 +6,12 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:33:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 10:48:13 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/10/01 18:29:48 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/*
 void	ft_display(char dst[BUF_S], t_printf **lst)
 {
 	if ((*lst)->color > 0)
@@ -42,3 +42,5 @@ void	ft_display_color(char dst[BUF_S], t_printf **lst)
 	ft_strdel(&src);
 	ft_strdel(&tmp);
 }
+
+*/

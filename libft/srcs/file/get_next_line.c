@@ -6,13 +6,13 @@
 /*   By: apruvost <apruvost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 16:18:29 by apruvost          #+#    #+#             */
-/*   Updated: 2019/08/21 12:31:39 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:16:43 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_new_line(char **s, char **line, int fd, int ret)
+static int	ft_new_line(char **s, char **line, int fd, int ret)
 {
 	char	*tmp;
 	int		len;
@@ -39,7 +39,14 @@ int		ft_new_line(char **s, char **line, int fd, int ret)
 	return (1);
 }
 
-int		get_next_line(const int fd, char **line)
+static int	ft_fuck_norm(char **s, char **line, int fd, int ret)
+{
+	if (ret < 0 || (ret == 0 && (s[fd] == NULL || s[fd][0] == '\0')))
+		return (ret);
+	return (ft_new_line(s, line, fd, ret));
+}
+
+int	get_next_line(const int fd, char **line)
 {
 	static char	*s[255];
 	char		buf[BUF_S + 1];
@@ -48,20 +55,21 @@ int		get_next_line(const int fd, char **line)
 
 	if (fd < 0 || line == NULL || fd >= 255)
 		return (-1);
-	while ((ret = read(fd, buf, BUF_S)) > 0)
+	ret = 0;
+	while (ret > 0)
 	{
-		buf[ret] = '\0';
-		if (s[fd] == NULL)
-			s[fd] = ft_strnew(1);
-		tmp = ft_strjoin(s[fd], buf);
-		ft_strdel(&(s[fd]));
-		s[fd] = tmp;
-		if (ft_strchr(buf, '\n'))
-			break ;
+		ret = read(fd, buf, BUF_S);
+		if (ret > 0)
+		{
+			buf[ret] = '\0';
+			if (s[fd] == NULL)
+				s[fd] = ft_strnew(1);
+			tmp = ft_strjoin(s[fd], buf);
+			ft_strdel(&(s[fd]));
+			s[fd] = tmp;
+			if (ft_strchr(buf, '\n'))
+				break ;
+		}
 	}
-	if (ret < 0)
-		return (-1);
-	else if (ret == 0 && (s[fd] == NULL || s[fd][0] == '\0'))
-		return (0);
-	return (ft_new_line(s, line, fd, ret));
+	return (ft_fuck_norm(s, line, fd, ret));
 }

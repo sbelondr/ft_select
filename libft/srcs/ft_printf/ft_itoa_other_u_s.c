@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_other.c                                    :+:      :+:    :+:   */
+/*   ft_itoa_other_u_s.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:19:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 10:48:41 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 00:39:40 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_itoa_sc(signed char c)
+char	*ft_itoa_sc(signed char c)
 {
 	int		nbr;
 	int		size;
 	int		negatif;
 	char	*str;
 
-	negatif = (c < 0) ? 1 : 0;
-	nbr = (negatif) ? -(int)c : (int)c;
+	negatif = 0;
+	if (c < 0)
+		negatif = 1;
+	nbr = (int)c;
+	if (negatif)
+		nbr *= -1;
 	size = ft_numlen(nbr) + negatif;
-	if (!(str = (char*)malloc(sizeof(char) * size + 1)))
+	str = (char*)malloc(sizeof(char) * size + 1);
+	if (!str)
 		return (0);
 	str[size] = '\0';
 	while (size-- > 0)
@@ -30,12 +35,13 @@ char		*ft_itoa_sc(signed char c)
 		str[size] = (nbr % 10) + '0';
 		nbr /= 10;
 	}
-	(negatif) ? str[0] = '-' : 0;
+	if (negatif)
+		str[0] = '-';
 	str[ft_strlen(str)] = '\0';
 	return (str);
 }
 
-char		*ft_itoa_ul(unsigned long long n)
+char	*ft_itoa_ul(unsigned long long n)
 {
 	unsigned long long	nbr;
 	int					size;
@@ -43,7 +49,8 @@ char		*ft_itoa_ul(unsigned long long n)
 
 	nbr = (unsigned long long)n;
 	size = ft_len_unsigned(nbr);
-	if (!(str = (char*)malloc(sizeof(char) * size + 1)))
+	str = (char*)malloc(sizeof(char) * size + 1);
+	if (!str)
 		return (0);
 	str[size] = '\0';
 	while (size-- > 0)
@@ -55,7 +62,7 @@ char		*ft_itoa_ul(unsigned long long n)
 	return (str);
 }
 
-char		*ft_itoa_us(unsigned short n)
+char	*ft_itoa_us(unsigned short n)
 {
 	int		nbr;
 	int		size;
@@ -63,7 +70,8 @@ char		*ft_itoa_us(unsigned short n)
 
 	nbr = (int)n;
 	size = ft_numlen(nbr);
-	if (!(str = (char*)malloc(sizeof(char) * size + 1)))
+	str = (char*)malloc(sizeof(char) * size + 1);
+	if (!str)
 		return (0);
 	str[size] = '\0';
 	while (size-- > 0)

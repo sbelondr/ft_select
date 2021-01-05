@@ -6,11 +6,11 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:28:16 by sbelondr          #+#    #+#             */
-/*   Updated: 2018/11/09 07:56:47 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:04:30 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);

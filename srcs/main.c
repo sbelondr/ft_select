@@ -6,11 +6,22 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/06/08 16:48:39 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/05 13:53:23 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
+
+/*
+** cm -> cursor move left to right
+** cl -> clear screen
+** kd -> cursor down key
+** ku -> cursor up key
+** kl -> cursor left key
+** kr -> cursor right key
+** dc -> delete one character
+** ts -> move cursor to column
+*/
 
 static char			**init_keys_select(void)
 {
@@ -29,6 +40,13 @@ static char			**init_keys_select(void)
 	keys[8] = 0;
 	return (keys);
 }
+
+/*
+** 65 -> bottom key
+** 66 -> top key
+** 67 -> right key
+** 68 -> left key
+*/
 
 void				launch_select(t_term_parameter *term, char **keys)
 {
@@ -98,7 +116,7 @@ int					main(int ac, char **av)
 	{
 		ft_putstr_fd("Too small\n",
 			STDERR_FILENO);
-		reset_term(term);
+		reset_term(&term);
 		return (-1);
 	}
 	signals_select();

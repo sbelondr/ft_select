@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 08:49:06 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 10:46:29 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 08:21:49 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	ft_large_min(char (*dst)[BUF_S], t_printf *lst, int stock[3])
 	char	tmp[BUF_S];
 
 	i = -1;
-	c = (ft_strchr_exist(lst->options, '0') && lst->precision < 0) ? '0' : ' ';
-	if (ft_strcmp(*dst, "0\0") == 0 && ft_strchr_exist(lst->options, '0') == 0
-			&& (lst->large_min == 0 || (lst->precision == -1 ||
-					lst->precision == 0)))
-		ft_bzero(&(*dst), BUF_S);
+	c = ' ';
+	if (ft_strchr_exist(lst->options, '0') && lst->precision < 0)
+		c = '0';
+	if (ft_strcmp(*dst, "0\0") == 0 && ft_strchr_exist(lst->options, '0') == 0 \
+			&& (lst->large_min == 0 || (lst->precision == -1 \
+					|| lst->precision == 0)))
+		ft_bzero(dst, BUF_S);
 	if (stock[2] > 0)
 	{
 		if (ft_strchr_exist(lst->options, '-'))

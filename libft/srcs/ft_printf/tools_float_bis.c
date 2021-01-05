@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:33:50 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 10:51:10 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 08:45:34 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ char	*ft_precision_float(char (*dst)[BUF_S], t_printf **lst)
 {
 	char	*tmp;
 
-	tmp = ft_round_precision(&(*dst), (*lst)->precision);
+	tmp = ft_round_precision(dst, (*lst)->precision);
 	if ((*lst)->precision != -2 && ft_strchr_exist((*lst)->options, '#'))
 		(*dst)[ft_strlen(*dst)] = '.';
 	return (tmp);
 }
 
-int		check_p(char dst[BUF_S], int precision, int i)
+int	check_p(char dst[BUF_S], int precision, int i)
 {
 	int	stock;
 
@@ -33,6 +33,17 @@ int		check_p(char dst[BUF_S], int precision, int i)
 	return (stock);
 }
 
+static int	ft_fuck_norm(char (*dst)[BUF_S], int i, int *stock)
+{
+	*stock = 0;
+	if ((*dst)[i + 2] - '0' == 0)
+		*stock = 1;
+	*stock = ((*dst)[i + 1] - '0') - (*stock);
+	while ((*dst)[i])
+		(*dst)[i++] = '\0';
+	return (i);
+}
+
 char	*ft_round_precision(char (*dst)[BUF_S], int precision)
 {
 	int		i;
@@ -40,29 +51,27 @@ char	*ft_round_precision(char (*dst)[BUF_S], int precision)
 	int		stock;
 	char	*tmp;
 
-	precision = (precision == -2) ? 6 : precision;
+	if (precision == -2)
+		precision = 6;
 	i = 0;
 	j = 0;
 	stock = -1;
 	while ((*dst)[i] && (*dst)[i] != '.')
 		i++;
 	if (precision == 0 || precision == -1)
-	{
-		stock = ((*dst)[i + 1] - '0') - ((*dst)[i + 2] - '0' == 0 ? 1 : 0);
-		while ((*dst)[i])
-			(*dst)[i++] = '\0';
-	}
+		i = ft_fuck_norm(dst, i, &stock);
 	else
 		while ((*dst)[i + j] && j < precision)
 			j++;
-	(stock == -1) ? stock = check_p((*dst), precision, i) : 0;
+	if (stock == -1)
+		stock = check_p((*dst), precision, i);
 	i += j;
 	(*dst)[++i] = '\0';
-	tmp = ft_apply_round(&(*dst), stock, precision);
+	tmp = ft_apply_round(dst, stock, precision);
 	return (tmp);
 }
 
-int		len_float(t_printf **lst, int stock[3], int neg)
+int	len_float(t_printf **lst, int stock[3], int neg)
 {
 	int	len;
 
@@ -71,8 +80,8 @@ int		len_float(t_printf **lst, int stock[3], int neg)
 		(*lst)->len += 1;
 	if (neg || stock[0] || ft_strchr_exist((*lst)->options, ' '))
 		len += 1;
-	if (ft_strchr_exist((*lst)->options, '#') && ((*lst)->precision == -1 ||
-				(*lst)->precision == 0))
+	if (ft_strchr_exist((*lst)->options, '#') && ((*lst)->precision == -1 \
+				|| (*lst)->precision == 0))
 		len += 1;
 	return (len);
 }

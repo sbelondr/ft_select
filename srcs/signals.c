@@ -6,11 +6,15 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/28 14:46:38 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/05 14:08:53 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
+
+/*
+** render terminal before render the default parameter
+*/
 
 void	act_sig_stop(t_term_parameter **term)
 {
@@ -18,11 +22,15 @@ void	act_sig_stop(t_term_parameter **term)
 
 	def[0] = (*term)->base_term.c_cc[VSUSP];
 	def[1] = 0;
-	reset_term(*term);
+	reset_term(term);
 	(*term)->base_term.c_lflag |= (ICANON | ECHO);
 	signal(SIGTSTP, SIG_DFL);
 	ioctl(0, TIOCSTI, def);
 }
+
+/*
+** recalc column and line when terminal is resize, project start, ...
+*/
 
 void	select_resize(t_term_parameter **term)
 {
@@ -46,6 +54,10 @@ void	select_resize(t_term_parameter **term)
 	}
 }
 
+/*
+** fg
+*/
+
 void	act_sig_cont(t_term_parameter **term)
 {
 	(*term)->base_term.c_lflag &= ~(ICANON | ECHO);
@@ -58,6 +70,8 @@ void	act_sig_cont(t_term_parameter **term)
 }
 
 /*
+** call function when is detect signal
+**
 ** SIGWINCH --> resize window > clean display and re display
 ** SIGTSTP && SIGSTOP --> stop process > clean display and reset tty
 ** SIGCONT --> continue process if stopped > tty and re display all parameters
@@ -78,8 +92,7 @@ void	sig_action(int sig)
 		act_sig_cont(term);
 	else
 	{
-		reset_term(*term);
-		free_term(term);
+		reset_term(term);
 		ft_dprintf(STDERR_FILENO, "Quit: %d\n", sig);
 		exit(sig);
 	}

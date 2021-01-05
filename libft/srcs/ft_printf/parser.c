@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:41:40 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 10:50:20 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 07:53:49 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	other_options(t_printf **lst)
 		if (ft_isdigit(recup_char(&(*lst), 1)))
 		{
 			(*lst)->precision = ft_atoi((*lst)->format + (*lst)->index);
-			while ((*lst)->precision != 0 &&
-					(*lst)->format[(*lst)->index] == '0')
+			while ((*lst)->precision != 0 \
+					&& (*lst)->format[(*lst)->index] == '0')
 				(*lst)->index++;
 			(*lst)->index += ft_numlen((*lst)->precision);
 		}

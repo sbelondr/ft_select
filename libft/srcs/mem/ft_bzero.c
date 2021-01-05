@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:56:53 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/02/05 20:48:56 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/10/31 08:37:50 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	ft_bzero(void *s, size_t n)
 	str = s;
 	cpt = -1;
 	while (++cpt < n)
-		str[cpt] = '\0';
+		str[cpt] = 0;
 }

@@ -6,11 +6,11 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:52:57 by sbelondr          #+#    #+#             */
-/*   Updated: 2018/11/11 11:59:02 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:03:51 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (1);

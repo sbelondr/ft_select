@@ -6,16 +6,16 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/11 08:50:33 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/03/19 22:24:35 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:46:25 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_strdeldup(char **str, char *src)
+void	ft_strdeldup(char **str, char *src)
 {
 	if (!(str && src))
 		return ;
-	ft_strdel(&(*str));
+	ft_strdel(str);
 	(*str) = ft_strdup(src);
 }

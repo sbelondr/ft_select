@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 11:18:43 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 10:50:50 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 08:59:46 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		ft_alpha(unsigned int nb)
+char	ft_alpha(unsigned int nb)
 {
 	char	c;
 
@@ -20,7 +20,7 @@ char		ft_alpha(unsigned int nb)
 	return (c);
 }
 
-void		ft_startjoin_50(char (*str)[50], char c)
+void	ft_startjoin_50(char (*str)[50], char c)
 {
 	int		len;
 
@@ -32,11 +32,11 @@ void		ft_startjoin_50(char (*str)[50], char c)
 	(*str)[0] = c;
 }
 
-void		result_null(t_printf **lst, char (*str)[BUF_S])
+void	result_null(t_printf **lst, char (*str)[BUF_S])
 {
-	if ((*lst)->precision == -2 || (*lst)->precision > 0 ||
-			(ft_strchr_exist((*lst)->options, '#') && (*lst)->flag == 'o') ||
-			((*lst)->conversion[1] && (*lst)->conversion[1] == 'p'))
+	if ((*lst)->precision == -2 || (*lst)->precision > 0 \
+			|| (ft_strchr_exist((*lst)->options, '#') && (*lst)->flag == 'o') \
+			|| ((*lst)->conversion[1] && (*lst)->conversion[1] == 'p'))
 	{
 		(*str)[0] = '0';
 		if ((*lst)->conversion[1] && (*lst)->conversion[1] == 'p')
@@ -45,7 +45,7 @@ void		result_null(t_printf **lst, char (*str)[BUF_S])
 				(*str)[2] = '0';
 		}
 	}
-	if (ft_strchr_exist((*lst)->options, '#') && ((*lst)->precision == -1 ||
-			(*lst)->precision == 0) && ft_tolower((*lst)->flag) == 'o')
+	if (ft_strchr_exist((*lst)->options, '#') && ((*lst)->precision == -1 \
+				|| (*lst)->precision == 0) && ft_tolower((*lst)->flag) == 'o')
 		(*lst)->precision = -2;
 }

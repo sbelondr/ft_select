@@ -6,11 +6,11 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 22:29:08 by sbelondr          #+#    #+#             */
-/*   Updated: 2018/11/08 22:33:59 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:04:13 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);

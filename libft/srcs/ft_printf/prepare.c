@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:39:03 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 10:50:29 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 08:44:40 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*insert_format(const char *e)
 	return (format);
 }
 
-int		ft_prepare(const char *format, t_printf **lst)
+int	ft_prepare(const char *format, t_printf **lst)
 {
 	if (!format)
 		return (0);

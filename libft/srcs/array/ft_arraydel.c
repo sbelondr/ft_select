@@ -6,13 +6,13 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 22:17:10 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/08/21 12:21:26 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:01:20 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_arraydel(char ***line)
+void	ft_arraydel(char ***line)
 {
 	int	i;
 

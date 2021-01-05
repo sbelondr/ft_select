@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 23:13:55 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/02/05 21:23:26 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/10/31 08:24:05 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*ft_chrjoin_start(char c, char *str)
 	dst[i] = c;
 	while (++i < len)
 		dst[i] = str[i - 1];
-	dst[i] = '\0';
+	dst[i] = 0;
 	return (dst);
 }

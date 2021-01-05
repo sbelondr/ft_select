@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 00:13:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/02/05 21:20:48 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:54:22 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strchr(const char *s, int c)
 	cnt = -1;
 	while (s[++cnt])
 		if (s[cnt] == c)
-			return ((char*)s + cnt);
-	if (c == '\0')
-		return ((char*)s + cnt);
+			return ((char *)s + cnt);
+	if (!c)
+		return ((char *)s + cnt);
 	return (0);
 }

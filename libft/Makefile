@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: samuel <samuel@student.42.fr>              +#+  +:+       +#+         #
+#    By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/21 14:49:02 by sbelondr          #+#    #+#              #
-#    Updated: 2020/04/30 12:36:30 by samuel           ###   ########.fr        #
+#    Updated: 2020/12/24 15:18:21 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG = no
+DEBUG = yes
 
 # Directory
 SRCDIR = srcs/
@@ -52,7 +52,7 @@ FT_PRINTF = ft_printf.c	parser.c gest_flag.c arg_s.c arg_n.c arg_convert.c arg_f
 	apply_arg.c	display.c tools.c tools_bis.c tools_float_bis.c ft_itoa_other.c\
 	ft_itoa_other_u_s.c ft_convert_base.c binary.c manage_float.c apply_arg_float.c\
 	tools_float.c multiplication_float.c add_float.c apply_arg_s.c apply_arg_n.c\
-	apply_arg_convert.c prepare.c
+	apply_arg_convert.c prepare.c manage_display.c
 
 SRCS_NAMES = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcmp.c ft_strncmp.c\
 	ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strstr.c\
@@ -69,11 +69,10 @@ SRCS_NAMES = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcmp.c ft_str
 	ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_isblank.c ft_memset.c\
 	ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_memalloc.c\
 	ft_memdel.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
-	ft_division.c ft_modulo.c\
-	ft_lstmap.c $(FT_PRINTF)
+	ft_lstmap.c ft_division.c ft_modulo.c $(FT_PRINTF)
 
 OBJS_NAMES = $(SRCS_NAMES:.c=.o)
-	HEADERS_NAMES = libft.h ft_printf.h
+HEADERS_NAMES = libft.h ft_printf.h
 
 SRC = $(addprefix $(SRCDIR), $(SRCS_NAMES))
 OBJ = $(addprefix $(OBJDIR), $(OBJS_NAMES))
@@ -88,6 +87,18 @@ CREATE = mkdir -p
 DEL = /bin/rm -rf
 PRINT = printf
 PHONY = all clean fclean re norm help
+
+# Tests
+
+TEST_FLAG = -lcheck -lm -lrt -lpthread
+TEST_FILE = main.c test_atoi.c test_array.c
+TEST_FOLDER = tests
+TEST_OBJ_FOLDER = $(TEST_FOLDER)/objs
+TEST_SRC_FOLDER = $(TEST_FOLDER)/srcs/
+TEST_SRC = $(addprefix $(TEST_SRC_FOLDER), $(TEST_FILE))
+#TEST_OBJ_FILE = $(TEST_FILE:.c=.o)
+#TEST_OBJ = $(addprefix $(TEST_OBJ_FOLDER), $(TEST_OBJ_FILE))
+
 
 # Color
 
@@ -112,9 +123,9 @@ all: verif $(NAME)
 verif:
 ifeq ($(display_mode), 0)
 ifeq ($(DEBUG), yes)
-	@$(PRINT) "$(RED)libft: Mode debug$(CLOSE)\n"
+	@$(PRINT) " $(RED)Mode debug$(CLOSE)\n"
 else
-	@$(PRINT) "$(GREEN)libft: Mode standard$(CLOSE)\n"
+	@$(PRINT) " $(GREEN)Mode standard$(CLOSE)\n"
 endif
 endif
 
@@ -139,6 +150,10 @@ fclean: verif clean
 	@$(PRINT) "$(BLUE)libft$(CLOSE): fclean -> $(GREEN)Ok$(CLOSE)\n"
 
 re: fclean all
+
+test: all
+	@$(CC) $(TEST_SRC) $(TEST_FLAG) $(CPPFLAGS) libs/libft.a -o check_unit_tests
+	@./check_unit_tests
 
 norm:
 	@norminette **/*.[ch]

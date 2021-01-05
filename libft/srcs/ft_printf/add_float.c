@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 13:43:47 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/08 11:01:23 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 00:13:11 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ void	add_mantissa(char (*lst)[BUF_S], char tab_b[BUF_S])
 		}
 		else
 		{
-			ft_deplace(&(*lst));
+			ft_deplace(lst);
 			(*lst)[0] = (((tab_b[len_b] - '0') + stock) % 10) + '0';
 		}
-		(stock != 0) ? stock /= 10 : 0;
+		if (stock != 0)
+			stock /= 10;
 	}
 	add_apply(stock, &(*lst), i);
 }

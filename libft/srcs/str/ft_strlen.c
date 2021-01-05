@@ -6,13 +6,13 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:35:32 by sbelondr          #+#    #+#             */
-/*   Updated: 2018/12/10 12:08:18 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:48:01 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <strings.h>
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	cnt;
 

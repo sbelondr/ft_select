@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 14:06:43 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/08/22 10:36:59 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/24 08:44:08 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_arg_d(t_printf **lst)
 {
 	char	*str;
 
-	ft_conversion(&str, &(*lst));
-	apply_arg_n(str, &(*lst));
+	ft_conversion(&str, lst);
+	apply_arg_n(str, lst);
 	ft_strdel(&str);
 }
 
@@ -59,15 +59,17 @@ void	ft_arg_u(t_printf **lst)
 	int		find;
 
 	find = ft_chr_index((*lst)->options, '+');
-	(find != -1) ? (*lst)->options[find] = 'N' : 0;
+	if (find != -1)
+		(*lst)->options[find] = 'N';
 	find = ft_chr_index((*lst)->options, ' ');
-	(find != -1) ? (*lst)->options[find] = 'N' : 0;
-	ft_conversion_u(&str, &(*lst));
+	if (find != -1)
+		(*lst)->options[find] = 'N';
+	ft_conversion_u(&str, lst);
 	if (str && ft_strcmp(str, "") == 0)
 	{
 		ft_strdel(&str);
 		str = ft_strdup("0");
 	}
-	apply_arg_n(str, &(*lst));
+	apply_arg_n(str, lst);
 	ft_strdel(&str);
 }

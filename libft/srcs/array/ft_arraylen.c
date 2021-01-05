@@ -6,13 +6,13 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 14:41:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/04/04 19:53:10 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 22:57:09 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_arraylen(char **src)
+int	ft_arraylen(char **src)
 {
 	int	i;
 

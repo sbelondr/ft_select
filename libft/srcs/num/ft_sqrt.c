@@ -6,11 +6,11 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 10:35:42 by sbelondr          #+#    #+#             */
-/*   Updated: 2018/12/07 13:47:17 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:43:01 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_sqrt(int nb, int sq)
+int	ft_sqrt(int nb, int sq)
 {
 	int	result;
 

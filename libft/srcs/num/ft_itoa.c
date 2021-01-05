@@ -6,31 +6,47 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:19:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/02/05 21:30:09 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:38:15 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_itoa(int n)
+static char	*ft_fuck_norm(int size, int negatif)
+{
+	char	*str;
+
+	str = (char*)malloc(sizeof(char) * size + 1);
+	if (!str)
+		return (0);
+	str[size] = '\0';
+	if (negatif)
+		str[0] = '-';
+	return (str);
+}
+
+char	*ft_itoa(int n)
 {
 	long	nbr;
 	int		size;
 	int		negatif;
 	char	*str;
 
-	negatif = (n < 0) ? 1 : 0;
-	nbr = (negatif) ? -(long)n : (long)n;
+	negatif = 0;
+	nbr = (long)n;
+	if (n < 0)
+	{
+		negatif = 1;
+		nbr *= -1;
+	}
 	size = ft_numlen(nbr) + negatif;
-	if (!(str = (char*)malloc(sizeof(char) * size + 1)))
+	str = ft_fuck_norm(size, negatif);
+	if (!str)
 		return (0);
-	str[size] = '\0';
 	while (size-- > 0)
 	{
 		str[size] = (nbr % 10) + '0';
 		nbr /= 10;
 	}
-	(negatif) ? str[0] = '-' : 0;
-	str[ft_strlen(str)] = '\0';
 	return (str);
 }

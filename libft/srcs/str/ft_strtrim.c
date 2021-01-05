@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 17:31:25 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/02/05 21:22:43 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:55:14 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_white_space(char c)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
 	int		cnt;
 	int		i;
@@ -37,12 +37,13 @@ char		*ft_strtrim(char const *s)
 	while (s[++cnt])
 		if (ft_white_space(s[cnt]) == 0)
 			last = cnt;
-	if (!(str = (char*)malloc(sizeof(char) * (cnt - (cnt - last - 1) - i + 1))))
+	str = (char*)malloc(sizeof(char) * (cnt - (cnt - last - 1) - i + 1));
+	if (!str)
 		return (0);
 	cnt = i;
 	i = 0;
 	while (s[cnt] && cnt <= last)
 		str[i++] = s[cnt++];
-	str[i] = '\0';
+	str[i] = 0;
 	return (str);
 }

@@ -6,11 +6,11 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 11:27:52 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/03/06 11:29:09 by sbelondr         ###   ########.fr       */
+/*   Updated: 2020/12/23 23:45:11 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_cnt_chr(char *str, char c)
+int	ft_cnt_chr(char *str, char c)
 {
 	int	i;
 	int	cnt;
