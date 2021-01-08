@@ -6,7 +6,7 @@
 #    By: samuel <samuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2021/01/05 13:45:38 by sbelondr         ###   ########.fr        #
+#    Updated: 2021/01/08 08:29:46 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ NAME = ft_select
 
 DEBUG = -g3
 
-TERMCAP = -lncurses -ltermcap
+TERMCAP = -ltermcap
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -63,7 +63,7 @@ $(DIRECTORIES):
 	@$(MKDIR) $(DIRECTORIES)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@gcc $(FLAGS) -o $(NAME) $(INCLUDE) $(DIROBJ)/*o $(LIB)
+	@gcc $(FLAGS) $(TERMCAP) -o $(NAME) $(INCLUDE) $(DIROBJ)/*o $(LIB)
 	@echo "ft_select: Ok"
 # @echo "$(BLUE)ft_select$(CLOSE): $(GREEN)Ok$(CLOSE)"
 
@@ -71,7 +71,7 @@ $(LINKLIB):
 	@make -C $(LIBFT)
 
 $(DIROBJ)/%.o: $(DIRSRC)/%.c
-	@gcc $(TERMCAP) -o $@ $(FLAGS) -c $<
+	@gcc -o $@ $(FLAGS) -c $<
 
 clean:
 	@make -C $(LIBFT) clean
