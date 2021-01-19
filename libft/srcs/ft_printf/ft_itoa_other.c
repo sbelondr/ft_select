@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:19:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 00:56:53 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:02:17 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_len_unsigned(unsigned long long n)
+int		ft_len_unsigned(unsigned long long n)
 {
 	int		cnt;
 
@@ -25,7 +25,7 @@ int	ft_len_unsigned(unsigned long long n)
 	return (cnt);
 }
 
-int	ft_len_long(long long n)
+int		ft_len_long(long long n)
 {
 	int		cnt;
 

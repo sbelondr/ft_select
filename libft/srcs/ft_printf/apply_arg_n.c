@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 16:02:59 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 08:11:55 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:14:07 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	options_n(t_printf **lst, int stock[3], int neg, int rd)
+void		options_n(t_printf **lst, int stock[3], int neg, int rd)
 {
 	char	c;
 	int		space;
@@ -53,7 +53,7 @@ static char	*ft_fuck_norm(int len[2], char *dst)
 	return (tmp);
 }
 
-char	*precision_n(char *str, t_printf **lst, int neg)
+char		*precision_n(char *str, t_printf **lst, int neg)
 {
 	int		len[2];
 	char	*tmp;
@@ -76,7 +76,7 @@ char	*precision_n(char *str, t_printf **lst, int neg)
 	return (tmp);
 }
 
-void	large_min_n(t_printf **lst, int len_str, int stock[3])
+void		large_min_n(t_printf **lst, int len_str, int stock[3])
 {
 	int		i;
 	int		len;
@@ -102,14 +102,7 @@ void	large_min_n(t_printf **lst, int len_str, int stock[3])
 	}
 }
 
-int	add_length(t_printf **lst, int neg, int stock[3], int len_str)
-{
-	if (neg || stock[0] || ft_strchr_exist((*lst)->options, ' '))
-		len_str += 1;
-	return (len_str);
-}
-
-void	apply_arg_n(char *str, t_printf **lst)
+void		apply_arg_n(char *str, t_printf **lst)
 {
 	char	*tmp;
 	int		len_str;
@@ -131,9 +124,7 @@ void	apply_arg_n(char *str, t_printf **lst)
 			&& (*lst)->precision == -2)
 		options_n(lst, stock, neg, 1);
 	large_min_n(lst, len_str, stock);
-	if (stock[1] == 0 && (ft_strchr_exist((*lst)->options, '0') == 0 \
-				|| (ft_strchr_exist((*lst)->options, '0') \
-					&& (*lst)->precision != -2)))
+	if (ft_condition_option(stock[1], lst))
 		options_n(&(*lst), stock, neg, 1);
 	if (stock[1] == 0)
 		ft_manage_display(lst, tmp);

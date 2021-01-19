@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 10:58:33 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 00:02:03 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:11:06 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	ft_split(const char *s, char c, char ***result)
 	(*result)[++nb_words] = 0;
 }
 
-char	**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
 	char	**result;
 	int		words;

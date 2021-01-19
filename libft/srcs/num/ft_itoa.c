@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:19:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/23 23:38:15 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:10:24 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*ft_fuck_norm(int size, int negatif)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	long	nbr;
 	int		size;

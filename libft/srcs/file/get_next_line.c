@@ -6,7 +6,7 @@
 /*   By: apruvost <apruvost@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 16:18:29 by apruvost          #+#    #+#             */
-/*   Updated: 2020/12/23 23:16:43 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 09:59:48 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	ft_fuck_norm(char **s, char **line, int fd, int ret)
 	return (ft_new_line(s, line, fd, ret));
 }
 
-int	get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static char	*s[255];
 	char		buf[BUF_S + 1];

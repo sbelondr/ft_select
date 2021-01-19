@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 18:25:21 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/05 14:04:43 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 09:40:29 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	free_select(t_select **s)
 /*
 ** free structure t_term_parameter with t_select struct
 */
+
 void	free_term(t_term_parameter **term)
 {
 	if (!term || !(*term))

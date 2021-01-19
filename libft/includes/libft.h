@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:42:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 15:18:00 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 09:54:05 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # include "ft_printf.h"
 
-typedef struct s_list
+typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
@@ -119,4 +119,4 @@ int					ft_lastchr(const char *s, int c);
 int					ft_division(int a, int b);
 int					ft_modulo(int a, int b);
 
-#	endif
+#endif

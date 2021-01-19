@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:42:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/23 22:55:15 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:17:28 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define CL_BLUE "\033[0;34m"
 # define CL_RESET "\033[0m"
 
-typedef struct s_printf
+typedef struct		s_printf
 {
 	va_list			ap;
 	char			*format;
@@ -120,13 +120,6 @@ void				ft_large_min(char (*dst)[BUF_S], t_printf *lst, \
 
 void				ft_apply_arg_float(char (*str)[BUF_S], t_printf **lst, \
 		int neg);
-
-/*
-** display.c
-*/
-
-//void				ft_display(char dst[BUF_S], t_printf **lst);
-//void				ft_display_color(char dst[BUF_S], t_printf **lst);
 
 /*
 ** tools.c
@@ -232,6 +225,14 @@ char				*precision_n(char *str, t_printf **lst, int neg);
 void				options_n(t_printf **lst, int stock[3], int neg, int rd);
 
 /*
+** apply_arg_n_bis.c
+*/
+
+int					ft_condition_option(int stock, t_printf **lst);
+int					add_length(t_printf **lst, int neg, int stock[3], \
+		int len_str);
+
+/*
 ** apply_arg_convert.c
 */
 
@@ -243,4 +244,4 @@ void				apply_hash_p(t_printf **lst);
 */
 void				ft_manage_display(t_printf **lst, char *str);
 
-#	endif
+#endif

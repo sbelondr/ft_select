@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 15:26:04 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 00:18:00 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:01:23 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_write_printf(t_printf **lst)
 	}
 }
 
-void	ft_manage_display(t_printf **lst, char *str)
+void		ft_manage_display(t_printf **lst, char *str)
 {
 	size_t	len;
 	int		index;

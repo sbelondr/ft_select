@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 17:31:25 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/23 23:55:14 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:11:41 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_white_space(char c)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s)
+char		*ft_strtrim(char const *s)
 {
 	int		cnt;
 	int		i;

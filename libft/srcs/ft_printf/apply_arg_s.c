@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 14:52:26 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 00:11:42 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:00:12 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	large_min_s(t_printf **lst, int len_str)
 			return ;
 		c = ' ';
 		if (ft_strchr_exist((*lst)->options, '0') \
-				 && ft_strchr_exist((*lst)->options, '-') == 0)
+				&& ft_strchr_exist((*lst)->options, '-') == 0)
 			c = '0';
 		while (++i < len)
 			tmp[i] = c;

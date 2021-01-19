@@ -6,7 +6,7 @@
 #    By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/21 14:49:02 by sbelondr          #+#    #+#              #
-#    Updated: 2020/12/24 15:18:21 by sbelondr         ###   ########.fr        #
+#    Updated: 2021/01/19 10:19:11 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,10 +49,10 @@ LDFLAGS =
 NAME = $(LIBDIR)libft.a
 
 FT_PRINTF = ft_printf.c	parser.c gest_flag.c arg_s.c arg_n.c arg_convert.c arg_float.c\
-	apply_arg.c	display.c tools.c tools_bis.c tools_float_bis.c ft_itoa_other.c\
+	apply_arg.c	tools.c tools_bis.c tools_float_bis.c ft_itoa_other.c\
 	ft_itoa_other_u_s.c ft_convert_base.c binary.c manage_float.c apply_arg_float.c\
 	tools_float.c multiplication_float.c add_float.c apply_arg_s.c apply_arg_n.c\
-	apply_arg_convert.c prepare.c manage_display.c
+	apply_arg_n_bis.c apply_arg_convert.c prepare.c manage_display.c
 
 SRCS_NAMES = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcmp.c ft_strncmp.c\
 	ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strstr.c\

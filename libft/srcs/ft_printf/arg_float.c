@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/28 09:29:49 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 08:35:08 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:01:51 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_convert_base_u64(t_u64 nb, int base, char (*str)[BUF_S])
+void		ft_convert_base_u64(t_u64 nb, int base, char (*str)[BUF_S])
 {
 	t_u64	result;
 	char	test[BUF_S];
@@ -36,7 +36,7 @@ void	ft_convert_base_u64(t_u64 nb, int base, char (*str)[BUF_S])
 	ft_cpy_str(str, test);
 }
 
-void	ft_float_to_bin(char (*str)[BUF_S], int d, t_u64 mantissa)
+void		ft_float_to_bin(char (*str)[BUF_S], int d, t_u64 mantissa)
 {
 	ft_bzero(str, BUF_S);
 	ft_convert_base_u64(mantissa, 2, str);
@@ -70,7 +70,7 @@ static int	ft_fuck_norm(t_u64 cp, t_u64 mantissa, char (*str)[BUF_S])
 ** d = nb de chiffre avant virgule (en binaire)
 */
 
-void	ft_float(double nb, char (*str)[BUF_S], int *neg)
+void		ft_float(double nb, char (*str)[BUF_S], int *neg)
 {
 	t_u64	cp;
 	t_u64	mantissa;
@@ -95,7 +95,7 @@ void	ft_float(double nb, char (*str)[BUF_S], int *neg)
 		*neg = 1;
 }
 
-void	ft_arg_float(t_printf **lst)
+void		ft_arg_float(t_printf **lst)
 {
 	char	str[BUF_S];
 	double	nb;

@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 12:03:55 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/23 23:42:39 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/19 10:09:59 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_fuck_norm_bis(int negatif, int nb)
 	return (nb);
 }
 
-int	ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	long	nb;
 	int		cpt;
