@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/05 14:11:34 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/29 08:32:35 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_term_parameter	*init_term(t_save_select *s)
 	term->fd_in = STDIN_FILENO;
 	if (!init_termcap(term))
 	{
-		reset_term(&term);
+		reset_term(&term, 1);
 		free(term);
 		term = NULL;
 		return (NULL);
@@ -106,7 +106,7 @@ t_term_parameter	*init_term(t_save_select *s)
 ** restore default terminal parameter and free term
 */
 
-int					reset_term(t_term_parameter **term)
+int					reset_term(t_term_parameter **term, int is_free)
 {
 	tputs(tgoto(tgetstr("ve", NULL), 0, 0), 1, ft_pchar);
 	if (tty_reset((*term)->base_term, (*term)->fd_in) == -1)
@@ -115,6 +115,7 @@ int					reset_term(t_term_parameter **term)
 		ft_dprintf(2, "Error: reset raw doesn't work!\n");
 		return (-1);
 	}
-	free_term(term);
+	if (is_free)
+		free_term(term);
 	return (0);
 }

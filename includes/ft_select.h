@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/05 13:52:56 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/29 08:31:48 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int					del_select(t_save_select *s);
 
 void				calc_term(t_term_parameter *term);
 t_term_parameter	*init_term(t_save_select *s);
-int					reset_term(t_term_parameter **term);
+int					reset_term(t_term_parameter **term, int is_free);
 
 /*
 ** tty.c

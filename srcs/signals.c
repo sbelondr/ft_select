@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/05 14:08:53 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/29 08:32:23 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	act_sig_stop(t_term_parameter **term)
 
 	def[0] = (*term)->base_term.c_cc[VSUSP];
 	def[1] = 0;
-	reset_term(term);
+	reset_term(term, 0);
 	(*term)->base_term.c_lflag |= (ICANON | ECHO);
 	signal(SIGTSTP, SIG_DFL);
-	ioctl(0, TIOCSTI, def);
+	ioctl(STDIN_FILENO, TIOCSTI, def);
 }
 
 /*
@@ -92,7 +92,7 @@ void	sig_action(int sig)
 		act_sig_cont(term);
 	else
 	{
-		reset_term(term);
+		reset_term(term, 1);
 		ft_dprintf(STDERR_FILENO, "Quit: %d\n", sig);
 		exit(sig);
 	}
