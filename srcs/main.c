@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/05 13:53:23 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/01/30 10:20:59 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int					main(int ac, char **av)
 	{
 		ft_putstr_fd("Too small\n",
 			STDERR_FILENO);
-		reset_term(&term);
+		reset_term(&term, 1);
 		return (-1);
 	}
 	signals_select();

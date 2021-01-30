@@ -6,28 +6,27 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:30 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/05/03 19:26:42 by samuel           ###   ########.fr       */
+/*   Updated: 2021/01/30 10:31:10 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
-
 #include <stdio.h>
 
 void	move_column(t_term_parameter *term, char **keys)
 {
 	if (term->coor.x >= (int)term->column_max)
 	{
-		++(term->coor.y);
+		++term->coor.y;
 		term->coor.x = 0;
 	}
 	else if (term->coor.x < 0)
 	{
 		if (term->coor.y > 0)
-			--(term->coor.y);
+			--term->coor.y;
 		else
 		{
-			(term->coor.x) = 0;
+			term->coor.x = 0;
 			return ;
 		}
 		term->coor.x = term->column_max - term->column;
