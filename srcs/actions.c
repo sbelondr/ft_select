@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/28 14:15:30 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/05 14:02:35 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/02/01 09:32:39 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void				act_end(char **keys, char buf[3], t_term_parameter *term)
 	free(keys);
 	if ((buf[0] == 13 || buf[0] == 10) && buf[1] == 0 && buf[2] == 0)
 		return_value(term);
-	reset_term(&term);
+	reset_term(&term, 1);
 	exit(0);
 }

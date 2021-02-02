@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/30 10:20:59 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/02/01 09:23:38 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,22 @@ t_term_parameter	**get_term_parameter(t_term_parameter **term)
 	return (t);
 }
 
+int					check_argv(char **av)
+{
+	int	i;
+	int	is_not_empty;
+
+	i = 0;
+	is_not_empty = 0;
+	while (av[++i])
+		if (!ft_strequ(av[i], ""))
+		{
+			is_not_empty = 1;
+			break ;
+		}
+	return (is_not_empty);
+}
+
 int					main(int ac, char **av)
 {
 	t_term_parameter	*term;
@@ -106,7 +122,11 @@ int					main(int ac, char **av)
 
 	if (ac < 2)
 		return (-1);
+	if (!check_argv(av))
+		exit(-1);
 	sv = create_lst_select(av + 1);
+	if (!sv)
+		exit(-1);
 	sv->current = sv->head;
 	term = init_term(sv);
 	if (!term)
