@@ -6,7 +6,7 @@
 #    By: samuel <samuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2021/02/01 09:31:46 by sbelondr         ###   ########.fr        #
+#    Updated: 2021/02/10 10:17:09 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC = actions.c\
 		signals.c\
 		term.c\
 		tools.c\
-		tty.c
+		tty.c\
+		manage_arg.c
 
 
 DIRSRC = srcs
@@ -57,12 +58,12 @@ GREEN = \033[32m
 BLUE = \033[36m
 CLOSE = \033[0m
 
-all: $(DIRECTORIES) $(LINKLIB) $(NAME)
+all: $(NAME)
 
 $(DIRECTORIES):
 	@$(MKDIR) $(DIRECTORIES)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(DIRECTORIES) $(LINKLIB) $(LIBFT) $(OBJ)
 	@gcc $(FLAGS) $(TERMCAP) -o $(NAME) $(INCLUDE) $(DIROBJ)/*o $(LIB)
 	@echo "ft_select: Ok"
 # @echo "$(BLUE)ft_select$(CLOSE): $(GREEN)Ok$(CLOSE)"

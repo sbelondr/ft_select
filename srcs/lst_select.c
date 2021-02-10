@@ -6,11 +6,16 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 12:17:26 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/02/01 09:29:39 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/02/10 10:13:17 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
+
+/*
+** init struct t_select
+** Return: struct t_select
+*/
 
 t_select		*init_select(char *str)
 {
@@ -27,6 +32,11 @@ t_select		*init_select(char *str)
 	return (ptr);
 }
 
+/*
+** init struct t_save_select
+** Return: struct t_save_select
+*/
+
 t_save_select	*init_save_select(t_select *s)
 {
 	t_save_select	*ptr;
@@ -40,6 +50,11 @@ t_save_select	*init_save_select(t_select *s)
 	ptr->size_lst = 0;
 	return (ptr);
 }
+
+/*
+** delete the current element of  the linked list
+** Return: 0 if it fails otherwise 1
+*/
 
 int				del_select(t_save_select *s)
 {
@@ -66,50 +81,51 @@ int				del_select(t_save_select *s)
 	return (next ? 1 : 0);
 }
 
-void			aply_select_save(t_save_select *sv, t_select *c)
+/*
+** move index current element and calc new size
+*/
+
+void			aply_select_save(t_save_select *sv, t_select *select)
 {
 	size_t			len;
 
-	sv->current = c;
+	sv->current = select;
 	sv->size_lst += 1;
-	len = ft_strlen(c->name);
+	len = ft_strlen(select->name);
 	if (sv->max_size < len)
 		sv->max_size = len;
 }
 
+/*
+** create new struct t_select and t_save_select to save argv data
+** Return: struct t_save_data
+*/
+
 t_save_select	*create_lst_select(char **src)
 {
-	t_select		*c;
+	t_select		*select;
 	t_save_select	*sv;
 	int				i;
 
 	i = -1;
-	c = NULL;
+	select = NULL;
 	sv = init_save_select(0);
 	while (src[++i])
 	{
 		if (!ft_strisascii(src[i]))
-		{
-			free(sv);
-			free_select(&c);
-			return (NULL);
-		}
+			return (clean_lst(sv, select));
 		if (!ft_strequ(src[i], ""))
 		{
-			if (!c)
+			if (!select)
 			{
-				c = init_select(src[i]);
-				sv->head = c;
+				select = init_select(src[i]);
+				sv->head = select;
 			}
 			else
-			{
-				c->next = init_select(src[i]);
-				c->next->prev = c;
-				c = c->next;
-			}
-			aply_select_save(sv, c);
+				select = edit_lst_select(select, src, i);
+			aply_select_save(sv, select);
 		}
 	}
-	sv->end = c;
+	sv->end = select;
 	return (sv);
 }

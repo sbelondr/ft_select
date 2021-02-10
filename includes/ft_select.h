@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/29 08:31:48 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/02/10 09:07:01 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int					ft_select(t_term_parameter *term);
 
 t_save_select		*create_lst_select(char **src);
 int					del_select(t_save_select *s);
+t_select			*init_select(char *str);
 
 /*
 ** term.c
@@ -149,5 +150,13 @@ void				act_top(t_term_parameter *term, char **keys);
 void				act_bottom(t_term_parameter *term, char **keys);
 void				act_right(t_term_parameter *term, char **keys);
 void				act_left(t_term_parameter *term, char **keys);
+
+/*
+** manage_arg.c
+*/
+
+int					check_argv(char **av);
+t_select			*edit_lst_select(t_select *select, char **src, int i);
+t_save_select		*clean_lst(t_save_select *sv, t_select *select);
 
 #	endif

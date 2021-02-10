@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/28 11:26:16 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/02/10 09:30:31 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	display_name_no_coor(t_save_select *sv, int current)
 		tputs(tgetstr("me", NULL), 1, ft_pchar);
 }
 
+/*
+** display linked list in the terminal
+*/
+
 void	fill_screen(t_term_parameter *term)
 {
 	int		i;
@@ -77,6 +81,10 @@ void	fill_screen(t_term_parameter *term)
 	}
 	term->select->current = term->select->head;
 }
+
+/*
+** recalculate the new coordinates and display
+*/
 
 void	act_after_del(t_term_parameter *term, t_select *current,
 	int next_exist, char **keys)
@@ -112,5 +120,7 @@ int		del_column(t_term_parameter *term, char **keys)
 	current = term->select->current;
 	if (current)
 		act_after_del(term, current, next_exist, keys);
-	return (current ? 1 : 0);
+	if (current)
+		return (1);
+	return (0);
 }
