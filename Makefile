@@ -35,7 +35,7 @@ NAME = ft_select
 
 DEBUG = -g3
 
-TERMCAP = -ltermcap
+TERMCAP = -lreadline -ltinfo
 
 FLAGS = -Wall -Werror -Wextra -g3
 
@@ -64,15 +64,15 @@ $(DIRECTORIES):
 	@$(MKDIR) $(DIRECTORIES)
 
 $(NAME): $(DIRECTORIES) $(LINKLIB) $(LIBFT) $(OBJ)
-	@gcc $(FLAGS) $(TERMCAP) -o $(NAME) $(INCLUDE) $(DIROBJ)/*o $(LIB)
-	@echo "ft_select: Ok"
+	@gcc -o $(NAME) $(INCLUDE) $(OBJ) $(LIB) $(TERMCAP)
+	#@echo "ft_select: Ok"
 # @echo "$(BLUE)ft_select$(CLOSE): $(GREEN)Ok$(CLOSE)"
 
 $(LINKLIB):
 	@make -C $(LIBFT)
 
 $(DIROBJ)/%.o: $(DIRSRC)/%.c
-	@gcc -o $@ $(FLAGS) -c $<
+	gcc $(TERMCAP) -o $@ -c $<
 
 clean:
 	@make -C $(LIBFT) clean

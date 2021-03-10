@@ -25,8 +25,9 @@
 ** if (tcsetattr(fd_in, TCSANOW, &term_raw) < 0)
 */
 
-int		ft_tty_raw(struct termios base_term, int fd_in)
+void	ft_tty_raw(struct termios *term, int fd_in)
 {
+	/*
 	struct termios	term_raw;
 
 	term_raw = base_term;
@@ -38,6 +39,13 @@ int		ft_tty_raw(struct termios base_term, int fd_in)
 	if (tcsetattr(fd_in, TCSAFLUSH, &term_raw) < 0)
 		return (-1);
 	return (0);
+	*/
+	term->c_lflag &= ~(ICANON);
+	term->c_lflag &= ~(ECHO);
+	term->c_cc[VMIN] = 1;
+	term->c_cc[VTIME] = 0;
+	if (tcsetattr(0, TCSADRAIN, term) == -1)
+		exit(EXIT_FAILURE);
 }
 
 /*

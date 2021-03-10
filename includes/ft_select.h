@@ -84,7 +84,7 @@ int					reset_term(t_term_parameter **term, int is_free);
 ** tty.c
 */
 
-int					ft_tty_raw(struct termios base_term, int fd_in);
+void					ft_tty_raw(struct termios *term, int fd_in);
 int					tty_reset(struct termios base_term, int fd_in);
 
 /*

@@ -12,6 +12,18 @@
 
 #include "../includes/ft_select.h"
 
+void		r_reset_term(t_term_parameter **term)
+{
+	struct termios		tm;
+
+	tm = (*term)->base_term;
+	if (tcsetattr(0, TCSADRAIN, &tm) == -1)
+		exit(EXIT_FAILURE);
+	ft_putstr_fd(tgetstr("cl", NULL), 0);
+	ft_putstr_fd(tgetstr("te", NULL), 0);
+	ft_putstr_fd(tgetstr("ve", NULL), 0);
+}
+
 /*
 ** render terminal before render the default parameter
 */
@@ -19,13 +31,17 @@
 void	act_sig_stop(t_term_parameter **term)
 {
 	int	def[2];
+	struct termios	t;
 
-	def[0] = (*term)->base_term.c_cc[VSUSP];
+	tcgetattr(0, &t);
+	def[0] = t.c_cc[VSUSP];
+	//def[0] = (*term)->base_term.c_cc[VSUSP];
 	def[1] = 0;
-	reset_term(term, 0);
-	(*term)->base_term.c_lflag |= (ICANON | ECHO);
+	r_reset_term(term);
+	//(*term)->base_term.c_lflag |= (ICANON | ECHO);
 	signal(SIGTSTP, SIG_DFL);
 	ioctl(STDIN_FILENO, TIOCSTI, def);
+	tcsetattr(0, TCSADRAIN, &t);
 }
 
 /*
@@ -86,7 +102,7 @@ void	sig_action(int sig)
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	if (sig == SIGWINCH)
 		select_resize(term);
-	else if (sig == SIGTSTP || sig == SIGSTOP)
+	else if (sig == SIGTSTP)// || sig == SIGSTOP)
 		act_sig_stop(term);
 	else if (sig == SIGCONT)
 		act_sig_cont(term);
