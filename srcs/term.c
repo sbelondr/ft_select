@@ -90,6 +90,8 @@ t_term_parameter	*init_term(t_save_select *s)
 	term->coor.y = 0;
 	term->coor.x = 0;
 	term->fd_in = STDIN_FILENO;
+	// if (!(term->base_term = (struct termios*)malloc(sizeof(struct termios) * 1)))
+	// 	exit(EXIT_FAILURE);
 	if (!init_termcap(term))
 	{
 		reset_term(&term, 1);
