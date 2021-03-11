@@ -6,7 +6,7 @@
 #    By: samuel <samuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2021/02/10 10:17:09 by sbelondr         ###   ########.fr        #
+#    Updated: 2021/03/11 08:57:42 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,12 @@ DEBUG = -g3
 
 TERMCAP = -lreadline -ltinfo
 
-FLAGS = -Wall -Werror -Wextra -g3
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+TERMCAP = -lncurses
+endif
+
+FLAGS = -Wall -Werror -Wextra
 
 INCLUDE =  -I./includes -I./libft/includes
 
@@ -64,15 +69,18 @@ $(DIRECTORIES):
 	@$(MKDIR) $(DIRECTORIES)
 
 $(NAME): $(DIRECTORIES) $(LINKLIB) $(LIBFT) $(OBJ)
-	@gcc -o $(NAME) $(INCLUDE) $(OBJ) $(LIB) $(TERMCAP)
-	#@echo "ft_select: Ok"
-# @echo "$(BLUE)ft_select$(CLOSE): $(GREEN)Ok$(CLOSE)"
+	@gcc $(FLAGS) -o $(NAME) $(INCLUDE) $(OBJ) $(LIB) $(TERMCAP)
+	@echo "$(BLUE)ft_select$(CLOSE): $(GREEN)Ok$(CLOSE)"
 
 $(LINKLIB):
 	@make -C $(LIBFT)
 
 $(DIROBJ)/%.o: $(DIRSRC)/%.c
-	gcc $(TERMCAP) -o $@ -c $<
+ifeq ($(UNAME_S),Darwin)
+	@gcc $(FLAGS) -o $@ -c $<
+else
+	@gcc $(FLAGS) $(TERMCAP) -o $@ -c $<
+endif
 
 clean:
 	@make -C $(LIBFT) clean
@@ -82,5 +90,8 @@ fclean: clean
 	@make -C $(LIBFT) fclean
 	@rm -rf $(NAME) $(NAME).dSYM
 
-re: fclean all
+clean_select:
+	@rm -rf $(DIROBJ)
+	@rm -rf $(NAME) $(NAME).dSYM
 
+re: fclean all

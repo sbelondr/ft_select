@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/29 08:32:35 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/11 09:01:06 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ t_term_parameter	*init_term(t_save_select *s)
 	term->coor.y = 0;
 	term->coor.x = 0;
 	term->fd_in = STDIN_FILENO;
-	// if (!(term->base_term = (struct termios*)malloc(sizeof(struct termios) * 1)))
-	// 	exit(EXIT_FAILURE);
 	if (!init_termcap(term))
 	{
 		reset_term(&term, 1);

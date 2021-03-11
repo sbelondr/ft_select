@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/29 08:32:23 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/11 09:00:36 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
-static void		ft_reset_term(t_term_parameter **term)
+static void	ft_reset_term(t_term_parameter **term)
 {
 	struct termios		base_term;
 
@@ -30,7 +30,7 @@ static void		ft_reset_term(t_term_parameter **term)
 
 static void	act_sig_stop(t_term_parameter **term)
 {
-	int	def[2];
+	int				def[2];
 	struct termios	base_term;
 
 	tcgetattr(0, &base_term);
@@ -48,7 +48,7 @@ static void	act_sig_stop(t_term_parameter **term)
 ** recalc column and line when terminal is resize, project start, ...
 */
 
-void	select_resize(t_term_parameter **term)
+void		select_resize(t_term_parameter **term)
 {
 	calc_term(*term);
 	if (!verif_place(*term))
@@ -94,7 +94,7 @@ static void	act_sig_cont(t_term_parameter **term)
 ** other --> clear malloc, reset tty  and exit > use a sig for exit argument ?
 */
 
-void	sig_action(int sig)
+void		sig_action(int sig)
 {
 	t_term_parameter	**term;
 
@@ -102,7 +102,7 @@ void	sig_action(int sig)
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	if (sig == SIGWINCH)
 		select_resize(term);
-	else if (sig == SIGTSTP  || sig == SIGSTOP)
+	else if (sig == SIGTSTP || sig == SIGSTOP)
 		act_sig_stop(term);
 	else if (sig == SIGCONT)
 		act_sig_cont(term);
@@ -110,8 +110,6 @@ void	sig_action(int sig)
 	{
 		reset_term(term, 1);
 		ft_dprintf(STDERR_FILENO, "Quit: %d\n", sig);
-		// while (1)
-		// 	;
 		exit(sig);
 	}
 }
@@ -120,7 +118,7 @@ void	sig_action(int sig)
 ** manage all signals (1 to 31)
 */
 
-void	signals_select(void)
+void		signals_select(void)
 {
 	int	sig;
 
