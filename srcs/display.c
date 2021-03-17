@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/02/10 09:30:31 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/17 10:44:33 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ void	fill_screen(t_term_parameter *term)
 
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	current_column = 0;
+	while (!verif_place(term))
+	{
+		tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
+		tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+		ft_putstr_fd("Too small\n", STDOUT_FILENO);
+	}
 	while (term->select->current)
 	{
 		current_column += term->column;
