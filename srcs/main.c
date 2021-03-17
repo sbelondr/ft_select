@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/02/10 09:04:57 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/17 09:52:40 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int					main(int ac, char **av)
 
 	if (ac < 2)
 		return (-1);
-	if (!check_argv(av))
+	if (check_argv(av))
 		exit(-1);
 	sv = create_lst_select(av + 1);
 	if (!sv)
