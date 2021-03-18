@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/02/10 09:07:01 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/18 13:42:28 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_term_parameter
 
 t_term_parameter	**get_term_parameter(t_term_parameter **term);
 int					ft_select(t_term_parameter *term);
+void				manage_screen_small_start(t_term_parameter *term);
 
 /*
 ** lst_select.c

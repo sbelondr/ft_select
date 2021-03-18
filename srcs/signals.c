@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/11 09:00:36 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/18 13:46:34 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,15 @@ void		select_resize(t_term_parameter **term)
 {
 	calc_term(*term);
 	if (!verif_place(*term))
-	{
-		tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
-		tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
-		ft_putstr_fd("Too small\n",
-			STDOUT_FILENO);
-	}
-	else
-	{
-		(*term)->coor.x = 0;
-		(*term)->coor.y = 0;
-		(*term)->select->current = (*term)->select->head;
-		tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
-		fill_screen(*term);
-		tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
-		display_name((*term)->select, 0, 0, 1);
-	}
+		manage_screen_small_start(*term);
+	calc_term(*term);
+	(*term)->coor.x = 0;
+	(*term)->coor.y = 0;
+	(*term)->select->current = (*term)->select->head;
+	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+	fill_screen(*term);
+	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+	display_name((*term)->select, 0, 0, 1);
 }
 
 /*

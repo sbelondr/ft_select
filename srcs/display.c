@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/17 10:44:33 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/18 13:45:11 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,19 @@ void	display_name_no_coor(t_save_select *sv, int current)
 		tputs(tgetstr("me", NULL), 1, ft_pchar);
 }
 
+void	manage_screen_small_start(t_term_parameter *term)
+{
+	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
+	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+	if (!verif_place(term))
+	{
+		ft_putstr_fd("Too small\n",
+			STDERR_FILENO);
+		while (!verif_place(term))
+			calc_term(term);
+	}
+}
+
 /*
 ** display linked list in the terminal
 */
@@ -60,14 +73,8 @@ void	fill_screen(t_term_parameter *term)
 	size_t	sz_name;
 	char	blank[term->column];
 
-	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	current_column = 0;
-	while (!verif_place(term))
-	{
-		tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
-		tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
-		ft_putstr_fd("Too small\n", STDOUT_FILENO);
-	}
+	manage_screen_small_start(term);
 	while (term->select->current)
 	{
 		current_column += term->column;

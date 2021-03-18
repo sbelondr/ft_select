@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/17 10:37:30 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/18 13:32:38 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,6 @@ int					main(int ac, char **av)
 	if (!term)
 		exit(-1);
 	get_term_parameter(&term);
-	/*if (!verif_place(term))
-	{
-		ft_putstr_fd("Too small\n",
-			STDERR_FILENO);
-		reset_term(&term, 1);
-		return (-1);
-	}*/
 	signals_select();
 	ft_select(term);
 	return (0);
