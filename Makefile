@@ -24,7 +24,6 @@ SRC = actions.c\
 		tty.c\
 		manage_arg.c
 
-
 DIRSRC = srcs
 
 DIROBJ = objs
@@ -42,7 +41,7 @@ ifeq ($(UNAME_S),Darwin)
 TERMCAP = -lncurses
 endif
 
-FLAGS = -Wall -Werror -Wextra -g3
+FLAGS = -Wall -Werror -Wextra
 
 INCLUDE =  -I./includes -I./libft/includes
 
