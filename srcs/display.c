@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/18 13:45:11 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/03/18 14:35:47 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@
 ** ue -> stop underline
 ** cm -> cursor move column left to right
 */
+
+void test_maybe(char *str, int affcnt, int i, int j)
+{
+	char	*val_goto;
+	char	*val_str;
+
+	val_str = tgetstr(str, NULL);
+	val_goto = tgoto(val_str, j, i);
+	tputs(val_goto, affcnt, ft_pchar);
+	// free(val_str);
+	// free(val_goto);
+	val_goto = NULL;
+	val_str = NULL;
+}
 
 void	display_name(t_save_select *sv, int i, int j, int current)
 {
@@ -51,8 +65,10 @@ void	display_name_no_coor(t_save_select *sv, int current)
 
 void	manage_screen_small_start(t_term_parameter *term)
 {
-	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
-	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+	test_maybe("cl", 1, 0, 0);
+	test_maybe("cm", 1, 0, 0);
+	// tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
+	// tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
 	if (!verif_place(term))
 	{
 		ft_putstr_fd("Too small\n",
