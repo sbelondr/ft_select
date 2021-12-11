@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 17:43:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 16:25:27 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:59:53 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	(**init_array(void))(t_printf **)
 {
-	void	(**conv)(t_printf**);
+	void	(**conv)(t_printf **);
 	int		i;
 
 	conv = ft_memalloc(255 * sizeof(void *));

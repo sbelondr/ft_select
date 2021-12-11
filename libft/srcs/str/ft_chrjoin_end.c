@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 23:16:32 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/23 23:44:17 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:53:01 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_chrjoin_end(char *str, char c)
 	if (!str || !c)
 		return (NULL);
 	len = ft_strlen(str) + 1;
-	dst = (char*)malloc(sizeof(char) * len + 1);
+	dst = (char *)malloc(sizeof(char) * len + 1);
 	i = -1;
 	while (str[++i])
 		dst[i] = str[i];

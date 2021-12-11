@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:42:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:17:28 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:03:35 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define CL_BLUE "\033[0;34m"
 # define CL_RESET "\033[0m"
 
-typedef struct		s_printf
+typedef struct s_printf
 {
 	va_list			ap;
 	char			*format;

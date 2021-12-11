@@ -6,13 +6,11 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 16:14:08 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:05:18 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
-
-#include <stdio.h>
 
 /*
 ** mr -> highlight
@@ -21,18 +19,6 @@
 ** ue -> stop underline
 ** cm -> cursor move column left to right
 */
-
-void	send_tputs(char *str, int affcnt, int i, int j)
-{
-	char	*val_goto;
-	char	*val_str;
-
-	val_str = tgetstr(str, NULL);
-	val_goto = tgoto(val_str, j, i);
-	tputs(val_goto, affcnt, ft_pchar);
-	val_goto = NULL;
-	val_str = NULL;
-}
 
 void	display_name(t_save_select *sv, int i, int j, int current)
 {
@@ -61,19 +47,6 @@ void	display_name_no_coor(t_save_select *sv, int current)
 		tputs(tgetstr("me", NULL), 1, ft_pchar);
 }
 
-void	manage_screen_small_start(t_term_parameter *term)
-{
-	send_tputs("cl", 1, 0, 0);
-	send_tputs("cm", 1, 0, 0);
-	if (!verif_place(term))
-	{
-		ft_putstr_fd("Too small\n",
-			STDERR_FILENO);
-		while (!verif_place(term))
-			calc_term(term);
-	}
-}
-
 /*
 ** display linked list in the terminal
 */
@@ -83,7 +56,7 @@ void	fill_screen(t_term_parameter *term)
 	int		i;
 	size_t	current_column;
 	size_t	sz_name;
-	char	blank[1024];//term->column];
+	char	blank[2048];
 
 	current_column = 0;
 	manage_screen_small_start(term);

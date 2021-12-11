@@ -6,29 +6,29 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 15:33:06 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:02:41 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef FT_SELECT_H
-#	define FT_SELECT_H
+#ifndef FT_SELECT_H
+# define FT_SELECT_H
 
-#include "../libft/includes/libft.h"
-#include <termios.h>
-#include <unistd.h>
-#include <term.h>
-#include <sys/ioctl.h>
-#include <signal.h>
-#include <termcap.h>
-#include <termios.h>
+# include "../libft/includes/libft.h"
+# include <termios.h>
+# include <unistd.h>
+# include <term.h>
+# include <sys/ioctl.h>
+# include <signal.h>
+# include <termcap.h>
+# include <termios.h>
 
-typedef struct		s_pos
+typedef struct s_pos
 {
 	int		x;
 	int		y;
 }					t_pos;
 
-typedef struct		s_select
+typedef struct s_select
 {
 	char			*name;
 	int				is_select;
@@ -37,7 +37,7 @@ typedef struct		s_select
 	struct s_select	*prev;
 }					t_select;
 
-typedef struct		s_save_select
+typedef struct s_save_select
 {
 	t_select	*head;
 	t_select	*current;
@@ -46,7 +46,7 @@ typedef struct		s_save_select
 	size_t		size_lst;
 }					t_save_select;
 
-typedef struct		s_term_parameter
+typedef struct s_term_parameter
 {
 	size_t			column;
 	size_t			nb_column;
@@ -139,10 +139,10 @@ void				return_value(t_term_parameter *term);
 ** actions.c
 */
 
-void				act_space(t_term_parameter *term,
-	t_pos coor, char **keys);
-void				act_end(char **keys, char buf[3],
-	t_term_parameter *term);
+void				act_space(t_term_parameter *term, \
+		t_pos coor, char **keys);
+void				act_end(char **keys, char buf[3], \
+		t_term_parameter *term);
 
 /*
 ** actions_move.c
