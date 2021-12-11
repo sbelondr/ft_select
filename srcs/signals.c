@@ -33,6 +33,7 @@ static void	act_sig_stop(t_term_parameter **term)
 	int				def[2];
 	struct termios	base_term;
 
+	tputs(tgoto(tgetstr("ve", NULL), 0, 0), 1, ft_pchar);
 	tcgetattr(0, &base_term);
 	def[0] = base_term.c_cc[VSUSP];
 	def[1] = 0;
