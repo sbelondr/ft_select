@@ -6,19 +6,19 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/28 14:13:08 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/04/28 14:13:11 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:13:04 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
-int		ft_pchar(int c)
+int	ft_pchar(int c)
 {
 	write(2, &c, 1);
 	return (c);
 }
 
-int		verif_place(t_term_parameter *term)
+int	verif_place(t_term_parameter *term)
 {
 	size_t	size_max;
 

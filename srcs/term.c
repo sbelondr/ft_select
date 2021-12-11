@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 15:33:49 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:12:44 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** init termcap
 */
 
-int					init_termcap(t_term_parameter *term)
+int	init_termcap(t_term_parameter *term)
 {
 	char	*env;
 
@@ -36,7 +36,7 @@ int					init_termcap(t_term_parameter *term)
 	return (1);
 }
 
-size_t				ft_size_lst_select(t_save_select *sv)
+size_t	ft_size_lst_select(t_save_select *sv)
 {
 	t_select	*s;
 	size_t		sz;
@@ -55,7 +55,7 @@ size_t				ft_size_lst_select(t_save_select *sv)
 ** calc column and line size
 */
 
-void				calc_term(t_term_parameter *term)
+void	calc_term(t_term_parameter *term)
 {
 	size_t			size_lst;
 	struct winsize	sz;
@@ -84,7 +84,8 @@ t_term_parameter	*init_term(t_save_select *s)
 {
 	t_term_parameter	*term;
 
-	if (!(term = (t_term_parameter*)malloc(sizeof(t_term_parameter) * 1)))
+	term = (t_term_parameter *)malloc(sizeof(t_term_parameter) * 1);
+	if (!term)
 		return (NULL);
 	term->select = s;
 	term->coor.y = 0;
@@ -107,7 +108,7 @@ t_term_parameter	*init_term(t_save_select *s)
 ** restore default terminal parameter and free term
 */
 
-int					reset_term(t_term_parameter **term, int is_free)
+int	reset_term(t_term_parameter **term, int is_free)
 {
 	tputs(tgoto(tgetstr("ve", NULL), 0, 0), 1, ft_pchar);
 	if (tty_reset((*term)->base_term, (*term)->fd_in) == -1)

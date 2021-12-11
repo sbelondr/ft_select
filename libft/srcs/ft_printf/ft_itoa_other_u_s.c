@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:19:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 00:39:40 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:28:05 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_itoa_sc(signed char c)
 	if (negatif)
 		nbr *= -1;
 	size = ft_numlen(nbr) + negatif;
-	str = (char*)malloc(sizeof(char) * size + 1);
+	str = (char *)malloc(sizeof(char) * size + 1);
 	if (!str)
 		return (0);
 	str[size] = '\0';
@@ -49,7 +49,7 @@ char	*ft_itoa_ul(unsigned long long n)
 
 	nbr = (unsigned long long)n;
 	size = ft_len_unsigned(nbr);
-	str = (char*)malloc(sizeof(char) * size + 1);
+	str = (char *)malloc(sizeof(char) * size + 1);
 	if (!str)
 		return (0);
 	str[size] = '\0';
@@ -70,7 +70,7 @@ char	*ft_itoa_us(unsigned short n)
 
 	nbr = (int)n;
 	size = ft_numlen(nbr);
-	str = (char*)malloc(sizeof(char) * size + 1);
+	str = (char *)malloc(sizeof(char) * size + 1);
 	if (!str)
 		return (0);
 	str[size] = '\0';

@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/28 14:15:40 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/06/08 16:47:46 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:56:05 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
-void				act_top(t_term_parameter *term, char **keys)
+void	act_top(t_term_parameter *term, char **keys)
 {
 	display_name(term->select, term->coor.y, term->coor.x, 0);
 	term->coor.y += 1;
@@ -20,7 +20,7 @@ void				act_top(t_term_parameter *term, char **keys)
 	display_name(term->select, term->coor.y, term->coor.x, 1);
 }
 
-void				act_bottom(t_term_parameter *term, char **keys)
+void	act_bottom(t_term_parameter *term, char **keys)
 {
 	display_name(term->select, term->coor.y, term->coor.x, 0);
 	term->coor.y -= 1;
@@ -28,7 +28,7 @@ void				act_bottom(t_term_parameter *term, char **keys)
 	display_name(term->select, term->coor.y, term->coor.x, 1);
 }
 
-void				act_right(t_term_parameter *term, char **keys)
+void	act_right(t_term_parameter *term, char **keys)
 {
 	if (term->select->current->next)
 	{
@@ -40,7 +40,7 @@ void				act_right(t_term_parameter *term, char **keys)
 	}
 }
 
-void				act_left(t_term_parameter *term, char **keys)
+void	act_left(t_term_parameter *term, char **keys)
 {
 	if (term->select->current->prev)
 	{

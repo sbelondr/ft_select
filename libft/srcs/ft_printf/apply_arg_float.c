@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 18:11:05 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:04:37 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:22:42 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	large_min_float(t_printf **lst, int len_str, int stock[3])
 	len = (*lst)->large_min - len_str;
 	if (len > 0)
 	{
-		tmp = (char*)malloc(sizeof(char) * len);
+		tmp = (char *)malloc(sizeof(char) * len);
 		if (!tmp)
 			return ;
 		c = ' ';
@@ -37,7 +37,7 @@ void	large_min_float(t_printf **lst, int len_str, int stock[3])
 	}
 }
 
-int		verif_float_zero(t_printf *lst)
+int	verif_float_zero(t_printf *lst)
 {
 	if (ft_strchr_exist(lst->options, '0'))
 		return (1);

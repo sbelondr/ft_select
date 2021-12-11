@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/10 14:37:24 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/23 23:02:43 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:32:21 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_arraydelline(char ***src, int line)
 	if ((!*src) || line < 0 || (!(*src)[line]))
 		return ;
 	len = ft_arraylen(*src);
-	dst = (char**)malloc(sizeof(char*) * len);
+	dst = (char **)malloc(sizeof(char *) * len);
 	if (!dst)
 		return ;
 	i = -1;

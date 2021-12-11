@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 17:39:03 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:04:20 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:27:40 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_blank_list(t_printf **lst)
 {
-	if (!((*lst) = (t_printf*)malloc(sizeof(t_printf) * 1)))
+	(*lst) = (t_printf *)malloc(sizeof(t_printf) * 1);
+	if (!(*lst))
 		return ;
 	ft_bzero(&(*lst)->options, 50);
 	ft_bzero(&(*lst)->conversion, 3);
@@ -44,14 +45,14 @@ char	*insert_format(const char *e)
 	char	*format;
 
 	i = -1;
-	format = (char*)malloc(sizeof(char) * ft_strlen(e) + 1);
+	format = (char *)malloc(sizeof(char) * ft_strlen(e) + 1);
 	while (e[++i])
 		format[i] = e[i];
 	format[i] = '\0';
 	return (format);
 }
 
-int		ft_prepare(const char *format, t_printf **lst)
+int	ft_prepare(const char *format, t_printf **lst)
 {
 	if (!format)
 		return (0);

@@ -6,18 +6,18 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/22 17:43:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:02:33 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:25:27 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	(**init_array(void))(t_printf**)
+static void	(**init_array(void))(t_printf **)
 {
 	void	(**conv)(t_printf**);
 	int		i;
 
-	conv = ft_memalloc(255 * sizeof(void*));
+	conv = ft_memalloc(255 * sizeof(void *));
 	i = -1;
 	while (++i <= 254)
 		conv[i] = 0;
@@ -34,7 +34,7 @@ static void	(**init_array(void))(t_printf**)
 	return (conv);
 }
 
-void		ft_gest_flag(t_printf **lst)
+void	ft_gest_flag(t_printf **lst)
 {
 	void	(**conv)(t_printf**);
 	int		flag;

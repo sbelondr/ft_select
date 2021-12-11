@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 15:16:54 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:14:08 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** cm -> cursor move column left to right
 */
 
-void send_tputs(char *str, int affcnt, int i, int j)
+void	send_tputs(char *str, int affcnt, int i, int j)
 {
 	char	*val_goto;
 	char	*val_str;
@@ -65,8 +65,6 @@ void	manage_screen_small_start(t_term_parameter *term)
 {
 	send_tputs("cl", 1, 0, 0);
 	send_tputs("cm", 1, 0, 0);
-	// tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
-	// tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
 	if (!verif_place(term))
 	{
 		ft_putstr_fd("Too small\n",
@@ -85,7 +83,7 @@ void	fill_screen(t_term_parameter *term)
 	int		i;
 	size_t	current_column;
 	size_t	sz_name;
-	char	blank[term->column];
+	char	blank[1024];//term->column];
 
 	current_column = 0;
 	manage_screen_small_start(term);
@@ -134,7 +132,7 @@ void	act_after_del(t_term_parameter *term, t_select *current,
 	tputs(tgoto(keys[0], term->coor.x, term->coor.y), 1, ft_pchar);
 }
 
-int		del_column(t_term_parameter *term, char **keys)
+int	del_column(t_term_parameter *term, char **keys)
 {
 	int			next_exist;
 	int			index;

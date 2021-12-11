@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:30 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/30 10:31:10 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:08:55 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ void	move_line_up(t_term_parameter *term, int place)
 	int	value_column;
 	int	calc;
 
-	value_column = (term->coor.x) > 0 ?
-		ft_division(term->coor.x, (int)term->column) : 0;
+	if (term->coor.x > 0)
+		value_column = ft_division(term->coor.x, (int)term->column);
+	else
+		value_column = 0;
 	term->coor.y = term->line_max - 1;
 	++value_column;
 	if (value_column > ((int)term->nb_column - place))

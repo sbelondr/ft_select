@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 11:37:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:00:54 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:24:59 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		large_min_convert(t_printf **lst, int len_str, int stock[3])
+void	large_min_convert(t_printf **lst, int len_str, int stock[3])
 {
 	int		i;
 	int		len;
@@ -23,7 +23,7 @@ void		large_min_convert(t_printf **lst, int len_str, int stock[3])
 	if (len > 0)
 	{
 		i = -1;
-		tmp = (char*)malloc(sizeof(char) * len + 1);
+		tmp = (char *)malloc(sizeof(char) * len + 1);
 		if (!tmp)
 			return ;
 		c = ' ';
@@ -38,7 +38,7 @@ void		large_min_convert(t_printf **lst, int len_str, int stock[3])
 	}
 }
 
-void		apply_hash(t_printf **lst)
+void	apply_hash(t_printf **lst)
 {
 	if (ft_strchr_exist((*lst)->conversion, 'p'))
 		apply_hash_p(&(*lst));
@@ -60,7 +60,7 @@ void		apply_hash(t_printf **lst)
 	}
 }
 
-void		apply_hash_p(t_printf **lst)
+void	apply_hash_p(t_printf **lst)
 {
 	(*lst)->len += 2;
 	ft_putstr("0x");
@@ -76,7 +76,7 @@ static void	ft_fuck_norm(t_printf **lst)
 		(*lst)->precision -= 1;
 }
 
-void		apply_arg_convert(char *str, t_printf **lst)
+void	apply_arg_convert(char *str, t_printf **lst)
 {
 	char	*tmp;
 	int		len_str;

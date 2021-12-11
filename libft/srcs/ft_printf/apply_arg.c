@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 08:49:06 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 09:59:10 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:20:46 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_fuck_norm(char (*dst)[BUF_S], t_printf *lst)
 	return (0);
 }
 
-void		ft_large_min(char (*dst)[BUF_S], t_printf *lst, int stock[3])
+void	ft_large_min(char (*dst)[BUF_S], t_printf *lst, int stock[3])
 {
 	char	c;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 18:25:21 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 09:40:29 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:59:45 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_select(t_select **s)
 {
-	t_select *next;
+	t_select	*next;
 
 	while (*s)
 	{

@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 12:59:28 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/24 01:03:38 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:22:06 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*apply_round_i(char dst[BUF_S], int *i, int precision)
 
 	j = 0;
 	cnt = -1;
-	tmp = (char*)malloc(sizeof(char) * *i + precision + 1);
+	tmp = (char *)malloc(sizeof(char) * *i + precision + 1);
 	if (!tmp)
 		return (NULL);
 	while (++cnt < *i)
@@ -52,7 +52,7 @@ char	*apply_round_ni(char dst[BUF_S])
 	char	*tmp;
 	int		cnt;
 
-	tmp = (char*)malloc(sizeof(char) * ft_strlen(dst) + 1);
+	tmp = (char *)malloc(sizeof(char) * ft_strlen(dst) + 1);
 	if (!tmp)
 		return (NULL);
 	cnt = -1;

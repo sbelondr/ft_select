@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:19:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:10:24 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:17:43 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	*ft_fuck_norm(int size, int negatif)
 {
 	char	*str;
 
-	str = (char*)malloc(sizeof(char) * size + 1);
+	str = (char *)malloc(sizeof(char) * size + 1);
 	if (!str)
 		return (0);
 	str[size] = '\0';
@@ -25,7 +25,7 @@ static char	*ft_fuck_norm(int size, int negatif)
 	return (str);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	long	nbr;
 	int		size;

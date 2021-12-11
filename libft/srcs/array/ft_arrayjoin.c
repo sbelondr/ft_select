@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 10:01:47 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/23 23:02:00 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:30:50 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**ft_arrayjoin(char **src, char *str)
 	if (!(*src))
 		return (NULL);
 	len = ft_arraylen(src);
-	dst = (char**)malloc(sizeof(char*) * (len + 2));
+	dst = (char **)malloc(sizeof(char *) * (len + 2));
 	if (!dst)
 		return (NULL);
 	len = -1;

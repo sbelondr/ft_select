@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 17:33:50 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:03:41 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:29:35 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_precision_float(char (*dst)[BUF_S], t_printf **lst)
+char	*ft_precision_float(char (*dst)[BUF_S], t_printf **lst)
 {
 	char	*tmp;
 
@@ -22,7 +22,7 @@ char		*ft_precision_float(char (*dst)[BUF_S], t_printf **lst)
 	return (tmp);
 }
 
-int			check_p(char dst[BUF_S], int precision, int i)
+int	check_p(char dst[BUF_S], int precision, int i)
 {
 	int	stock;
 
@@ -44,7 +44,7 @@ static int	ft_fuck_norm(char (*dst)[BUF_S], int i, int *stock)
 	return (i);
 }
 
-char		*ft_round_precision(char (*dst)[BUF_S], int precision)
+char	*ft_round_precision(char (*dst)[BUF_S], int precision)
 {
 	int		i;
 	int		j;
@@ -71,7 +71,7 @@ char		*ft_round_precision(char (*dst)[BUF_S], int precision)
 	return (tmp);
 }
 
-int			len_float(t_printf **lst, int stock[3], int neg)
+int	len_float(t_printf **lst, int stock[3], int neg)
 {
 	int	len;
 

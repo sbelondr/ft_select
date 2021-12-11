@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 20:45:34 by sbelondr          #+#    #+#             */
-/*   Updated: 2019/02/05 21:24:44 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:30:01 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putendl(char const *s)
 {
-	ft_putstr((char*)s);
+	ft_putstr((char *)s);
 	ft_putchar('\n');
 }

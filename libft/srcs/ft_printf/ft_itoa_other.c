@@ -6,13 +6,13 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:19:56 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:02:17 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:21:38 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_len_unsigned(unsigned long long n)
+int	ft_len_unsigned(unsigned long long n)
 {
 	int		cnt;
 
@@ -25,7 +25,7 @@ int		ft_len_unsigned(unsigned long long n)
 	return (cnt);
 }
 
-int		ft_len_long(long long n)
+int	ft_len_long(long long n)
 {
 	int		cnt;
 
@@ -52,7 +52,7 @@ char	*ft_itoa_long(long long n)
 	if (negatif)
 		nbr *= -1;
 	size = ft_len_long(nbr) + negatif;
-	str = (char*)malloc(sizeof(char) * size + 1);
+	str = (char *)malloc(sizeof(char) * size + 1);
 	if (!str)
 		return (0);
 	str[size] = '\0';
@@ -81,7 +81,7 @@ char	*ft_itoa_s(short n)
 	if (negatif)
 		nbr *= -1;
 	size = ft_numlen(nbr) + negatif;
-	str = (char*)malloc(sizeof(char) * size + 1);
+	str = (char *)malloc(sizeof(char) * size + 1);
 	if (!str)
 		return (0);
 	str[size] = '\0';

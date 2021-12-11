@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/18 13:32:38 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:05:58 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 ** ts -> move cursor to column
 */
 
-static char			**init_keys_select(void)
+static char	**init_keys_select(void)
 {
-	char **keys;
+	char	**keys;
 
-	if (!(keys = (char **)malloc(sizeof(char *) * 9)))
+	keys = (char **)malloc(sizeof(char *) * 9);
+	if (!keys)
 		return (NULL);
 	keys[0] = tgetstr("cm", NULL);
 	keys[1] = tgetstr("cl", NULL);
@@ -48,9 +49,9 @@ static char			**init_keys_select(void)
 ** 68 -> left key
 */
 
-void				launch_select(t_term_parameter *term, char **keys)
+void	launch_select(t_term_parameter *term, char **keys)
 {
-	char buf[3];
+	char	buf[3];
 
 	ft_bzero(buf, 3);
 	while (read(0, buf, 3))
@@ -77,9 +78,9 @@ void				launch_select(t_term_parameter *term, char **keys)
 	act_end(keys, buf, term);
 }
 
-int					ft_select(t_term_parameter *term)
+int	ft_select(t_term_parameter *term)
 {
-	char **keys;
+	char	**keys;
 
 	keys = init_keys_select();
 	term->select->current = term->select->head;
@@ -92,14 +93,14 @@ int					ft_select(t_term_parameter *term)
 
 t_term_parameter	**get_term_parameter(t_term_parameter **term)
 {
-	static t_term_parameter **t;
+	static t_term_parameter	**t;
 
 	if ((!t) && term)
 		t = term;
 	return (t);
 }
 
-int					main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_term_parameter	*term;
 	t_save_select		*sv;

@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 14:52:26 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/01/19 10:00:12 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:18:13 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	large_min_s(t_printf **lst, int len_str)
 	if (len > 0)
 	{
 		i = -1;
-		tmp = (char*)malloc(sizeof(char) * len + 1);
+		tmp = (char *)malloc(sizeof(char) * len + 1);
 		if (!tmp)
 			return ;
 		c = ' ';
@@ -74,7 +74,7 @@ void	apply_arg_c(char c, t_printf **lst)
 	int		stock[3];
 	int		len_str;
 
-	str = (char*)malloc(sizeof(char) + 2);
+	str = (char *)malloc(sizeof(char) + 2);
 	if (!str)
 		return ;
 	str[0] = c;

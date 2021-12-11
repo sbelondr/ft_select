@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 14:18:45 by sbelondr          #+#    #+#             */
-/*   Updated: 2020/12/23 23:00:58 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:32:38 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_arraydup(char **line)
 	while (line[i])
 		++i;
 	len = i;
-	dst = (char**)malloc(sizeof(char*) * (i + 1));
+	dst = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!dst)
 		return (NULL);
 	i = -1;

@@ -6,12 +6,11 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 15:47:17 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:11:15 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
-
 
 static void	ft_reset_term(t_term_parameter **term)
 {
@@ -58,15 +57,11 @@ static void	act_sig_stop(t_term_parameter **term)
 /*
 ** recalc column and line when terminal is resize, project start, ...
 */
-#include <stdio.h>
 
-void		select_resize(t_term_parameter **term)
+void	select_resize(t_term_parameter **term)
 {
 	if ((*term)->block_signal)
-	{
-		dprintf(2, "OK\n");
 		return ;
-	}
 	tputs(tgoto(tgetstr("me", NULL), 0, 0), 1, ft_pchar);
 	calc_term(*term);
 	if (!verif_place(*term))
@@ -75,7 +70,6 @@ void		select_resize(t_term_parameter **term)
 	(*term)->coor.x = 0;
 	(*term)->coor.y = 0;
 	(*term)->select->current = (*term)->select->head;
-	//tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
 	fill_screen(*term);
 	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
 	display_name((*term)->select, 0, 0, 1);
@@ -106,7 +100,7 @@ static void	act_sig_cont(t_term_parameter **term)
 ** other --> clear malloc, reset tty  and exit > use a sig for exit argument ?
 */
 
-void		sig_action(int sig)
+void	sig_action(int sig)
 {
 	t_term_parameter	**term;
 
@@ -115,7 +109,7 @@ void		sig_action(int sig)
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	if (sig == SIGWINCH)
 		select_resize(term);
-	else if (sig == SIGTSTP)// || sig == SIGSTOP)
+	else if (sig == SIGTSTP)
 		act_sig_stop(term);
 	else if (sig == SIGCONT)
 		act_sig_cont(term);
@@ -131,7 +125,7 @@ void		sig_action(int sig)
 ** manage all signals (1 to 31)
 */
 
-void		signals_select(void)
+void	signals_select(void)
 {
 	int	sig;
 

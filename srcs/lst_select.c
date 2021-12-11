@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 12:17:26 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/02/10 10:13:17 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:03:24 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 ** Return: struct t_select
 */
 
-t_select		*init_select(char *str)
+t_select	*init_select(char *str)
 {
 	t_select	*ptr;
 
-	if (!(ptr = (t_select*)malloc(sizeof(t_select) * 1)))
+	ptr = (t_select *)malloc(sizeof(t_select) * 1);
+	if (!ptr)
 		return (0);
 	ptr->name = ft_strdup(str);
 	ptr->is_select = 0;
@@ -41,7 +42,8 @@ t_save_select	*init_save_select(t_select *s)
 {
 	t_save_select	*ptr;
 
-	if (!(ptr = (t_save_select*)malloc(sizeof(t_save_select) * 1)))
+	ptr = (t_save_select *)malloc(sizeof(t_save_select) * 1);
+	if (!ptr)
 		return (0);
 	ptr->head = s;
 	ptr->current = NULL;
@@ -56,7 +58,7 @@ t_save_select	*init_save_select(t_select *s)
 ** Return: 0 if it fails otherwise 1
 */
 
-int				del_select(t_save_select *s)
+int	del_select(t_save_select *s)
 {
 	t_select	*prev;
 	t_select	*next;
@@ -73,19 +75,22 @@ int				del_select(t_save_select *s)
 	ft_strdel(&(s->current->name));
 	free(s->current);
 	s->current = NULL;
-	s->current = (next) ? next : prev;
+	if (next)
+		s->current = next;
+	else
+		s->current = prev;
 	if (next)
 		next->prev = prev;
 	if (prev)
 		prev->next = next;
-	return (next ? 1 : 0);
+	return (next != NULL);
 }
 
 /*
 ** move index current element and calc new size
 */
 
-void			aply_select_save(t_save_select *sv, t_select *select)
+void	aply_select_save(t_save_select *sv, t_select *select)
 {
 	size_t			len;
 
