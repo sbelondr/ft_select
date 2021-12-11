@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/18 13:42:28 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:33:06 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct		s_term_parameter
 	int				fd_in;
 	t_pos			coor;
 	struct winsize	sz;
+	size_t			block_signal;
 }					t_term_parameter;
 
 t_term_parameter	**get_term_parameter(t_term_parameter **term);

@@ -6,11 +6,12 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/18 13:46:34 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:47:17 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
+
 
 static void	ft_reset_term(t_term_parameter **term)
 {
@@ -19,6 +20,7 @@ static void	ft_reset_term(t_term_parameter **term)
 	base_term = (*term)->base_term;
 	if (tcsetattr(0, TCSADRAIN, &base_term) == -1)
 		exit(EXIT_FAILURE);
+	tputs(tgoto(tgetstr("me", NULL), 0, 0), 1, ft_pchar);
 	ft_putstr_fd(tgetstr("cl", NULL), 0);
 	ft_putstr_fd(tgetstr("te", NULL), 0);
 	ft_putstr_fd(tgetstr("ve", NULL), 0);
@@ -33,6 +35,10 @@ static void	act_sig_stop(t_term_parameter **term)
 	int				def[2];
 	struct termios	base_term;
 
+	(*term)->block_signal = 1;
+	tputs(tgoto(tgetstr("me", NULL), 0, 0), 1, ft_pchar);
+	ft_putstr_fd(tgetstr("cl", NULL), 0);
+	ft_putstr_fd(tgetstr("te", NULL), 0);
 	tputs(tgoto(tgetstr("ve", NULL), 0, 0), 1, ft_pchar);
 	tcgetattr(0, &base_term);
 	def[0] = base_term.c_cc[VSUSP];
@@ -41,6 +47,10 @@ static void	act_sig_stop(t_term_parameter **term)
 	base_term.c_lflag |= (ICANON | ECHO);
 	signal(SIGTSTP, SIG_DFL);
 	ioctl(STDIN_FILENO, TIOCSTI, def);
+	tputs(tgoto(tgetstr("me", NULL), 0, 0), 1, ft_pchar);
+	ft_putstr_fd(tgetstr("cl", NULL), 0);
+	ft_putstr_fd(tgetstr("te", NULL), 0);
+	tputs(tgoto(tgetstr("ve", NULL), 0, 0), 1, ft_pchar);
 	if (tcsetattr(0, TCSADRAIN, &base_term) == -1)
 		exit(EXIT_FAILURE);
 }
@@ -48,9 +58,16 @@ static void	act_sig_stop(t_term_parameter **term)
 /*
 ** recalc column and line when terminal is resize, project start, ...
 */
+#include <stdio.h>
 
 void		select_resize(t_term_parameter **term)
 {
+	if ((*term)->block_signal)
+	{
+		dprintf(2, "OK\n");
+		return ;
+	}
+	tputs(tgoto(tgetstr("me", NULL), 0, 0), 1, ft_pchar);
 	calc_term(*term);
 	if (!verif_place(*term))
 		manage_screen_small_start(*term);
@@ -58,7 +75,7 @@ void		select_resize(t_term_parameter **term)
 	(*term)->coor.x = 0;
 	(*term)->coor.y = 0;
 	(*term)->select->current = (*term)->select->head;
-	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
+	//tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
 	fill_screen(*term);
 	tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
 	display_name((*term)->select, 0, 0, 1);
@@ -76,6 +93,7 @@ static void	act_sig_cont(t_term_parameter **term)
 	tcsetattr(0, 0, &((*term)->base_term));
 	signal(SIGTSTP, sig_action);
 	tputs(tgetstr("vi", NULL), 1, ft_pchar);
+	(*term)->block_signal = 0;
 	select_resize(term);
 }
 
@@ -92,11 +110,12 @@ void		sig_action(int sig)
 {
 	t_term_parameter	**term;
 
+	tputs(tgoto(tgetstr("me", NULL), 0, 0), 1, ft_pchar);
 	term = get_term_parameter(NULL);
 	tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	if (sig == SIGWINCH)
 		select_resize(term);
-	else if (sig == SIGTSTP || sig == SIGSTOP)
+	else if (sig == SIGTSTP)// || sig == SIGSTOP)
 		act_sig_stop(term);
 	else if (sig == SIGCONT)
 		act_sig_cont(term);

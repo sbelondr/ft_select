@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:38:36 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/18 14:35:47 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:16:54 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** cm -> cursor move column left to right
 */
 
-void test_maybe(char *str, int affcnt, int i, int j)
+void send_tputs(char *str, int affcnt, int i, int j)
 {
 	char	*val_goto;
 	char	*val_str;
@@ -30,8 +30,6 @@ void test_maybe(char *str, int affcnt, int i, int j)
 	val_str = tgetstr(str, NULL);
 	val_goto = tgoto(val_str, j, i);
 	tputs(val_goto, affcnt, ft_pchar);
-	// free(val_str);
-	// free(val_goto);
 	val_goto = NULL;
 	val_str = NULL;
 }
@@ -65,8 +63,8 @@ void	display_name_no_coor(t_save_select *sv, int current)
 
 void	manage_screen_small_start(t_term_parameter *term)
 {
-	test_maybe("cl", 1, 0, 0);
-	test_maybe("cm", 1, 0, 0);
+	send_tputs("cl", 1, 0, 0);
+	send_tputs("cm", 1, 0, 0);
 	// tputs(tgoto(tgetstr("cl", NULL), 0, 0), 1, ft_pchar);
 	// tputs(tgoto(tgetstr("cm", NULL), 0, 0), 1, ft_pchar);
 	if (!verif_place(term))

@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/03/11 09:01:06 by sbelondr         ###   ########.fr       */
+/*   Updated: 2021/12/11 15:33:49 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ t_term_parameter	*init_term(t_save_select *s)
 	term->coor.y = 0;
 	term->coor.x = 0;
 	term->fd_in = STDIN_FILENO;
+	term->block_signal = 0;
 	if (!init_termcap(term))
 	{
 		reset_term(&term, 1);
