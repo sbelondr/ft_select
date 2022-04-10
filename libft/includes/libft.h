@@ -6,7 +6,7 @@
 /*   By: sbelondr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:42:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 17:03:19 by sbelondr         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:30:14 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int					ft_lastchr(const char *s, int c);
 int					ft_division(int a, int b);
 int					ft_modulo(int a, int b);
 int					ft_strisascii(char *str);
+int					ft_strisprint(char *str);
 
 #endif

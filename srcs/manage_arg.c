@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 09:01:06 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 16:07:23 by sbelondr         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:28:52 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_argv(char **av)
 	is_not_valid = 0;
 	while (av[++i])
 	{
-		if (ft_strequ(av[i], "") || !ft_strisascii(av[i]) \
+		if (ft_strequ(av[i], "") || !ft_strisprint(av[i]) \
 				|| !ft_check_blank(av[i]))
 		{
 			ft_dprintf(STDERR_FILENO, "You used an illegal character\n");

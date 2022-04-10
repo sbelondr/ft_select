@@ -6,7 +6,7 @@
 #    By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/21 14:49:02 by sbelondr          #+#    #+#              #
-#    Updated: 2021/02/01 09:16:21 by sbelondr         ###   ########.fr        #
+#    Updated: 2022/04/10 16:30:52 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ SRCS_NAMES = ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcmp.c ft_str
 	ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_isblank.c ft_memset.c\
 	ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_memalloc.c\
 	ft_memdel.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
-	ft_lstmap.c ft_division.c ft_modulo.c ft_strisascii.c $(FT_PRINTF)
+	ft_lstmap.c ft_division.c ft_modulo.c ft_strisascii.c ft_strisprint.c $(FT_PRINTF)
 
 OBJS_NAMES = $(SRCS_NAMES:.c=.o)
 HEADERS_NAMES = libft.h ft_printf.h

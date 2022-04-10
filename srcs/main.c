@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 16:47:29 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/12 15:22:54 by sbelondr         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:20:58 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ t_term_parameter	**get_term_parameter(t_term_parameter **term)
 	return (t);
 }
 
-#include <stdio.h>
-
 int	main(int ac, char **av)
 {
 	t_term_parameter	*term;
@@ -109,13 +107,6 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (-1);
-	for (int i = 0; i < ac;i++)
-	{
-		int j = -1;
-		while (av[i][++j])
-			printf("%c", av[i][j]);
-		printf("\n");
-	}
 	if (check_argv(av))
 		exit(-1);
 	sv = create_lst_select(av + 1);
