@@ -6,7 +6,7 @@
 #    By: samuel <samuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2023/03/11 14:35:09 by sbelondr         ###   ########.fr        #
+#    Updated: 2023/03/11 14:37:58 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ ifeq ($(UNAME_S),Darwin)
 TERMCAP = -lncurses
 endif
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
 
 INCLUDE =  -I./includes -I./libft/includes
 
