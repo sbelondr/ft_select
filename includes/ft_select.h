@@ -6,7 +6,7 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 09:38:13 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 17:02:41 by sbelondr         ###   ########.fr       */
+/*   Updated: 2023/03/11 14:34:44 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <signal.h>
 # include <termcap.h>
 # include <termios.h>
+# include <stdio.h>
 
 typedef struct s_pos
 {
@@ -125,6 +126,12 @@ void				free_select(t_select **s);
 
 void				signals_select(void);
 void				sig_action(int sig);
+
+/*
+** reset_term.c
+*/
+
+void				ft_reset_term(t_term_parameter **term);
 
 /*
 ** tools.c

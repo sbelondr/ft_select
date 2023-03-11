@@ -6,7 +6,7 @@
 #    By: samuel <samuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/30 16:36:58 by sbelondr          #+#    #+#              #
-#    Updated: 2021/12/11 17:06:30 by sbelondr         ###   ########.fr        #
+#    Updated: 2023/03/11 14:35:09 by sbelondr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = actions.c\
 		move_lst.c\
 		move_termcat.c\
 		signals.c\
+		reset_term.c\
 		term.c\
 		tools.c\
 		tty.c\

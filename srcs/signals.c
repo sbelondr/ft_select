@@ -6,24 +6,11 @@
 /*   By: sbelondr <sbelondr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 21:16:20 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 16:11:15 by sbelondr         ###   ########.fr       */
+/*   Updated: 2023/03/11 14:33:53 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
-
-static void	ft_reset_term(t_term_parameter **term)
-{
-	struct termios		base_term;
-
-	base_term = (*term)->base_term;
-	if (tcsetattr(0, TCSADRAIN, &base_term) == -1)
-		exit(EXIT_FAILURE);
-	tputs(tgoto(tgetstr("me", NULL), 0, 0), 1, ft_pchar);
-	ft_putstr_fd(tgetstr("cl", NULL), 0);
-	ft_putstr_fd(tgetstr("te", NULL), 0);
-	ft_putstr_fd(tgetstr("ve", NULL), 0);
-}
 
 /*
 ** render terminal before render the default parameter
@@ -116,7 +103,7 @@ void	sig_action(int sig)
 	else
 	{
 		reset_term(term, 1);
-		ft_dprintf(STDERR_FILENO, "Quit: %d\n", sig);
+		dprintf(STDERR_FILENO, "Quit: %d\n", sig);
 		exit(sig);
 	}
 }

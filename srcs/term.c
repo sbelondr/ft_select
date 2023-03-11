@@ -6,7 +6,7 @@
 /*   By: samuel <samuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 08:39:51 by sbelondr          #+#    #+#             */
-/*   Updated: 2021/12/11 16:12:44 by sbelondr         ###   ########.fr       */
+/*   Updated: 2023/03/11 14:30:32 by sbelondr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	init_termcap(t_term_parameter *term)
 		return (0);
 	if (ft_tty_raw(term->base_term, term->fd_in) == -1)
 	{
-		ft_dprintf(2, "Error: raw doesn't work!\n");
+		dprintf(STDERR_FILENO, "Error: raw doesn't work!\n");
 		return (0);
 	}
 	env = getenv("TERM");
 	if ((!env) || ft_strequ(env, "") || tgetent(0, env) == -1)
 	{
-		ft_dprintf(2, "Error: tgetent doesn't work!\n");
+		dprintf(STDERR_FILENO, "Error: tgetent doesn't work!\n");
 		return (0);
 	}
 	return (1);
@@ -114,7 +114,7 @@ int	reset_term(t_term_parameter **term, int is_free)
 	if (tty_reset((*term)->base_term, (*term)->fd_in) == -1)
 	{
 		free_term(term);
-		ft_dprintf(2, "Error: reset raw doesn't work!\n");
+		dprintf(STDERR_FILENO, "Error: reset raw doesn't work!\n");
 		return (-1);
 	}
 	if (is_free)
